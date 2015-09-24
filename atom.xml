@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2015-09-08T00:03:25.854Z</updated>
+  <updated>2015-09-24T15:44:57.479Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://zhaoshibo.net/2015/09/07/alert-qq-dialog/"/>
     <id>http://zhaoshibo.net/2015/09/07/alert-qq-dialog/</id>
     <published>2015-09-07T06:10:23.000Z</published>
-    <updated>2015-09-08T00:03:25.854Z</updated>
+    <updated>2015-09-24T15:44:57.479Z</updated>
     <content type="html"><![CDATA[<p>2种方法。</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="operator">a</span> href=<span class="string">"tencent://message/?exe=qq&amp;menu=yes&amp;uin=QQ号码"</span> <span class="built_in">rel</span>=<span class="string">"nofollow"</span>&gt;&lt;/<span class="operator">a</span>&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">a</span> href=<span class="string">"http://wpa.qq.com/msgrd?v=3&amp;uin=QQ号码&amp;site=qq&amp;menu=yes"</span> target=<span class="string">"_blank"</span> rel=<span class="string">"nofollow"</span>&gt;</span><br><span class="line">	&lt;<span class="tag">img</span> <span class="attribute">border</span>=<span class="string">"0"</span> src=<span class="string">"http://wpa.qq.com/pa?p=2:QQ号码:41"</span> alt=<span class="string">"点击这里给我发消息"</span> title=<span class="string">"点击这里给我发消息"</span>/&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>]]></content>
@@ -27,6 +27,8 @@
     <![CDATA[<p>2种方法。</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class]]>
     </summary>
+    
+      <category term="HTML" scheme="http://zhaoshibo.net/tags/HTML/"/>
     
       <category term="Tips" scheme="http://zhaoshibo.net/tags/Tips/"/>
     
@@ -304,11 +306,11 @@
     <link href="http://zhaoshibo.net/2015/08/19/my-website/"/>
     <id>http://zhaoshibo.net/2015/08/19/my-website/</id>
     <published>2015-08-19T10:14:13.000Z</published>
-    <updated>2015-09-08T00:09:24.469Z</updated>
+    <updated>2015-09-24T15:48:11.324Z</updated>
     <content type="html"><![CDATA[<p>一直想有自己的网站，迟迟都没耐下心来搭建网站。这两天又是实在按捺不住了，索性买了域名，研究了一下午，过程中更是bug重重，还好一路拼荆斩棘，总算获得成果。</p>
 <p>看到这个小站能在浏览器中打开那一刻，内心那是万分兴奋呐。</p>
 <a id="more"></a>
-<p>毕业半年后才从事前端职位，现在刚好在公司转正。这条道上路不难，关键是以后想要的风光太好，更需加倍努力啊。</p>
+<p>毕业半年多后才开始从事前端，现在刚好转正。踏上这条路并不难，难的是入门以后发现了更广阔的天空，不得不更加卖力的去追逐。</p>
 <p>其余感慨以后再表吧。</p>
 ]]></content>
     <summary type="html">
@@ -316,8 +318,6 @@
 <p>看到这个小站能在浏览器中打开那一刻，内心那是万分兴奋呐。</p>]]>
     
     </summary>
-    
-      <category term="心情" scheme="http://zhaoshibo.net/tags/%E5%BF%83%E6%83%85/"/>
     
       <category term="生活" scheme="http://zhaoshibo.net/tags/%E7%94%9F%E6%B4%BB/"/>
     
