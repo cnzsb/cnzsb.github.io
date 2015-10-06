@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://zhaoshibo.net/2015/09/25/object-and-embed/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
 <meta property="og:description" content="最近用到.swf的文件，一时不知如何调用，搜索后知道可以使用object标签或者embed标签来嵌入，参照着其他代码改完后，马马虎虎可以使用了。今天特意整理了其中的一些说明。原网页使用的代码如下：">
-<meta property="og:updated_time" content="2015-10-05T13:43:04.440Z">
+<meta property="og:updated_time" content="2015-10-06T14:36:14.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="object标签和embed标签">
 <meta name="twitter:description" content="最近用到.swf的文件，一时不知如何调用，搜索后知道可以使用object标签或者embed标签来嵌入，参照着其他代码改完后，马马虎虎可以使用了。今天特意整理了其中的一些说明。原网页使用的代码如下：">
@@ -260,6 +260,7 @@
 <li>align，默认为居中，当浏览器窗口小于文件时，边缘会被裁切。可设置为left，right，top，bottom，设置后如有需要，另外三边将被裁切。</li>
 <li>standby，设置文件正在加载时显示的文本。</li>
 </ul>
+<h3 id="遇到的问题">遇到的问题</h3><p>在<strong>embed</strong>中设置<code>play=“false”</code>即文件加载后不自动播放时如果出问题，可再设置<code>flashvars=&quot;autoplay=false&amp;play=false&quot;</code>。</p>
 
       
     </div>
