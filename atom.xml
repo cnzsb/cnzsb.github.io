@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2015-10-10T13:11:39.519Z</updated>
+  <updated>2015-10-16T16:19:45.975Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,6 +13,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[callee，caller,call和apply]]></title>
+    <link href="http://zhaoshibo.net/2015/10/16/callee-caller-call-apply/"/>
+    <id>http://zhaoshibo.net/2015/10/16/callee-caller-call-apply/</id>
+    <published>2015-10-16T10:27:01.000Z</published>
+    <updated>2015-10-16T16:19:45.975Z</updated>
+    <content type="html"><![CDATA[<h2 id="1-_callee">1. callee</h2><p><code>callee</code>，返回正在执行的函数本身的引用，是<code>arguments</code>的一个属性。只有在函数执行时有效；有一个<code>length</code>属性，可用于获得形参的个数，来比较是否和实参个数一直，即比较<code>arguments.length == arguments.callee.length</code>；还可用于递归匿名参数；可以用来消除耦合。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不用()()立即执行时，则无效。</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">center</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);		<span class="comment">// &gt; center()</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);	<span class="comment">// &gt; inner()</span></span><br><span class="line">		&#125;</span><br><span class="line">		inner();</span><br><span class="line">	&#125;</span><br><span class="line">	center();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<h2 id="2-_caller">2. caller</h2><p><code>caller</code>，返回一个对函数的引用，该函数调用了当前的函数。只有在函数执行时有效；如果函数由顶层调用，那么返回<code>null</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不用()()立即执行时，则无效。</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">center</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">// 调用当前作用域，此时center.caller指向outer</span></span><br><span class="line">		<span class="comment">// center.caller可用arguments.callee.caller表示</span></span><br><span class="line">		<span class="built_in">console</span>.log(center.caller);			<span class="comment">// &gt; outer</span></span><br><span class="line">		<span class="built_in">console</span>.log(outer.caller);			<span class="comment">// &gt; null</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(inner.caller);		<span class="comment">// &gt; center()</span></span><br><span class="line">			<span class="built_in">console</span>.log(center.caller);		<span class="comment">// &gt; outer()</span></span><br><span class="line">			<span class="built_in">console</span>.log(outer.caller);		<span class="comment">// &gt; null</span></span><br><span class="line">		&#125;</span><br><span class="line">		inner();</span><br><span class="line">	&#125;</span><br><span class="line">	center();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<h2 id="3-_call&amp;apply">3. call&amp;apply</h2><p>每个函数都包含两个非继承的方法，<code>call</code>和<code>apply</code>。他们的用途都是在特定的作用域中调用函数，获取了另一个对象的方法，并继承对象的属性，只是接收的参数格式不同。它们的重要作用在于能够扩充函数的作用域，而且对象不需要与函数有任何的耦合。</p>
+<ul>
+<li><code>function.call(obj, arg1, arg2, ...)</code></li>
+<li><code>function.apply(obj, [param1, param2, ...])</code></li>
+<li><code>obj</code>将代替函数中的<code>this</code>对象</li>
+<li><code>call</code>中第二个参数是一个参数列表</li>
+<li><code>apply</code>中第二个参数是一个数组，用来传参给函数中的<code>arguments</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">name, size</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.size = size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">boxes</span>(<span class="params">name, size, number</span>)</span>&#123;</span><br><span class="line">	box.call(<span class="keyword">this</span>, name, size);</span><br><span class="line">	<span class="comment">// box.apply(this, arguments);</span></span><br><span class="line">	<span class="keyword">this</span>.number = number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mybox = <span class="keyword">new</span> boxes(<span class="string">'mybox'</span>, <span class="string">'5*5*5'</span>, <span class="number">1001</span>);</span><br><span class="line"><span class="comment">// boxes中并未给name和size属性赋值，但是还是显示了预期结果，否则应为undefined</span></span><br><span class="line">alert(<span class="string">'name: '</span> + mybox.name + <span class="string">'\nsize: '</span> + mybox.size + <span class="string">'\nnumber: '</span> + mybox.number);</span><br></pre></td></tr></table></figure>
+<p>使用时，如果希望输出结果的参数位置改变，如为<code>boxes（size, name, number）</code>，则使用<code>call</code>更方便<code>box.call(this, size， name)</code>。而需要按照顺序对应的情况下，使用<code>apply</code>的数组参数<code>arguments</code>则更方便。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="1-_callee">1. callee</h2><p><code>callee</code>，返回正在执行的函数本身的引用，是<code>arguments</code>的一个属性。只有在函数执行时有效；有一个<code>length</code>属性，可用于获]]>
+    </summary>
+    
+      <category term="JavaScript" scheme="http://zhaoshibo.net/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[object标签和embed标签]]></title>

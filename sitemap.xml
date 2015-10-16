@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhaoshibo.net/2015/10/16/callee-caller-call-apply/</loc>
+    <lastmod>2015-10-16T16:19:45.975Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://zhaoshibo.net/2015/09/25/object-and-embed/</loc>
     <lastmod>2015-10-10T13:11:39.519Z</lastmod>
   </url>

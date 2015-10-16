@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>奔跑的Q丶</title>
+  <title>callee，caller,call和apply | 奔跑的Q丶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="奔跑在前端路上的小白，记录学习，记录生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="奔跑的Q丶">
-<meta property="og:url" content="http://zhaoshibo.net/index.html">
+  <meta name="description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一直，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。
+1234567891011// 不用()()立即执行时，则无效。(funct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="callee，caller,call和apply">
+<meta property="og:url" content="http://zhaoshibo.net/2015/10/16/callee-caller-call-apply/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
-<meta property="og:description" content="奔跑在前端路上的小白，记录学习，记录生活">
+<meta property="og:description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一直，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。
+1234567891011// 不用()()立即执行时，则无效。(funct">
+<meta property="og:updated_time" content="2015-10-16T16:19:45.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="奔跑的Q丶">
-<meta name="twitter:description" content="奔跑在前端路上的小白，记录学习，记录生活">
+<meta name="twitter:title" content="callee，caller,call和apply">
+<meta name="twitter:description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一直，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。
+1234567891011// 不用()()立即执行时，则无效。(funct">
   
     <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
   
@@ -169,9 +173,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-callee-caller-call-apply" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-callee-caller-call-apply" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/10/16/callee-caller-call-apply/" class="article-date">
@@ -187,12 +189,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/16/callee-caller-call-apply/">callee，caller,call和apply</a>
+    <h1 class="article-title" itemprop="name">
+      callee，caller,call和apply
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -215,262 +228,62 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/09/25/object-and-embed/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">object标签和embed标签</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-  
-    <article id="post-object-and-embed" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/09/25/object-and-embed/" class="article-date">
-  	<time datetime="2015-09-25T07:21:51.000Z" itemprop="datePublished">2015-09-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/25/object-and-embed/">object标签和embed标签</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近用到.swf的文件，一时不知如何调用，搜索后知道可以使用<code>object</code>标签或者<code>embed</code>标签来嵌入，参照着其他代码改完后，马马虎虎可以使用了。今天特意整理了其中的一些说明。原网页使用的代码如下：</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/09/25/object-and-embed/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
-
-
-
-
-  
-    <article id="post-alert-qq-dialog" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/09/07/alert-qq-dialog/" class="article-date">
-  	<time datetime="2015-09-07T06:10:23.000Z" itemprop="datePublished">2015-09-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/07/alert-qq-dialog/">点击QQ号码弹出聊天窗口</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2种方法。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="operator">a</span> href=<span class="string">"tencent://message/?exe=qq&amp;menu=yes&amp;uin=QQ号码"</span> <span class="built_in">rel</span>=<span class="string">"nofollow"</span>&gt;&lt;/<span class="operator">a</span>&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">a</span> href=<span class="string">"http://wpa.qq.com/msgrd?v=3&amp;uin=QQ号码&amp;site=qq&amp;menu=yes"</span> target=<span class="string">"_blank"</span> rel=<span class="string">"nofollow"</span>&gt;</span><br><span class="line">	&lt;<span class="tag">img</span> <span class="attribute">border</span>=<span class="string">"0"</span> src=<span class="string">"http://wpa.qq.com/pa?p=2:QQ号码:41"</span> alt=<span class="string">"点击这里给我发消息"</span> title=<span class="string">"点击这里给我发消息"</span>/&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="callee-caller-call-apply" data-title="callee，caller,call和apply" data-url="http://zhaoshibo.net/2015/10/16/callee-caller-call-apply/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zhaoshibo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-
-
-  
-    <article id="post-build-Github-Pages-with-Hexo3" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/31/build-Github-Pages-with-Hexo3/" class="article-date">
-  	<time datetime="2015-08-31T06:06:37.000Z" itemprop="datePublished">2015-08-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/31/build-Github-Pages-with-Hexo3/">Github Pages配合Hexo3搭建个人网站</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是一篇关于使用Github Pages和Hexo3搭建网站并绑定独立域名的个人总结，目录顺序为个人实际操作顺序。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/31/build-Github-Pages-with-Hexo3/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-my-website" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/19/my-website/" class="article-date">
-  	<time datetime="2015-08-19T10:14:13.000Z" itemprop="datePublished">2015-08-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/19/my-website/">我的小站</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一直想有自己的网站，迟迟都没耐下心来搭建网站。这两天又是实在按捺不住了，索性买了域名，研究了一下午，过程中更是bug重重，还好一路拼荆斩棘，总算获得成果。</p>
-<p>看到这个小站能在浏览器中打开那一刻，内心那是万分兴奋呐。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活/">生活</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/19/my-website/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -494,8 +307,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
