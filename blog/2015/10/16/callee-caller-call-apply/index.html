@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>callee，caller,call和apply | 奔跑的Q丶</title>
+  <title>callee、caller、call和apply | 奔跑的Q丶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一直，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="callee，caller,call和apply">
-<meta property="og:url" content="http://zhaoshibo.net/2015/10/16/callee-caller-call-apply/index.html">
+<meta property="og:title" content="callee、caller、call和apply">
+<meta property="og:url" content="http://zhaoshibo.net/blog/2015/10/16/callee-caller-call-apply/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
 <meta property="og:description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一直，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。">
-<meta property="og:updated_time" content="2015-10-16T16:29:20.848Z">
+<meta property="og:updated_time" content="2015-11-06T14:31:08.250Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="callee，caller,call和apply">
+<meta name="twitter:title" content="callee、caller、call和apply">
 <meta name="twitter:description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一直，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。">
   
     <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
@@ -86,7 +86,7 @@
 						
 							<li><a href="/">主页</a></li>
 				        
-							<li><a href="/archives">所有文章</a></li>
+							<li><a href="/archives">归档</a></li>
 				        
 						</ul>
 					</nav>
@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part3">
 				
-					<div id="js-aboutme">赵世博，昵称奔跑的Q丶。1991年生人，CS毕业半年多后才投身于Web前端工作中。小白一枚，奋斗中~↖(^ω^)↗</div>
+					<div id="js-aboutme">赵世博，昵称奔跑的Q丶。热爱前端，奋斗中~↖(^ω^)↗</div>
 				</section>
 				
 			</div>
@@ -149,7 +149,7 @@
 				
 					<li><a href="/">主页</a></li>
 		        
-					<li><a href="/archives">所有文章</a></li>
+					<li><a href="/archives">归档</a></li>
 		        
 		        <div class="clearfix"></div>
 				</ul>
@@ -173,7 +173,7 @@
       <div class="body-wrap"><article id="post-callee-caller-call-apply" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/10/16/callee-caller-call-apply/" class="article-date">
+      <a href="/blog/2015/10/16/callee-caller-call-apply/" class="article-date">
   	<time datetime="2015-10-16T10:27:01.000Z" itemprop="datePublished">2015-10-16</time>
 </a>
     </div>
@@ -187,7 +187,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      callee，caller,call和apply
+      callee、caller、call和apply
     </h1>
   
 
@@ -220,9 +220,15 @@
 <li><code>call</code>中第二个参数是一个参数列表</li>
 <li><code>apply</code>中第二个参数是一个数组，用来传参给函数中的<code>arguments</code></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">name, size</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.size = size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">boxes</span>(<span class="params">name, size, number</span>)</span>&#123;</span><br><span class="line">	box.call(<span class="keyword">this</span>, name, size);</span><br><span class="line">	<span class="comment">// box.apply(this, arguments);</span></span><br><span class="line">	<span class="keyword">this</span>.number = number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mybox = <span class="keyword">new</span> boxes(<span class="string">'mybox'</span>, <span class="string">'5*5*5'</span>, <span class="number">1001</span>);</span><br><span class="line"><span class="comment">// boxes中并未给name和size属性赋值，但是还是显示了预期结果，否则应为undefined</span></span><br><span class="line">alert(<span class="string">'name: '</span> + mybox.name + <span class="string">'\nsize: '</span> + mybox.size + <span class="string">'\nnumber: '</span> + mybox.number);</span><br></pre></td></tr></table></figure>
-<p>使用时，如果希望输出结果的参数位置改变，如为<code>boxes（size, name, number）</code>，则使用<code>call</code>更方便<code>box.call(this, size， name)</code>。而需要按照顺序对应的情况下，使用<code>apply</code>的数组参数<code>arguments</code>则更方便。</p>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name, size</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.size = size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Boxes</span>(<span class="params">name, size, number</span>)</span>&#123;</span><br><span class="line">	Box.call(<span class="keyword">this</span>, name, size);</span><br><span class="line">	<span class="comment">// Box.apply(this, arguments);</span></span><br><span class="line">	<span class="keyword">this</span>.number = number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mybox = <span class="keyword">new</span> Boxes(<span class="string">'mybox'</span>, <span class="string">'5*5*5'</span>, <span class="number">1001</span>);</span><br><span class="line"><span class="comment">// boxes中并未给name和size属性赋值，但是还是显示了预期结果，否则应为undefined</span></span><br><span class="line">alert(<span class="string">'name: '</span> + mybox.name + <span class="string">'\nsize: '</span> + mybox.size + <span class="string">'\nnumber: '</span> + mybox.number);</span><br></pre></td></tr></table></figure>
+<p>使用时，如果希望输出结果的参数位置改变，如为<code>Boxes（size, name, number）</code>，则使用<code>call</code>更方便<code>Box.call(this, size， name)</code>。而需要按照顺序对应的情况下，使用<code>apply</code>的数组参数<code>arguments</code>则更方便。</p>
+<h2 id="4-_其他一些高级用法">4. 其他一些高级用法</h2><p>对于<code>apply</code>和<code>call</code>，还有一些特别的用法，鉴于它两并无太大区别，这里以<code>apply</code>为例。个人总结该用法如下，非标准表达：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">Fun</span><span class="class">.apply</span>(<span class="tag">Obj</span>, <span class="tag">arguments</span>);</span><br></pre></td></tr></table></figure>
+<p>解释为，Obj对象调用Fun内部提供的方法，对arguments参数进行操作，此处，Obj对象可为this，null等。此方法颇适用于需要传入列表而非数组表达的参数时，即<code>param1, parram2, param3, ...</code>而非<code>[param1, param2, param3, ...]</code>时。</p>
+<p>以下三个示例，分别展示了表达式中Obj，Fun和arguments的含义：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> maxNum1 = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, arr);</span><br><span class="line"><span class="keyword">var</span> maxNum2 = <span class="built_in">Math</span>.max.apply(maxNum, arr);</span><br><span class="line"><span class="built_in">console</span>.log(maxNum1);</span><br><span class="line"><span class="built_in">console</span>.log(maxNum2);</span><br><span class="line"><span class="comment">// 结果都为5，这里更方便理解apply接收的第一个参数的含义</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Arr</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> vals = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//此处表达vals对象调用了apply前面所示数组的push方法，等价于下面注释掉的表达方法</span></span><br><span class="line">	vals.push.apply(vals, <span class="built_in">arguments</span>);</span><br><span class="line">	<span class="comment">// Array.prototype.push.apply(vals, arguments);</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> vals;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> Arr(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name, size</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.size = size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Boxes</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Box.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aB = <span class="keyword">new</span> Boxes(<span class="string">'aBox'</span>, <span class="string">'5*5*5'</span>);</span><br><span class="line"><span class="keyword">var</span> bB = <span class="keyword">new</span> Boxes(<span class="string">'bBox'</span>, <span class="string">'sth else'</span>, <span class="string">'blah blah'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(aB);  <span class="comment">// Boxes &#123;name: "aBox", size: "5*5*5"&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(bB);  <span class="comment">// Boxes &#123;name: "bBox", size: "sth else"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里可以看最后的参数调用Box的方法时，如果没有提供方法，则不会进行操作</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -232,7 +238,7 @@
 <nav id="article-nav">
   
   
-    <a href="/2015/09/25/object-and-embed/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2015/09/25/object-and-embed/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">object标签和embed标签</div>
       <strong class="article-nav-caption">></strong>
     </a>
@@ -262,7 +268,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="callee-caller-call-apply" data-title="callee，caller,call和apply" data-url="http://zhaoshibo.net/2015/10/16/callee-caller-call-apply/"></div>
+	<div class="ds-thread" data-thread-key="callee-caller-call-apply" data-title="callee、caller、call和apply" data-url="http://zhaoshibo.net/blog/2015/10/16/callee-caller-call-apply/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
