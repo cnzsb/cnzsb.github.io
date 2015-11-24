@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhaoshibo.net/blog/2015/08/31/build-Github-Pages-with-Hexo3/</loc>
+    <lastmod>2015-11-24T15:06:39.645Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://zhaoshibo.net/blog/2015/10/16/callee-caller-call-apply/</loc>
     <lastmod>2015-11-06T14:40:39.262Z</lastmod>
   </url>
@@ -19,11 +24,6 @@
   <url>
     <loc>http://zhaoshibo.net/blog/2015/09/07/alert-qq-dialog/</loc>
     <lastmod>2015-11-06T14:30:31.379Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://zhaoshibo.net/blog/2015/08/31/build-Github-Pages-with-Hexo3/</loc>
-    <lastmod>2015-11-06T14:30:27.183Z</lastmod>
   </url>
   
 </urlset>
