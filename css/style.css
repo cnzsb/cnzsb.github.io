@@ -718,6 +718,9 @@ a {
 #disqus_thread {
   padding: 0 40px;
 }
+html {
+  cursor: url("/fancybox/cursor.ico"), auto;
+}
 .archives-wrap {
   position: relative;
   margin: 0 30px;
