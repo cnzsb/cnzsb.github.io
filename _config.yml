@@ -32,11 +32,11 @@ animate: true
 open_in_new: false
 
 # Miscellaneous
-google_analytics: ''
-favicon: /favicon.ico
+google_analytics: 'UA-71274501-1'
+favicon: "/favicon.ico"
 
 #你的头像url
-avatar: /avatar.jpg
+avatar: "/avatar.jpg"
 #是否开启分享
 share: true
 #是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
