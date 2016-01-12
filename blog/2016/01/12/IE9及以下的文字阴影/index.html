@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Hexo | 奔跑的Q丶</title>
+  <title>CSS 3 text-shadow在IE下的解决 | 奔跑的Q丶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="奔跑在前端的路上，记录学习，记录生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="奔跑的Q丶">
-<meta property="og:url" content="http://zhaoshibo.net/tags/Hexo/index.html">
+  <meta name="description" content="text-shadow兼容IE10及FF3.5以上，在IE8，9下可以使用滤镜filter：glow使元素发光来替代。
+12filter： grow(color: #000, strength: 1);filter： grow(color: #000, direction: 2);
+color设置发光颜色，在这里strength和direction均设置阴影强度，但它们2个的表现也不太一样。
+在I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 3 text-shadow在IE下的解决">
+<meta property="og:url" content="http://zhaoshibo.net/blog/2016/01/12/IE9及以下的文字阴影/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
-<meta property="og:description" content="奔跑在前端的路上，记录学习，记录生活">
+<meta property="og:description" content="text-shadow兼容IE10及FF3.5以上，在IE8，9下可以使用滤镜filter：glow使元素发光来替代。
+12filter： grow(color: #000, strength: 1);filter： grow(color: #000, direction: 2);
+color设置发光颜色，在这里strength和direction均设置阴影强度，但它们2个的表现也不太一样。
+在I">
+<meta property="og:updated_time" content="2016-01-12T12:40:04.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="奔跑的Q丶">
-<meta name="twitter:description" content="奔跑在前端的路上，记录学习，记录生活">
+<meta name="twitter:title" content="CSS 3 text-shadow在IE下的解决">
+<meta name="twitter:description" content="text-shadow兼容IE10及FF3.5以上，在IE8，9下可以使用滤镜filter：glow使元素发光来替代。
+12filter： grow(color: #000, strength: 1);filter： grow(color: #000, direction: 2);
+color设置发光颜色，在这里strength和direction均设置阴影强度，但它们2个的表现也不太一样。
+在I">
   
     <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
   
@@ -173,53 +183,106 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-IE9及以下的文字阴影" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2015/08/31/Github Pages配合Hexo3搭建个人网站/" class="archive-article-date">
-  	<time datetime="2015-08-31T06:06:37.000Z" itemprop="datePublished">8月 31</time>
+    <div class="article-meta">
+      <a href="/blog/2016/01/12/IE9及以下的文字阴影/" class="article-date">
+  	<time datetime="2016-01-12T10:09:07.000Z" itemprop="datePublished">2016-01-12</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2015/08/31/Github Pages配合Hexo3搭建个人网站/">Github Pages配合Hexo3搭建个人网站</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS 3 text-shadow在IE下的解决
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>text-shadow</code>兼容IE10及FF3.5以上，在IE8，9下可以使用滤镜<code>filter：glow</code>使元素发光来替代。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">filter</span>： <span class="tag">grow</span>(<span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#000</span>, strength: <span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="tag">filter</span>： <span class="tag">grow</span>(<span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#000</span>, direction: <span class="number">2</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><code>color</code>设置发光颜色，在这里<code>strength</code>和<code>direction</code>均设置阴影强度，但它们2个的表现也不太一样。</p>
+<p>在IE7以下这个属性暂时无效。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/01/03/2015年度总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2015年度总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="IE9及以下的文字阴影" data-title="CSS 3 text-shadow在IE下的解决" data-url="http://zhaoshibo.net/blog/2016/01/12/IE9及以下的文字阴影/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zhaoshibo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -245,9 +308,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
