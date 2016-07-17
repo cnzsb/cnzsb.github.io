@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2016-02-02T05:55:43.506Z</updated>
+  <updated>2016-07-17T08:27:27.985Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,6 +13,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[去除select等标签默认浏览器样式]]></title>
+    <link href="http://zhaoshibo.net/blog/2016/07/17/%E5%8E%BB%E9%99%A4select%E7%AD%89%E6%A0%87%E7%AD%BE%E9%BB%98%E8%AE%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B7%E5%BC%8F/"/>
+    <id>http://zhaoshibo.net/blog/2016/07/17/去除select等标签默认浏览器样式/</id>
+    <published>2016-07-17T08:11:47.000Z</published>
+    <updated>2016-07-17T08:27:27.985Z</updated>
+    <content type="html"><![CDATA[<p>去除select等标签默认浏览器样式的方式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">select</span> <span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-appearance</span>:<span class="value"> none</span></span>;  <span class="comment">/* chrome */</span></span><br><span class="line">	   <span class="rule"><span class="attribute">-moz-appearance</span>:<span class="value"> none</span></span>;  <span class="comment">/* firefox */</span></span><br><span class="line">	        <span class="rule"><span class="attribute">appearance</span>:<span class="value"> none</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE */</span></span><br><span class="line"><span class="rule"><span class="attribute">select</span>:<span class="value">:-ms-expand &#123;</span><br><span class="line">	display: none</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>去除select等标签默认浏览器样式的方式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="l]]>
+    </summary>
+    
+      <category term="CSS" scheme="http://zhaoshibo.net/tags/CSS/"/>
+    
+      <category term="Tips" scheme="http://zhaoshibo.net/tags/Tips/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[关于CSS3的3D属性]]></title>
