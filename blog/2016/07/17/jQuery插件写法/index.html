@@ -5,22 +5,16 @@
   
   <title>jQuery插件写法 | 奔跑的Q丶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在当前的前端时代，react，vue等框架配合ES6满足了日常的多数开发需求，但是了解jQuery的插件开发在我们开发一些小型项目中还是很有用处。我们可以打造自己的插件达到复用的效果。
-&amp;lt;!- more -&amp;gt;
-extend方法我们首先知道在jQuery中$.fn === $.prototype。如果只是简单的需要一个jQuery的扩展方法，那么我们直接使用$.extend即可达到目的。">
+  <meta name="description" content="在当前的前端时代，react，vue等框架配合ES6满足了日常的多数开发需求，但是了解jQuery的插件开发在我们开发一些小型项目中还是很有用处。我们可以打造自己的插件达到复用的效果。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery插件写法">
 <meta property="og:url" content="http://zhaoshibo.net/blog/2016/07/17/jQuery插件写法/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
-<meta property="og:description" content="在当前的前端时代，react，vue等框架配合ES6满足了日常的多数开发需求，但是了解jQuery的插件开发在我们开发一些小型项目中还是很有用处。我们可以打造自己的插件达到复用的效果。
-&amp;lt;!- more -&amp;gt;
-extend方法我们首先知道在jQuery中$.fn === $.prototype。如果只是简单的需要一个jQuery的扩展方法，那么我们直接使用$.extend即可达到目的。">
-<meta property="og:updated_time" content="2016-07-17T12:47:47.309Z">
+<meta property="og:description" content="在当前的前端时代，react，vue等框架配合ES6满足了日常的多数开发需求，但是了解jQuery的插件开发在我们开发一些小型项目中还是很有用处。我们可以打造自己的插件达到复用的效果。">
+<meta property="og:updated_time" content="2016-07-17T12:50:27.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery插件写法">
-<meta name="twitter:description" content="在当前的前端时代，react，vue等框架配合ES6满足了日常的多数开发需求，但是了解jQuery的插件开发在我们开发一些小型项目中还是很有用处。我们可以打造自己的插件达到复用的效果。
-&amp;lt;!- more -&amp;gt;
-extend方法我们首先知道在jQuery中$.fn === $.prototype。如果只是简单的需要一个jQuery的扩展方法，那么我们直接使用$.extend即可达到目的。">
+<meta name="twitter:description" content="在当前的前端时代，react，vue等框架配合ES6满足了日常的多数开发需求，但是了解jQuery的插件开发在我们开发一些小型项目中还是很有用处。我们可以打造自己的插件达到复用的效果。">
   
     <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
   
@@ -222,7 +216,7 @@ extend方法我们首先知道在jQuery中$.fn === $.prototype。如果只是简
     <div class="article-entry" itemprop="articleBody">
       
         <p>在当前的前端时代，react，vue等框架配合ES6满足了日常的多数开发需求，但是了解jQuery的插件开发在我们开发一些小型项目中还是很有用处。我们可以打造自己的插件达到复用的效果。</p>
-<p>&lt;!- more -&gt;</p>
+<a id="more"></a>
 <h2 id="extend方法">extend方法</h2><p>我们首先知道在jQuery中<code>$.fn === $.prototype</code>。如果只是简单的需要一个jQuery的扩展方法，那么我们直接使用<code>$.extend</code>即可达到目的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.extend(&#123;</span><br><span class="line">	min: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;<span class="keyword">return</span> a &lt; b ? a : b;&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$.min(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 <p>这种方法往往不是我们想要的，我们多数时候需要操作一个特定的dom从而使用一些自定义方法。这个时候就需要在jQuery的原型进行拓展，也就是这篇文章所要讨论的插件写法，将会使用到<code>$.fn.extend()</code>方法。</p>
