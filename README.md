@@ -4,4 +4,4 @@
 
 `.deploy_git/`: site by master
 
-`theme/yilia/`: current theme by blog-theme-yilia-bak
+`themes/yilia/`: current theme by blog-theme-yilia-bak

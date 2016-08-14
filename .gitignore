@@ -5,6 +5,6 @@ db.json
 node_modules/
 public/
 .deploy*/
-theme/
+themes/
 .cfg
 desktop.ini
