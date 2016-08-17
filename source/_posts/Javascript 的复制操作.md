@@ -43,7 +43,7 @@ document.execCommand('copy')
 ```javascript
 const input = document.createElement('input')
 input.type = 'text'
-input.value = someData
+input.value = someData	// 一些数据
 input.select()
 document.execCommand('copy')
 input.blur()
@@ -58,17 +58,17 @@ input.blur()
 document.getElementById('button')
     .addEventListener('click', (e) => {
         const _target = e.target
-		let input = document.createElement('input')
+        let input = document.createElement('input')
         input.type = 'text'
         input.className = 'copy-text'	// 利用 class 设置样式
-        input.value = someData
+        input.value = someData		// 一些数据
         
         const _i = _target.appendChild('input')	 // 暂时添加进 button 节点中了，也可以放在其他地方
 
         _i.select()
         document.execCommand('copy')
 
-		_target.removeElement('_i')
+        _target.removeElement('_i')
         input = null
     }, false)
 </script>
