@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>关于CSS3的3D属性 | 奔跑的Q丶</title>
+  <title>HTML5 图片预览 | 奔跑的Q丶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于CSS3的3D变换，属于一接触就能让人倍感兴趣的属性。参考了一些网上的资料，做一些总结，这里只讨论遇到的可使用的属性。">
+  <meta name="description" content="在没有 HTML5 之前，前端的图片预览都是在用户选择图片后就发 Ajax 到服务端，然后由服务端再把图片的 URL 返还给前端来完成的。有了 HTML5 后，在 IE10 以上及代浏览器的版本中我们便无须发请求获得 URL 来完成预览了。这些将依靠 FileReader 来实现。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于CSS3的3D属性">
-<meta property="og:url" content="http://zhaoshibo.net/blog/2016/01/31/关于CSS3的3D属性/index.html">
+<meta property="og:title" content="HTML5 图片预览">
+<meta property="og:url" content="http://zhaoshibo.net/blog/2016/08/29/HTML5 图片预览/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
-<meta property="og:description" content="关于CSS3的3D变换，属于一接触就能让人倍感兴趣的属性。参考了一些网上的资料，做一些总结，这里只讨论遇到的可使用的属性。">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016%2F01%2F%E5%85%B3%E4%BA%8ECSS3%E7%9A%843D%E5%B1%9E%E6%80%A7%2Frotate.jpg">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016%2F01%2F%E5%85%B3%E4%BA%8ECSS3%E7%9A%843D%E5%B1%9E%E6%80%A7%2FtranslateZ.jpg">
-<meta property="og:updated_time" content="2016-02-02T05:55:43.506Z">
+<meta property="og:description" content="在没有 HTML5 之前，前端的图片预览都是在用户选择图片后就发 Ajax 到服务端，然后由服务端再把图片的 URL 返还给前端来完成的。有了 HTML5 后，在 IE10 以上及代浏览器的版本中我们便无须发请求获得 URL 来完成预览了。这些将依靠 FileReader 来实现。">
+<meta property="og:updated_time" content="2016-08-29T14:44:31.665Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于CSS3的3D属性">
-<meta name="twitter:description" content="关于CSS3的3D变换，属于一接触就能让人倍感兴趣的属性。参考了一些网上的资料，做一些总结，这里只讨论遇到的可使用的属性。">
+<meta name="twitter:title" content="HTML5 图片预览">
+<meta name="twitter:description" content="在没有 HTML5 之前，前端的图片预览都是在用户选择图片后就发 Ajax 到服务端，然后由服务端再把图片的 URL 返还给前端来完成的。有了 HTML5 后，在 IE10 以上及代浏览器的版本中我们便无须发请求获得 URL 来完成预览了。这些将依靠 FileReader 来实现。">
   
     <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
   
@@ -180,11 +178,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-关于CSS3的3D属性" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HTML5 图片预览" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2016/01/31/关于CSS3的3D属性/" class="article-date">
-  	<time datetime="2016-01-31T10:05:19.000Z" itemprop="datePublished">2016-01-31</time>
+      <a href="/blog/2016/08/29/HTML5 图片预览/" class="article-date">
+  	<time datetime="2016-08-29T14:43:12.000Z" itemprop="datePublished">2016-08-29</time>
 </a>
     </div>
   
@@ -197,7 +195,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于CSS3的3D属性
+      HTML5 图片预览
     </h1>
   
 
@@ -206,7 +204,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
 	</div>
 
         
@@ -217,21 +215,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于CSS3的3D变换，属于一接触就能让人倍感兴趣的属性。参考了一些网上的资料，做一些总结，这里只讨论遇到的可使用的属性。</p>
+        <p>在没有 HTML5 之前，前端的图片预览都是在用户选择图片后就发 Ajax 到服务端，然后由服务端再把图片的 URL 返还给前端来完成的。有了 HTML5 后，在 IE10 以上及代浏览器的版本中我们便无须发请求获得 URL 来完成预览了。这些将依靠 <code>FileReader</code> 来实现。</p>
 <a id="more"></a>
-<h3 id="rotate旋转">rotate旋转</h3><p>在此之前，我们首先建立一个3D的概念，在电脑上，我们看得到也最好理解的便是XY轴。屏幕自左向右为X轴，则沿着X轴的上下旋转即为<code>rotateX</code>；屏幕自上向下为Y轴，则沿着Y轴左右旋转即为<code>rotateY</code>；以屏幕为水平面，眼睛看向电脑的现实水平方向则为Z轴（可以想象为一条线从屏幕中水平穿出来），则沿着Z轴的旋转为<code>rotateZ</code>。有了这些概念再来看一个在平时2D的CSS3中从未使用过的<code>translateZ</code>属性。</p>
-<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016%2F01%2F%E5%85%B3%E4%BA%8ECSS3%E7%9A%843D%E5%B1%9E%E6%80%A7%2Frotate.jpg" alt="rotate旋转演示"></p>
-<h3 id="translateZ位移">translateZ位移</h3><p>理解了旋转的话，那么位移这个属性实在是简单多了。既然Z轴可以理解为从显示器发射出来的那条线，那么沿着这条线往外位移，也就是向靠近眼睛方向的移动为translateZ(正数)，反之参数为负数，也就是远离你的眼睛。</p>
-<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016%2F01%2F%E5%85%B3%E4%BA%8ECSS3%E7%9A%843D%E5%B1%9E%E6%80%A7%2FtranslateZ.jpg" alt="translateZ位移演示"></p>
-<h3 id="perspective透视">perspective透视</h3><p><code>perspective</code>指的是透视，在3D设置中起着幕布布景的含义。这个属性应用于父元素也就是舞台元素上，设置的参数意味着你的眼睛距离屏幕图像的距离，如<code>perspective： 200px</code>，则意味着你再距离屏幕200像素的距离观察图像。</p>
-<p>假设父元素中设置<code>perspective： 200px</code>，此时在子元素中设置<code>tranzlateZ</code>的值越小，则越深入屏幕内部，相当于现实中物体远离眼睛，看到的物体也越小，相反，值越接近200px，则物体看起来越大。如果超过这个值那就相当于到了我们的脑后了，则什么也就看不到了。关于旋转，也等同于现实中远近距离下观察到的角度。</p>
-<p>提到把“我们个人”作为观察者，就不得不提关于观察点的设置——<code>perspective-origin</code>，即我们眼睛所看到的中心点。这个值默认为图像的中心点，如果设置<code>perspective-origin： 25% 50%</code>；则意味着在图像中心点上方一半距离的位置。</p>
-<h3 id="preserve-3d">preserve-3d</h3><p>在子元素上设置<code>transform-style: preserve-3d</code>就是为它们配置3D效果，另一个参数<code>flat</code>暂时没有遇到，不做讨论。这个属性一般设置在3D变换元素的父元素上即舞台元素上。该效果设置后，图像旋转位移等的表现形式为相对于你在现实世界中的表现类似于看镜子。</p>
-<h3 id="backface-visibility">backface-visibility</h3><p>默认情况当多个图像重叠时，我们会透视看到后面的图像，与现实表现不符。因此设置<code>backface-visibility： hidden</code>，则可以让其与现实表现一致，即被遮挡的部分我们看不到。</p>
-<h3 id="应用">应用</h3><p>大致情况下的HTML结构为：</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 父元素（舞台元素）（增加一定的视距 perspective）</span><br><span class="line"></span>	-<span class="ruby"> <span class="number">3</span>D容器(声明 transform-<span class="symbol">style:</span> preserve-<span class="number">3</span>d)</span><br><span class="line"></span>		-<span class="ruby"> 图片等元素（需要<span class="number">3</span>D效果的元素）</span><br><span class="line"></span>		-<span class="ruby"> 图片等元素</span><br><span class="line"></span>		-<span class="ruby"> 若干...</span></span><br></pre></td></tr></table></figure>
-<p>示例一个简单的3D旋转导航栏效果：<a href="http://www.zhaoshibo.net/mydemo/demo/3D旋转导航栏.html" target="_blank" rel="external">Click Me！</a></p>
-<p>本文知识面比较浅，单纯的记录了各属性如何使用，还有很多细节需要动手实践才能发现。比如<code>transform</code>多属性时，旋转和位移等属性的书写顺序也会影响结果，不过根据这个顺序也可以做出其他的变换。不多说，多实践才可行。</p>
+<p>我们直接来实现一个 demo，可以点击尝试一下。</p>
+<p><input id="file" type="file" accept="image/jpg, image/jpeg, image/png, image/gif"></p>
+<p><div><img id="preview" src="" width="200" height="200" hidden></div></p>
+<script type="text/javascript">
+var file = document.getElementById('file'),
+    preview = document.getElementById('preview');
+file.addEventListener('change', function(e) {
+    var file = e.target.files[0],
+        fr = new FileReader();
+    fr.onload = function(e) {
+        preview.src = e.target.result;
+        preview.removeAttribute('hidden');
+    };
+    fr.readAsDataURL(file);
+}, false);
+</script>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"file"</span> <span class="attribute">type</span>=<span class="value">"file"</span> <span class="attribute">accept</span>=<span class="value">"image/jpg, image/jpeg, image/png, image/gif"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">id</span>=<span class="value">"preview"</span> <span class="attribute">src</span>=<span class="value">""</span> <span class="attribute">width</span>=<span class="value">"200"</span> <span class="attribute">height</span>=<span class="value">"200"</span> <span class="attribute">hidden</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>),</span><br><span class="line">    preview = <span class="built_in">document</span>.getElementById(<span class="string">'preview'</span>);</span><br><span class="line"></span><br><span class="line">file.addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file = e.target.files[<span class="number">0</span>],</span><br><span class="line">        fr = <span class="keyword">new</span> FileReader();</span><br><span class="line"></span><br><span class="line">    fr.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        preview.src = e.target.result;</span><br><span class="line">        preview.removeAttribute(<span class="string">'hidden'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    fr.readAsDataURL(file);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们用 <code>FileReader</code> 的一个实例利用方法 <code>readAsDataURL</code> 读取了上传的文件，并且我们事先设置了在读取即 <code>onload</code> 时，触发了视图更新。</p>
+<p><code>FileReader</code> 的这个特性，主要是把上传的图片给转化为了 <code>base64</code> 的格式，因此实现了预览。其实它还可以读取 <code>Blob</code> 和 <code>File</code> 等文件，具体的方法可以看<a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" target="_blank" rel="external">这里</a>。</p>
 
       
     </div>
@@ -241,18 +247,9 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2016/05/04/flex布局/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Flex布局
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2016/01/12/IE9及以下的文字阴影/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSS3 text-shadow在IE下的解决</div>
+    <a href="/blog/2016/08/17/Javascript 的复制操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Javascript 的复制操作</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -281,7 +278,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="关于CSS3的3D属性" data-title="关于CSS3的3D属性" data-url="http://zhaoshibo.net/blog/2016/01/31/关于CSS3的3D属性/"></div>
+	<div class="ds-thread" data-thread-key="HTML5 图片预览" data-title="HTML5 图片预览" data-url="http://zhaoshibo.net/blog/2016/08/29/HTML5 图片预览/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
