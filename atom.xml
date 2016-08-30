@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2016-08-29T14:52:41.088Z</updated>
+  <updated>2016-08-30T14:36:49.411Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,6 +13,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[jQuery FormData 的 Ajax 提交]]></title>
+    <link href="http://zhaoshibo.net/blog/2016/08/30/jQuery%20FormData%20%E7%9A%84%20Ajax%20%E6%8F%90%E4%BA%A4/"/>
+    <id>http://zhaoshibo.net/blog/2016/08/30/jQuery FormData 的 Ajax 提交/</id>
+    <published>2016-08-30T14:36:48.000Z</published>
+    <updated>2016-08-30T14:36:49.411Z</updated>
+    <content type="html"><![CDATA[<p>前些天恰好遇到用 jQuery 提交一个上传的文件一直出错，这里记录一下原因。</p>
+<p>我们的项目本身是使用了 vue 的，但是历史原因同时也保留了 jQuery ，然后项目中用 Promise 重新封装了 jQuery 的 Ajax 方法。之前有一个共用的 upload 的上传组件，里面使用了原生 XHR ，没有遇到上传文件的问题，但是我在使用 jQuery 的 Ajax 时却怎么都办法上传，检查发现是 <code>content-type</code> 导致的问题。</p>
+<a id="more"></a>
+<p>仔细查看 jQuery 的 API 文档才发现原来它默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code> ，这显然不是 <code>FormData</code> 的类型。同时 <code>processData</code> 为了配合默认的 <code>contentType</code> 类型，也会把需要发送的 <code>data</code> 对象转为一个查询字符串。因此在发送一个 <code>FormData</code> 类型的数据时，应该这么写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">'post'</span>,</span><br><span class="line">    url: <span class="string">'/api/upload'</span>,</span><br><span class="line">    contentType: <span class="literal">false</span>,</span><br><span class="line">    processData: <span class="literal">false</span>,</span><br><span class="line">    data: FormData,</span><br><span class="line">    success: handleResponse</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>前些天恰好遇到用 jQuery 提交一个上传的文件一直出错，这里记录一下原因。</p>
+<p>我们的项目本身是使用了 vue 的，但是历史原因同时也保留了 jQuery ，然后项目中用 Promise 重新封装了 jQuery 的 Ajax 方法。之前有一个共用的 upload 的上传组件，里面使用了原生 XHR ，没有遇到上传文件的问题，但是我在使用 jQuery 的 Ajax 时却怎么都办法上传，检查发现是 <code>content-type</code> 导致的问题。</p>]]>
+    
+    </summary>
+    
+      <category term="Tips" scheme="http://zhaoshibo.net/tags/Tips/"/>
+    
+      <category term="jQuery" scheme="http://zhaoshibo.net/tags/jQuery/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[HTML5 图片预览]]></title>

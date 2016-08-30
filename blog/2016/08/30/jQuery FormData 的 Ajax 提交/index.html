@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Github Pages | 奔跑的Q丶</title>
+  <title>jQuery FormData 的 Ajax 提交 | 奔跑的Q丶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="奔跑在前端的路上，记录学习，记录生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="奔跑的Q丶">
-<meta property="og:url" content="http://zhaoshibo.net/tags/Github-Pages/index.html">
+  <meta name="description" content="前些天恰好遇到用 jQuery 提交一个上传的文件一直出错，这里记录一下原因。
+我们的项目本身是使用了 vue 的，但是历史原因同时也保留了 jQuery ，然后项目中用 Promise 重新封装了 jQuery 的 Ajax 方法。之前有一个共用的 upload 的上传组件，里面使用了原生 XHR ，没有遇到上传文件的问题，但是我在使用 jQuery 的 Ajax 时却怎么都办法上传，检查发现是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery FormData 的 Ajax 提交">
+<meta property="og:url" content="http://zhaoshibo.net/blog/2016/08/30/jQuery FormData 的 Ajax 提交/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
-<meta property="og:description" content="奔跑在前端的路上，记录学习，记录生活">
+<meta property="og:description" content="前些天恰好遇到用 jQuery 提交一个上传的文件一直出错，这里记录一下原因。
+我们的项目本身是使用了 vue 的，但是历史原因同时也保留了 jQuery ，然后项目中用 Promise 重新封装了 jQuery 的 Ajax 方法。之前有一个共用的 upload 的上传组件，里面使用了原生 XHR ，没有遇到上传文件的问题，但是我在使用 jQuery 的 Ajax 时却怎么都办法上传，检查发现是">
+<meta property="og:updated_time" content="2016-08-30T14:36:49.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="奔跑的Q丶">
-<meta name="twitter:description" content="奔跑在前端的路上，记录学习，记录生活">
+<meta name="twitter:title" content="jQuery FormData 的 Ajax 提交">
+<meta name="twitter:description" content="前些天恰好遇到用 jQuery 提交一个上传的文件一直出错，这里记录一下原因。
+我们的项目本身是使用了 vue 的，但是历史原因同时也保留了 jQuery ，然后项目中用 Promise 重新封装了 jQuery 的 Ajax 方法。之前有一个共用的 upload 的上传组件，里面使用了原生 XHR ，没有遇到上传文件的问题，但是我在使用 jQuery 的 Ajax 时却怎么都办法上传，检查发现是">
   
     <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
   
@@ -177,53 +181,106 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-jQuery FormData 的 Ajax 提交" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2015/08/31/Github Pages配合Hexo3搭建个人网站/" class="archive-article-date">
-  	<time datetime="2015-08-31T06:06:37.000Z" itemprop="datePublished">8月 31</time>
+    <div class="article-meta">
+      <a href="/blog/2016/08/30/jQuery FormData 的 Ajax 提交/" class="article-date">
+  	<time datetime="2016-08-30T14:36:48.000Z" itemprop="datePublished">2016-08-30</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2015/08/31/Github Pages配合Hexo3搭建个人网站/">Github Pages配合Hexo3搭建个人网站</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery FormData 的 Ajax 提交
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前些天恰好遇到用 jQuery 提交一个上传的文件一直出错，这里记录一下原因。</p>
+<p>我们的项目本身是使用了 vue 的，但是历史原因同时也保留了 jQuery ，然后项目中用 Promise 重新封装了 jQuery 的 Ajax 方法。之前有一个共用的 upload 的上传组件，里面使用了原生 XHR ，没有遇到上传文件的问题，但是我在使用 jQuery 的 Ajax 时却怎么都办法上传，检查发现是 <code>content-type</code> 导致的问题。</p>
+<a id="more"></a>
+<p>仔细查看 jQuery 的 API 文档才发现原来它默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code> ，这显然不是 <code>FormData</code> 的类型。同时 <code>processData</code> 为了配合默认的 <code>contentType</code> 类型，也会把需要发送的 <code>data</code> 对象转为一个查询字符串。因此在发送一个 <code>FormData</code> 类型的数据时，应该这么写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">'post'</span>,</span><br><span class="line">    url: <span class="string">'/api/upload'</span>,</span><br><span class="line">    contentType: <span class="literal">false</span>,</span><br><span class="line">    processData: <span class="literal">false</span>,</span><br><span class="line">    data: FormData,</span><br><span class="line">    success: handleResponse</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/08/29/HTML5 图片预览/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML5 图片预览</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="jQuery FormData 的 Ajax 提交" data-title="jQuery FormData 的 Ajax 提交" data-url="http://zhaoshibo.net/blog/2016/08/30/jQuery FormData 的 Ajax 提交/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zhaoshibo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -249,9 +306,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
