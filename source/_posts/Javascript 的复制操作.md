@@ -1,4 +1,4 @@
-title: 'Javascript 的复制操作'
+title: 'JavaScript 的复制操作'
 date: 2016-8-17 23:47:46 
 tags: JavaScript
 
