@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2016-08-30T14:36:49.411Z</updated>
+  <updated>2016-10-19T13:37:23.117Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,6 +13,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[理解 JavaScipt new 操作符]]></title>
+    <link href="http://zhaoshibo.net/blog/2016/10/19/%E7%90%86%E8%A7%A3%20JavaScipt%20new%20%E6%93%8D%E4%BD%9C%E7%AC%A6/"/>
+    <id>http://zhaoshibo.net/blog/2016/10/19/理解 JavaScipt new 操作符/</id>
+    <published>2016-10-19T10:10:53.000Z</published>
+    <updated>2016-10-19T13:37:23.117Z</updated>
+    <content type="html"><![CDATA[<p>在《JavaScript 高级程序设计》中提到使用 <code>new</code> 操作符会经历 4 个步骤：</p>
+<blockquote>
+<p>(1) 创建一个新对象；</p>
+<p>(2) 将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）；</p>
+<p>(3) 执行构造函数中的代码（为这个新对象添加属性）；</p>
+<p>(4) 返回新对象。</p>
+</blockquote>
+<a id="more"></a>
+<p>假设我们有一个构造函数 <code>Foo</code> 。这里要理解在创建了一个新函数时，就会根据一组特定的规则为该函数创建一个 <code>prototype</code> 属性，这个属性指向函数的原型对象。而在默认情况下，所有原型对象都会自动获得一个 <code>constructor</code> 属性，这个属性包含一个指向 <code>prototype</code> 属性所在函数的指针。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后通过 <code>new</code> 方法创建实例 <code>bar</code>。我们知道，当调用构造函数创建一个新实例后，该实例的内部将包含一个指针指向构造函数的原型对象。ECMA-262 第 5 版管这个指针叫 <code>[[Prototype]]</code> ，但Firefox、Chrome、Safari在每个对象上都支持一个属性 <code>__proto__</code> ，也就相当于这个属性。重要理解的是<strong>这个连接存在于实例与构造函数的原型对象之间，而不是存在于实例与构造函数之间</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> Foo(<span class="string">'bar'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(bar)    <span class="comment">// Foo &#123;name: "bar"&#125;</span></span><br><span class="line">bar.getName()   <span class="comment">// bar</span></span><br></pre></td></tr></table></figure>
+<p>现在根据以上的规则，我们手动来实现一个 <code>new</code> 的过程。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 首先创建一个空对象</span></span><br><span class="line"><span class="keyword">var</span> baz = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 把这个对象的 [[Prototype]] （__proto__）指向 Foo 的 prototype</span></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(baz, Foo.prototype)</span><br><span class="line"><span class="comment">// 在控制台中也可以这样写：</span></span><br><span class="line"><span class="comment">// baz.__proto__ = Foo.prototype</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 传递 FOO 的属性及作用域</span></span><br><span class="line">Foo.call(baz, <span class="string">'baz'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 验证</span></span><br><span class="line">baz.getName()   <span class="comment">// baz</span></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>在《JavaScript 高级程序设计》中提到使用 <code>new</code> 操作符会经历 4 个步骤：</p>
+<blockquote>
+<p>(1) 创建一个新对象；</p>
+<p>(2) 将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）；</p>
+<p>(3) 执行构造函数中的代码（为这个新对象添加属性）；</p>
+<p>(4) 返回新对象。</p>
+</blockquote>]]>
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://zhaoshibo.net/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[jQuery FormData 的 Ajax 提交]]></title>
@@ -78,11 +113,11 @@ file.addEventListener('change', function(e) {
   </entry>
   
   <entry>
-    <title><![CDATA[Javascript 的复制操作]]></title>
+    <title><![CDATA[JavaScript 的复制操作]]></title>
     <link href="http://zhaoshibo.net/blog/2016/08/17/Javascript%20%E7%9A%84%E5%A4%8D%E5%88%B6%E6%93%8D%E4%BD%9C/"/>
     <id>http://zhaoshibo.net/blog/2016/08/17/Javascript 的复制操作/</id>
     <published>2016-08-17T15:47:46.000Z</published>
-    <updated>2016-08-17T15:55:34.285Z</updated>
+    <updated>2016-10-19T13:37:23.102Z</updated>
     <content type="html"><![CDATA[<p>对于点击按钮就能复制一个链接或其他内容的操作，在很多网站都会有用到。使用原生的js方法 <code>document.execCommand</code> 即可实现，它能够对<strong>可以编辑的文档对象（设置contentEditable等）</strong>进行操作。</p>
 <h2 id="语法">语法</h2><p>它的基本语法如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool = document.execCommand(aCommandName, aShowDefaultUI, aValueArgument)</span><br></pre></td></tr></table></figure>
