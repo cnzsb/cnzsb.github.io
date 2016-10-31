@@ -25,7 +25,7 @@ tags: [Github Pages, Hexo]
 	+ [6.1 Github上的设置](#6.1)
 	+ [6.2 DNS设置](#6.2)
 - [7. 其他](#7)
-	+ [7.1 新建文章及页面](#7.1) 
+	+ [7.1 新建文章及页面](#7.1)
 	+ [7.2 配置主题](#7.2)
 	+ [7.3 评论](#7.3)
 	+ [7.4 RSS订阅](#7.4)
@@ -155,16 +155,16 @@ $ npm install -g cnpm --registry=https://registry.npm.taobao.org
 在Hexo3中，包括hexo-server等一些模块已经独立了出来，需要先安装。可以到`node_modules`目录下对照着安装：
 
 ```
-$ npm install -g hexo-generator-index --save
-$ npm install -g hexo-generator-archive --save
-$ npm install -g hexo-generator-category --save
-$ npm install -g hexo-generator-tag --save
-$ npm install -g hexo-server --save
-$ npm install -g hexo-deployer-git --save
-$ npm install -g hexo-renderer-marked@0.2 --save
-$ npm install -g hexo-renderer-stylus@0.2 --save
-$ npm install -g hexo-generator-feed@1 --save
-$ npm install -g hexo-generator-sitemap@1 --save
+$ npm install hexo-generator-index --save
+$ npm install hexo-generator-archive --save
+$ npm install hexo-generator-category --save
+$ npm install hexo-generator-tag --save
+$ npm install hexo-server --save
+$ npm install hexo-deployer-git --save
+$ npm install hexo-renderer-marked@0.2 --save
+$ npm install hexo-renderer-stylus@0.2 --save
+$ npm install hexo-generator-feed@1 --save
+$ npm install hexo-generator-sitemap@1 --save
 ```
 
 <h3 id="5.2">5.2 配置与部署</h3>
@@ -352,7 +352,7 @@ description:   #网站描述
 author: John Doe  #作者
 email:   #邮箱地址
 language:   #语言，简体中文：zh-CN
-timezone: 
+timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -420,13 +420,13 @@ pagination_dir: page
 
 
 # Disqus  #disqus评论，多说在主题中配置
-disqus_shortname: 
+disqus_shortname:
 
 # Extensions  #扩展插件
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
 theme: landscape  #主题
-exclude_generator: 
+exclude_generator:
 
 plugins:   #插件，例如生成 RSS 和站点地图的
 - hexo-generator-feed
@@ -434,7 +434,7 @@ plugins:   #插件，例如生成 RSS 和站点地图的
 
 # Deployment  #部署
 ## Docs: http://hexo.io/docs/deployment.html
-deploy: 
+deploy:
   type: git
   repository:   #自己Github的项目地址
   branch: master
@@ -671,9 +671,9 @@ favicon: /favicon.ico
 
 ```
 User-agent: Baiduspider
-Disallow: 
+Disallow:
 User-agent: Googlebot
-Disallow: 
+Disallow:
 User-agent: *
 Disallow: /
 ```
