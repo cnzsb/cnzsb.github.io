@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-01-05T10:01:24.000Z</updated>
+  <updated>2017-01-05T10:09:50.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[2016年度总结]]></title>
-    <link href="http://zhaoshibo.net/blog/2017/01/02/2016%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
-    <id>http://zhaoshibo.net/blog/2017/01/02/2016 年终总结/</id>
-    <published>2017-01-02T02:26:28.000Z</published>
-    <updated>2017-01-05T10:01:24.000Z</updated>
+    <title><![CDATA[2016年终总结]]></title>
+    <link href="http://zhaoshibo.net/blog/2017/01/05/2016%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>http://zhaoshibo.net/blog/2017/01/05/2016 年终总结/</id>
+    <published>2017-01-05T10:09:23.000Z</published>
+    <updated>2017-01-05T10:09:50.000Z</updated>
     <content type="html"><![CDATA[<p>又到了新的一年，总结一下过去的2016。翻看年初所定的目标，虽说有些没有很好的完成，然而还是觉得能给这一年打80分。此时我刚刚踏入前端一年半，真正参加工程化的项目不足一年，但恰恰是今年让我系统的理解了前端，对工作也更加游刃有余。</p>
 <a id="more"></a>
 <h2 id="上半年">上半年</h2><p>本来这里已经洋洋洒洒几千字的总结了，然而总觉得我似乎写成了简历一样，太不像一篇合格的总结，于是我决定从头开始写。😂</p>
@@ -446,11 +446,11 @@ file.addEventListener('change', function(e) {
   </entry>
   
   <entry>
-    <title><![CDATA[2015年度总结]]></title>
+    <title><![CDATA[2015 年终总结]]></title>
     <link href="http://zhaoshibo.net/blog/2016/01/03/2015%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     <id>http://zhaoshibo.net/blog/2016/01/03/2015 年终总结/</id>
     <published>2016-01-03T07:33:28.000Z</published>
-    <updated>2016-10-31T12:18:49.000Z</updated>
+    <updated>2017-01-05T10:10:13.000Z</updated>
     <content type="html"><![CDATA[<p>2015年是我的本命年，阳历年已经过去了，阴历年也只剩1月有余。而过去的这一年更是我人生工作的转折点。要说生活，想必也算是在2015踏上了正轨。</p>
 <a id="more"></a>
 <h3 id="一家小公司的历练">一家小公司的历练</h3><p>5月之前的时候我还是在一家仅有10人的小公司，在这家公司总共呆了8个月。入职这家公司是我毕业来到上海的第一年，当时我已经确认了我想做前端的方向，却不想事与愿违，以技术身份入职公司不足半月，因公司的业务倾向从而让我开始从事电商的方向了。当时还总是想着应届生还是老老实实呆满一年再做跳槽等的其他打算吧，当然其实内心深处也是有想体验其他职位的想法的。却不想在这里经历了一而再再而三的轮岗，让我无比心累。说明一下，公司在我所听到和所经历到的时间中，从未看到过任何收益。</p>

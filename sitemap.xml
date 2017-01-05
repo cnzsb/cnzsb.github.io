@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://zhaoshibo.net/blog/2017/01/02/2016%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2017-01-05T10:01:24.000Z</lastmod>
+    <loc>http://zhaoshibo.net/blog/2016/01/03/2015%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2017-01-05T10:10:13.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhaoshibo.net/blog/2017/01/05/2016%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2017-01-05T10:09:50.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://zhaoshibo.net/blog/2015/08/31/Github%20Pages%E9%85%8D%E5%90%88Hexo3%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2016-10-31T13:06:09.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://zhaoshibo.net/blog/2016/08/30/jQuery%20FormData%20%E7%9A%84%20Ajax%20%E6%8F%90%E4%BA%A4/</loc>
-    <lastmod>2016-10-31T12:18:49.000Z</lastmod>
   </url>
   
   <url>
@@ -82,7 +82,7 @@
   </url>
   
   <url>
-    <loc>http://zhaoshibo.net/blog/2016/01/03/2015%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</loc>
+    <loc>http://zhaoshibo.net/blog/2016/08/30/jQuery%20FormData%20%E7%9A%84%20Ajax%20%E6%8F%90%E4%BA%A4/</loc>
     <lastmod>2016-10-31T12:18:49.000Z</lastmod>
   </url>
   
