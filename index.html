@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 15px;">CSS3</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 17.5px;">JavaScript</a> <a href="/tags/Tips/" style="font-size: 20px;">Tips</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a>
+						<a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 15px;">CSS3</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 17.5px;">JavaScript</a> <a href="/tags/Tips/" style="font-size: 20px;">Tips</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a>
 					</div>
 				</section>
 				
@@ -178,6 +178,65 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-多栏布局" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2017/01/18/多栏布局/" class="article-date">
+  	<time datetime="2017-01-18T12:57:42.000Z" itemprop="datePublished">2017-01-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/18/多栏布局/">多栏布局</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在很少接触到太多的 CSS 问题了，多数情况下 flex 都是最佳的选择，慢慢也就对基础生疏了，今天来总结下常见的布局问题。示例中关于 flex 的布局都比较简单，不理解的需要重新补习 <a href="/blog/2016/05/04/flex布局/">flex</a> 基础。本文中的示例和代码都在 <a href="http://codepen.io">codepen</a> 上，如果加载异常请先科学上网。</p>
+<p>具有固定宽高的布局方式在实际需求中其实很少见，一般都会有自适应的区域，接下来就来看看常用的几种布局。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/blog/2017/01/18/多栏布局/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-2016 年终总结" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -694,64 +753,6 @@
         <p class="article-more-link">
           <a  href="/blog/2016/01/31/关于CSS3的3D属性/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-IE9及以下的文字阴影" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2016/01/12/IE9及以下的文字阴影/" class="article-date">
-  	<time datetime="2016-01-12T10:09:07.000Z" itemprop="datePublished">2016-01-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/01/12/IE9及以下的文字阴影/">CSS3 text-shadow在IE下的解决</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>text-shadow</code>兼容IE10及FF3.5以上，在IE8、9下可以使用滤镜<code>filter：glow</code>使元素发光来替代。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">filter</span>： <span class="tag">grow</span>(<span class="tag">color</span>: <span class="id">#000</span>, <span class="tag">strength</span>: 1);</span><br><span class="line"><span class="tag">filter</span>： <span class="tag">grow</span>(<span class="tag">color</span>: <span class="id">#000</span>, <span class="tag">direction</span>: 2);</span><br></pre></td></tr></table></figure>
-<p><code>color</code>设置发光颜色，在这里<code>strength</code>和<code>direction</code>均设置阴影强度，但它们2个的表现也不太一样。</p>
-<p>在IE7以下这个属性暂时无效。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li></ul>
-	</div>
-
-      
-
       
       <div class="clearfix"></div>
     </div>

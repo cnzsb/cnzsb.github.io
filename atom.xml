@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-01-05T13:27:50.000Z</updated>
+  <updated>2017-01-18T13:00:01.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,6 +13,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[多栏布局]]></title>
+    <link href="http://zhaoshibo.net/blog/2017/01/18/%E5%A4%9A%E6%A0%8F%E5%B8%83%E5%B1%80/"/>
+    <id>http://zhaoshibo.net/blog/2017/01/18/多栏布局/</id>
+    <published>2017-01-18T12:57:42.000Z</published>
+    <updated>2017-01-18T13:00:01.000Z</updated>
+    <content type="html"><![CDATA[<p>现在很少接触到太多的 CSS 问题了，多数情况下 flex 都是最佳的选择，慢慢也就对基础生疏了，今天来总结下常见的布局问题。示例中关于 flex 的布局都比较简单，不理解的需要重新补习 <a href="/blog/2016/05/04/flex布局/">flex</a> 基础。本文中的示例和代码都在 <a href="http://codepen.io" target="_blank" rel="external">codepen</a> 上，如果加载异常请先科学上网。</p>
+<p>具有固定宽高的布局方式在实际需求中其实很少见，一般都会有自适应的区域，接下来就来看看常用的几种布局。</p>
+<a id="more"></a>
+<h2 id="两栏布局">两栏布局</h2><p>常见的两栏布局一般是左侧固定，右侧自适应。</p>
+<ol>
+<li><p>float</p>
+<iframe height="162" scrolling="no" title="两栏布局 - float" src="http://codepen.io/cnzsb/embed/XpXxKj/?height=162&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/XpXxKj/" target="_blank" rel="external">两栏布局 - float</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+</li>
+<li><p>position</p>
+<iframe height="183" scrolling="no" title="两栏布局 - position" src="http://codepen.io/cnzsb/embed/xgZyXX/?height=183&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/xgZyXX/" target="_blank" rel="external">两栏布局 - position</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+</li>
+<li><p>table-cell</p>
+<iframe height="179" scrolling="no" title="两栏布局 - table-cell" src="http://codepen.io/cnzsb/embed/OWXJaM/?height=179&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/OWXJaM/" target="_blank" rel="external">两栏布局 - table-cell</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+</li>
+<li><p>flex</p>
+<iframe height="227" scrolling="no" title="两侧定宽，中间自适应 - flex" src="http://codepen.io/cnzsb/embed/dNMZWa/?height=227&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/dNMZWa/" target="_blank" rel="external">两侧定宽，中间自适应 - flex</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+</li>
+</ol>
+<h2 id="三栏布局">三栏布局</h2><p>简单的三栏布局可以拆分成两栏布局嵌套两栏布局的方式设计，在此基础上如果拆分为中间元素和两侧元素的话，则需要真正的三栏布局来设计了。</p>
+<p>首先是左右固定，中间自适应的布局。</p>
+<ol>
+<li><p>float</p>
+<iframe height="201" scrolling="no" title="两侧定宽，中间自适应 - float" src="http://codepen.io/cnzsb/embed/GroYQz/?height=201&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/GroYQz/" target="_blank" rel="external">两侧定宽，中间自适应 - float</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+</li>
+<li><p>float + margin 负值，两栏布局也可以采用这种方法</p>
+<iframe height="257" scrolling="no" title="两侧定宽，中间自适应 - float + margin 负值" src="http://codepen.io/cnzsb/embed/ygeQMz/?height=257&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/ygeQMz/" target="_blank" rel="external">两侧定宽，中间自适应 - float + margin 负值</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+</li>
+<li><p>position</p>
+<iframe height="246" scrolling="no" title="两侧定宽，中间自适应 - position" src="http://codepen.io/cnzsb/embed/dNGgxw/?height=246&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/dNGgxw/" target="_blank" rel="external">两侧定宽，中间自适应 - position</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+</li>
+<li><p>flex</p>
+<iframe height="232" scrolling="no" title="两侧定宽，中间自适应 - flex" src="http://codepen.io/cnzsb/embed/dNMZWa/?height=232&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/dNMZWa/" target="_blank" rel="external">两侧定宽，中间自适应 - flex</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+</li>
+</ol>
+<p>另一种是中间定宽，两侧自适应的布局。这个情况需要在固定中间元素的前提下，使左右两侧浮动或者绝对定位即可，下例使用 float 做了演示，同上述例子类似，float 的元素也可以使用 position 进行绝对定位替换，这里不再演示。</p>
+<iframe height="268" scrolling="no" title="中间定宽，两侧自适应 - float + position" src="http://codepen.io/cnzsb/embed/oBLjGQ/?height=268&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/oBLjGQ/" target="_blank" rel="external">中间定宽，两侧自适应 - float + position</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<h2 id="等高布局">等高布局</h2><p>等高布局是一种要求各栏背景颜色填充至等高的样式。</p>
+<ol>
+<li><p>两栏等高</p>
+<iframe height="189" scrolling="no" title="两栏等高布局" src="http://codepen.io/cnzsb/embed/BpQZNq/?height=189&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/BpQZNq/" target="_blank" rel="external">两栏等高布局</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+</li>
+<li><p>三栏等高</p>
+<iframe height="320" scrolling="no" title="三栏等高布局" src="http://codepen.io/cnzsb/embed/OWbjyJ/?height=320&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/cnzsb/pen/OWbjyJ/" target="_blank" rel="external">三栏等高布局</a> by Shibo Zhao (<a href="http://codepen.io/cnzsb" target="_blank" rel="external">@cnzsb</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+</li>
+</ol>
+<p>以上布局如果需要流式布局，宽度替换为百分比即可。关于三栏等高布局，根据上例下图能帮助很好的理解。其中主要利用了相对定位的方式，2 层容器的 right 距离为第三栏（最右栏）元素的宽度，3 层容器的 right 距离为第二栏（中间栏）的宽度；对于子栏目来讲，它们的 left 距离均为除了第一栏（最左栏）的宽度之和。理解了原理之后，根据需要，扩展更多的子栏也可以运用同样的方式。</p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/01/18/%E5%A4%9A%E6%A0%8F%E5%B8%83%E5%B1%80/%E4%B8%89%E6%A0%8F%E7%AD%89%E9%AB%98%E5%B8%83%E5%B1%80%E5%9B%BE%E8%A7%A3.png" alt="三栏等高布局图解"></p>
+<h2 id="小结">小结</h2><p>本文仅仅展示了几种常见的布局结构以及对应的常用方法，自适应的布局在页面重构中很经常遇到，需要加强更多的响应式知识才能熟练。</p>
+<h2 id="参考资料">参考资料</h2><ol>
+<li><a href="http://www.cnblogs.com/jununx/p/3336553.html" target="_blank" rel="external">两栏布局，三栏布局，等高布局，流式布局</a></li>
+<li><a href="https://www.w3cplus.com/css/creaet-equal-height-columns" target="_blank" rel="external">八种创建等高列布局</a></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>现在很少接触到太多的 CSS 问题了，多数情况下 flex 都是最佳的选择，慢慢也就对基础生疏了，今天来总结下常见的布局问题。示例中关于 flex 的布局都比较简单，不理解的需要重新补习 <a href="/blog/2016/05/04/flex布局/">flex</a> 基础。本文中的示例和代码都在 <a href="http://codepen.io">codepen</a> 上，如果加载异常请先科学上网。</p>
+<p>具有固定宽高的布局方式在实际需求中其实很少见，一般都会有自适应的区域，接下来就来看看常用的几种布局。</p>]]>
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://zhaoshibo.net/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[2016 年终总结]]></title>
