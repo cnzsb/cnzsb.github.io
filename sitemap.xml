@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhaoshibo.net/blog/2017/01/24/LazyMan%20%E2%80%94%E2%80%94%20JS%20%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <lastmod>2017-02-06T08:11:58.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://zhaoshibo.net/blog/2017/01/18/%E5%A4%9A%E6%A0%8F%E5%B8%83%E5%B1%80/</loc>
     <lastmod>2017-01-18T13:00:01.000Z</lastmod>
   </url>
@@ -19,11 +24,6 @@
   <url>
     <loc>http://zhaoshibo.net/blog/2015/08/31/Github%20Pages%E9%85%8D%E5%90%88Hexo3%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2016-10-31T13:06:09.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://zhaoshibo.net/blog/2016/07/17/%E5%8E%BB%E9%99%A4select%E7%AD%89%E6%A0%87%E7%AD%BE%E9%BB%98%E8%AE%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B7%E5%BC%8F/</loc>
-    <lastmod>2016-10-31T12:18:49.000Z</lastmod>
   </url>
   
   <url>
@@ -83,6 +83,11 @@
   
   <url>
     <loc>http://zhaoshibo.net/blog/2016/10/19/%E7%90%86%E8%A7%A3%20JavaScipt%20new%20%E6%93%8D%E4%BD%9C%E7%AC%A6/</loc>
+    <lastmod>2016-10-31T12:18:49.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhaoshibo.net/blog/2016/07/17/%E5%8E%BB%E9%99%A4select%E7%AD%89%E6%A0%87%E7%AD%BE%E9%BB%98%E8%AE%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B7%E5%BC%8F/</loc>
     <lastmod>2016-10-31T12:18:49.000Z</lastmod>
   </url>
   

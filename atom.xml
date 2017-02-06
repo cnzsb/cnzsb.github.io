@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-01-18T13:00:01.000Z</updated>
+  <updated>2017-02-06T08:11:58.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,6 +13,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[LazyMan —— JS 面试题]]></title>
+    <link href="http://zhaoshibo.net/blog/2017/01/24/LazyMan%20%E2%80%94%E2%80%94%20JS%20%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://zhaoshibo.net/blog/2017/01/24/LazyMan —— JS 面试题/</id>
+    <published>2017-01-24T09:27:43.000Z</published>
+    <updated>2017-02-06T08:11:58.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>实现一个LazyMan，可以按照以下方式调用：</p>
+<p>LazyMan(“Hank”)</p>
+<p>输出：Hi! This is Hank!</p>
+<p>LazyMan(“Hank”).sleep(10).eat(“dinner”)</p>
+<p>输出: Hi! This is Hank!</p>
+<a id="more"></a>
+<p>等待10秒..</p>
+<p>Wake up after 10</p>
+<p>Eat dinner~</p>
+<p>LazyMan(“Hank”).eat(“dinner”).eat(“supper”)</p>
+<p>输出：Hi This is Hank!</p>
+<p>Eat dinner~</p>
+<p>Eat supper~</p>
+<p>LazyMan(“Hank”).sleepFirst(5).eat(“supper”)</p>
+<p>输出：等待5秒</p>
+<p>Wake up after 5</p>
+<p>Hi This is Hank!</p>
+<p>Eat supper</p>
+<p>以此类推。</p>
+</blockquote>
+<p>本题考察了典型的先进先出的队列结构，因此可以使用一个数组 queue 来存取要操作的方法，然后利用 js 的定时器来处理事件循环，并且在每次触发事件后返回自身达到链式调用，在构造函数中需要注意的是作用域的变更，在适当的地方使用 self 或者闭包来解决这个问题。<a href="http://codepen.io/cnzsb/pen/RKpKgZ/" target="_blank" rel="external">具体的答案如下所示</a>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_LazyMan</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.queue = []</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> fn = (<span class="function"><span class="keyword">function</span> (<span class="params">that</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`Hi! This is <span class="subst">$&#123;name&#125;</span>!`</span>)</span><br><span class="line">      that.next()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)(<span class="keyword">this</span>)</span><br><span class="line">  <span class="keyword">this</span>.queue.push(fn)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 下一个事件循环执行</span></span><br><span class="line">  setTimeout(<span class="keyword">this</span>.next.bind(<span class="keyword">this</span>), <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现事件循环,在某个事件完成时重新调用 next 方法</span></span><br><span class="line">_LazyMan.prototype.next = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fn = <span class="keyword">this</span>.queue.shift()</span><br><span class="line">  fn &amp;&amp; fn()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_LazyMan.prototype.sleep = <span class="function"><span class="keyword">function</span> (<span class="params">time</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fn = (<span class="function"><span class="keyword">function</span> (<span class="params">that</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Wake up after <span class="subst">$&#123;time&#125;</span>`</span>)</span><br><span class="line">        that.next()</span><br><span class="line">      &#125;, time * <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)(<span class="keyword">this</span>)</span><br><span class="line">  <span class="keyword">this</span>.queue.push(fn)</span><br><span class="line">  <span class="comment">// 链式调用</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_LazyMan.prototype.eat = <span class="function"><span class="keyword">function</span> (<span class="params">food</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fn = (<span class="function"><span class="keyword">function</span> (<span class="params">that</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`Eat <span class="subst">$&#123;food&#125;</span>~`</span>)</span><br><span class="line">      that.next()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)(<span class="keyword">this</span>)</span><br><span class="line">  <span class="keyword">this</span>.queue.push(fn)</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_LazyMan.prototype.sleepFirst = <span class="function"><span class="keyword">function</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fn = (<span class="function"><span class="keyword">function</span> (<span class="params">that</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`Wake up after <span class="subst">$&#123;time&#125;</span>`</span>)</span><br><span class="line">      that.next()</span><br><span class="line">    &#125;, time * <span class="number">1000</span>)</span><br><span class="line">  &#125;)(<span class="keyword">this</span>)</span><br><span class="line">  <span class="keyword">this</span>.queue.unshift(fn)</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> LazyMan = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> _LazyMan(name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LazyMan(<span class="string">'Hank1'</span>).sleep(<span class="number">10</span>).eat(<span class="string">'dinner'</span>)</span><br><span class="line"><span class="comment">// LazyMan('Hank2').eat('dinner').eat('supper')</span></span><br><span class="line"><span class="comment">// LazyMan('Hank3').sleepFirst(5).eat('supper')</span></span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<p>实现一个LazyMan，可以按照以下方式调用：</p>
+<p>LazyMan(“Hank”)</p>
+<p>输出：Hi! This is Hank!</p>
+<p>LazyMan(“Hank”).sleep(10).eat(“dinner”)</p>
+<p>输出: Hi! This is Hank!</p>]]>
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://zhaoshibo.net/tags/JavaScript/"/>
+    
+      <category term="面试题" scheme="http://zhaoshibo.net/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[多栏布局]]></title>
