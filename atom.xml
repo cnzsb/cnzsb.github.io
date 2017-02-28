@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-02-06T08:55:58.000Z</updated>
+  <updated>2017-02-28T15:40:32.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -15,11 +15,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[添加多个 SSH 秘钥]]></title>
+    <link href="http://zhaoshibo.net/blog/2017/02/28/%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%20SSH%20%E7%A7%98%E9%92%A5/"/>
+    <id>http://zhaoshibo.net/blog/2017/02/28/添加多个 SSH 秘钥/</id>
+    <published>2017-02-28T15:40:30.000Z</published>
+    <updated>2017-02-28T15:40:32.000Z</updated>
+    <content type="html"><![CDATA[<p>本月堆积了好几篇文章没写了，趁着最后几十分钟，为了完成年初计划马虎更新一篇记录性的文章吧。由于本月刚换了新的公司，新公司的代码托管在 GitLab 上，因此有了管理 2 个 SSH 秘钥的需求，查阅资料后发现并不难，记录与分享一下。</p>
+<p>首先生成 SSH 的指令不陌生：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+<p>默认会存放在个人文档根目录下的 <code>.ssh</code> 下，并以 <code>id_rsa</code> 的文件名生成秘钥对。<a id="more"></a>方便起见我没有修改已经存在的这两个配置文件。接下来的操作自然是再生成一份配置文件，但是注意选择保存的时候要改为其他名字防止覆盖已有文件，比如以 <code>id_rsa_other</code> 新命名。</p>
+<p>接下来需要利用 <code>ssh-add</code> 相关命令添加对应的标识。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_other</span><br><span class="line">ssh-add -L  <span class="comment"># 查看已生成的列表，用来确认是否添加成功</span></span><br></pre></td></tr></table></figure>
+<p>最后还需要在 <code>.ssh</code> 文件夹下创建一份 <code>config</code> 配置文件，文件内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># github.com</span></span><br><span class="line">Host github.com</span><br><span class="line">        HostName github.com</span><br><span class="line">        User git</span><br><span class="line">        IdentityFile ~/.ssh/id_rsa</span><br><span class="line"><span class="comment"># gitlab.other.com</span></span><br><span class="line">Host gitlab.other.com</span><br><span class="line">        HostName gitlab.other.com</span><br><span class="line">        User git</span><br><span class="line">        IdentityFile ~/.ssh/id_rsa_other</span><br></pre></td></tr></table></figure>
+<p>最最后，如果需要测试的话可以执行 <code>ssh -T &quot;git@HOST&quot;</code> 进行检验。但是一般公司内的服务器是不会给个人开通权限也就没办法利用这个指令测试了，不过可以尝试 <code>clone</code> 一个仓库来检测是否成功。</p>
+<p>具体在开发时还需要记得在相应的仓库中重新配置 <code>git config</code> 对应的用户名及邮箱哦。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>本月堆积了好几篇文章没写了，趁着最后几十分钟，为了完成年初计划马虎更新一篇记录性的文章吧。由于本月刚换了新的公司，新公司的代码托管在 GitLab 上，因此有了管理 2 个 SSH 秘钥的需求，查阅资料后发现并不难，记录与分享一下。</p>
+<p>首先生成 SSH 的指令不陌生：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+<p>默认会存放在个人文档根目录下的 <code>.ssh</code> 下，并以 <code>id_rsa</code> 的文件名生成秘钥对。]]>
+    
+    </summary>
+    
+      <category term="Git" scheme="http://zhaoshibo.net/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Plus —— JS 面试题]]></title>
     <link href="http://zhaoshibo.net/blog/2017/02/06/Plus%20%E2%80%94%E2%80%94%20JS%20%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <id>http://zhaoshibo.net/blog/2017/02/06/Plus —— JS 面试题/</id>
     <published>2017-02-06T08:16:59.000Z</published>
-    <updated>2017-02-06T08:55:58.000Z</updated>
+    <updated>2017-02-06T08:56:27.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>设计一个 plus 方法，达到以下测试结果。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">'use strict'</span></span><br><span class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>)</span><br><span class="line">describe(<span class="string">'闭包应用'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  it(<span class="string">'plus(0) === 0'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    assert.equal(<span class="number">0</span>, plus(<span class="number">0</span>).toString())</span><br><span class="line">  &#125;)</span><br><span class="line">  it(<span class="string">'plus(1)(1)(2)(3)(5) === 12'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    assert.equal(<span class="number">12</span>, plus(<span class="number">1</span>)(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">5</span>).toString())</span><br><span class="line">  &#125;)</span><br><span class="line">  it(<span class="string">'plus(1)(4)(2)(3) === 10'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    assert.equal(<span class="number">10</span>,plus(<span class="number">1</span>)(<span class="number">4</span>)(<span class="number">2</span>)(<span class="number">3</span>).toString())</span><br><span class="line">  &#125;)</span><br><span class="line">  it(<span class="string">'方法引用'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> plus2 = plus(<span class="number">1</span>)(<span class="number">1</span>)</span><br><span class="line">    assert.equal(<span class="number">12</span>, plus2(<span class="number">1</span>)(<span class="number">4</span>)(<span class="number">2</span>)(<span class="number">3</span>).toString())</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -1049,28 +1078,6 @@ file.addEventListener('change', function(e) {
       <category term="Github Pages" scheme="http://zhaoshibo.net/tags/Github-Pages/"/>
     
       <category term="Hexo" scheme="http://zhaoshibo.net/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[我的小站]]></title>
-    <link href="http://zhaoshibo.net/blog/2015/08/19/%E6%88%91%E7%9A%84%E5%B0%8F%E7%AB%99/"/>
-    <id>http://zhaoshibo.net/blog/2015/08/19/我的小站/</id>
-    <published>2015-08-19T10:14:13.000Z</published>
-    <updated>2016-10-31T12:18:49.000Z</updated>
-    <content type="html"><![CDATA[<p>一直想有自己的网站，迟迟都没耐下心来搭建网站。这两天又是实在按捺不住了，索性买了域名，研究了一下午，过程中更是bug重重，还好一路拼荆斩棘，总算获得成果。</p>
-<p>看到这个小站能在浏览器中打开那一刻，内心那是万分兴奋呐。</p>
-<a id="more"></a>
-<p>毕业半年多后才开始从事前端，现在刚好转正。踏上这条路并不难，难的是入门以后发现了更广阔的天空，不得不更加卖力的去追逐。</p>
-<p>其余感慨以后再表吧。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>一直想有自己的网站，迟迟都没耐下心来搭建网站。这两天又是实在按捺不住了，索性买了域名，研究了一下午，过程中更是bug重重，还好一路拼荆斩棘，总算获得成果。</p>
-<p>看到这个小站能在浏览器中打开那一刻，内心那是万分兴奋呐。</p>]]>
-    
-    </summary>
-    
-      <category term="生活" scheme="http://zhaoshibo.net/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
