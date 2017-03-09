@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-02-28T15:40:32.000Z</updated>
+  <updated>2017-03-09T15:39:05.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -15,11 +15,58 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[从一个 CRUD 上手 React 和 AntD]]></title>
+    <link href="http://zhaoshibo.net/blog/2017/03/09/%E4%BB%8E%E4%B8%80%E4%B8%AA%20CRUD%20%E4%B8%8A%E6%89%8B%20React%20%E5%92%8C%20AntD/"/>
+    <id>http://zhaoshibo.net/blog/2017/03/09/从一个 CRUD 上手 React 和 AntD/</id>
+    <published>2017-03-09T15:36:05.000Z</published>
+    <updated>2017-03-09T15:39:05.000Z</updated>
+    <content type="html"><![CDATA[<p>换了新公司后，技术栈使用的是 react。虽然一路从 vue 1 到 vue 2，但是我还是对 react 有好感的，当初学习 vue 1 文档少的可怜的时候也是借鉴了不少 react 的文章才得以理解，因此在接下来的文章中会小部分的对比下 react 和 vue 的不同。本次的文章主要是关于初次接触 react，并开发出一个具有 CRUD 功能页面的过程。提前了解本项目的详情请点击 <a href="https://github.com/cnzsb/react-antd-crud" target="_blank" rel="external">GitHub 地址</a>和<a href="http://www.zhaoshibo.net/react-antd-crud/" target="_blank" rel="external">线上预览地址</a>。</p>
+<a id="more"></a>
+<h2 id="需求背景">需求背景</h2><p>本项目其实是一个入职的 training project，项目需求就是做一个 CRUD 的管理页面。要求基础框架仅使用 react （不含 redux 之类的）和 antd，AJAX 库使用的是公司基于 axios 封装的库。项目提供了数据库和一个不完整的接口（好吧，其实只有其中一张表的 get），鉴于此这个项目使用了前端的方法仅做展示使用。</p>
+<h2 id="学习_React">学习 React</h2><p>先把项目需求放一边，对于没接触过 react 自然应该先把基本的语法学习一下。我是先看了官方的 <a href="https://facebook.github.io/react/tutorial/tutorial.html" target="_blank" rel="external">tutorial</a> 之后去看<a href="https://facebook.github.io/react/docs/installation.html" target="_blank" rel="external">文档</a>，因为时间比较紧，所以只计划了 2 天的时间，这点时间我只看到了 “Optimizing Performance” 这一章。</p>
+<h3 id="与_Vue_的异同">与 Vue 的异同</h3><p>因为接触过 vue，所以在读文档时自然而然就会在心中做一个对比。</p>
+<h4 id="1-_语法区别">1. 语法区别</h4><p>虽然 vue 2 已经支持 JSX 的写法了，但是多数情况下都是用模板语法进行开发的。而 react 的 “all in js” 的理念一上来会让代码读起来有点痛苦，不过适应了之后其实和模板语法也没什么区别，简单理解在 vue 中习惯把 <code>template</code> 放在最上面，而 react 的 <code>render</code> 是在最下面的。另外在 react 中的作用域 <code>this</code> 需要特别注意。</p>
+<p>vue 提供了 <code>v-for</code>、<code>v-if</code> 等的语法方便渲染 DOM。而在 react 中推荐抽离组件的思维，也就是一个可以复用的 <code>li</code> 完全可以自成一个组件，随后我们可以利用 JS 的 <code>map</code>、<code>if</code> 等方法直接进行操作。</p>
+<h4 id="2-_单项数据流和双向绑定">2. 单项数据流和双向绑定</h4><p>react 推崇单向数据流，而 vue 是双向绑定的。vue 从 1 升级到 2 之后也开始推荐单向传递、父子组件独立的思维，如移除了 <code>props</code> 的 <code>twoway</code>等。</p>
+<p>这里不得不提的就是 <code>props</code>，vue 2 版本中为了排除父子组件的耦合，移除了旧的 <code>$dispatch</code> 和 <code>$broadcast</code>，假设不使用 eventbus 和 vuex 的情况下，我的开发思路一般都是子组件仅用来接受上层处理好的数据而不独立处理数据，因此方法一般都存在于父组件之中。</p>
+<p>而 react 在不使用其他状态管理的情况下，一般需要通过父组件提供的方法来操作从父组件传进子组件的数据。假设存在父组件 A 和 子组件 B，处理方法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子组件 B</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span>(</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">label</span>&gt;</span></span><br><span class="line">                子组件的输入框：</span><br><span class="line">                    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">value</span>=<span class="value">&#123;this.props.value&#125;</span> <span class="attribute">onChange</span>=<span class="value">&#123;this.props.onChange&#125;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="title">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        )</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 父组件 A</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    constructor() &#123;</span><br><span class="line">      <span class="keyword">super</span>()       <span class="comment">// 一般情况下传递参数 props 其实没有用，而如果在 constructor 中则使用了 this.props 则必须写入参数</span></span><br><span class="line">      <span class="keyword">this</span>.state = &#123;</span><br><span class="line">        value: <span class="string">''</span></span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">this</span>.onChange = <span class="keyword">this</span>.onChange.bind(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    onChange(event) &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            value: event.target.value</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">B</span> <span class="attribute">value</span>=<span class="value">&#123;this.state.value&#125;</span> <span class="attribute">onChange</span>=<span class="value">&#123;this.onChange&#125;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">p</span>&gt;</span>父组件的内容：&#123;this.state.value&#125;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        )</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在嵌套过深的父子组件中，这种单向的方式非常方便追踪数据问题等，而开发过程会相对麻烦一些。这在接下来的 CRUD 项目中把我绕的非常晕，而等到表单出问题的时候又让我立马体会到了其中的便利。</p>
+<h4 id="3-_生命周期">3. 生命周期</h4><p>react 的生命周期提供了更多的钩子，方便我们决定在哪里进行操作和定位等。这里通过一张不知来源的图作为参考。</p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/03/09/%E4%BB%8E%E4%B8%80%E4%B8%AA%20CRUD%20%E4%B8%8A%E6%89%8B%20React%20%E5%92%8C%20AntD/React%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="React 生命周期"></p>
+<h2 id="准备开发">准备开发</h2><p>通过与已知知识的对比来学习新技术会帮助更好的上手，时间问题了解了大概核心的问题后基本上就可以开始项目了。在开始项目之前还需要大概了解下要使用的 UI 库，了解一下开发中可能用到的部分即可：布局、表单、表格、分页、按钮和通知等。</p>
+<h3 id="1-_搭建环境">1. 搭建环境</h3><p>本文的环境以 <a href="https://github.com/cnzsb/react-antd-crud" target="_blank" rel="external">github</a> 上的仓库来介绍。实际开发时使用的是公司脚手架生成的包含 java 的环境，并在 tomacat 的服务器上进行的开发。</p>
+<p>本次项目的重点是实践 react，因此环境部分的配置不过多介绍。我利用了官方脚手架 <a href="https://github.com/facebookincubator/create-react-app" target="_blank" rel="external">creat-react-app</a> 生成文件目录。之后修改了生成目录为 docs，为了配合 github-pages 来显示；修改了 webpack 中 babel-loader 的配置来实现 antd 组件的按需加载。</p>
+<h3 id="2-_开发思路">2. 开发思路</h3><p>开发之前需要理清楚页面的层次结构和组件结构。 这里先把最后的项目目录放下来，然后来讲设计思路。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">|-- api</span><br><span class="line">|   |-- sqlData.js      <span class="comment"># 操作 sqlData 的 ajax 方法</span></span><br><span class="line">|-- components</span><br><span class="line">|   |-- App.jsx         <span class="comment"># 页面</span></span><br><span class="line">|   |-- Content.jsx     <span class="comment"># 页面主体内容区</span></span><br><span class="line">|   |-- Factory.jsx     <span class="comment"># 表单组件工厂</span></span><br><span class="line">|   |-- FormModal.jsx   <span class="comment"># 弹出的增加或编辑的表单组件</span></span><br><span class="line">|   |-- Search.jsx      <span class="comment"># 搜索组件</span></span><br><span class="line">|-- libs</span><br><span class="line">|   |-- ajax.js         <span class="comment"># ajax 实例及公共方法</span></span><br><span class="line">|   |-- util.js         <span class="comment"># 工具方法</span></span><br><span class="line">|-- store</span><br><span class="line">|   |-- sqlConfig.js    <span class="comment"># 数据库表单配置项</span></span><br><span class="line">|-- index.js            <span class="comment"># 入口文件</span></span><br><span class="line">|-- style.css           <span class="comment"># 样式文件</span></span><br></pre></td></tr></table></figure>
+<p>首先项目需求中本来是存在多张表的，虽然因为种种原因仅只提供了一张表的获取接口，但是为了能够在有第 n 张表来的时候可以随意配置，因此我单独抽离了数据库配置文件，为了就是以后再有新需求可以“偷懒”少写代码。</p>
+<p>在 <code>sqlConfig.js</code> 中我定义了每一个需要展示的 table header 的 <code>type</code>，从而按需渲染不同的表单类型，如 <code>input</code> 的 <code>text</code> 类型，或者仅做展示的 <code>display</code> 类型，以后还可以扩展 <code>date</code> 类型等。另外根据 antd 中的配置需要，增加了对应的比较重要的配置项，如 <code>width</code>。另外我也定义了 <code>validators</code> 来对每一项进行校验，实际项目中因为时间问题并没有完善此功能。</p>
+<p>在有了思路后，就要去布局组件的位置，从而决定哪里最适合负责总的 state 管理，哪里又适合 props。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">|-- App</span><br><span class="line">|   |-- Menu                <span class="comment"># 导航菜单</span></span><br><span class="line">|   |-- Content             <span class="comment"># 主要内容区</span></span><br><span class="line">|       |-- Search          <span class="comment"># 搜索组件</span></span><br><span class="line">|           |-- Factory     <span class="comment"># 表单工厂</span></span><br><span class="line">|       |-- ButtonGroup     <span class="comment"># 操作按钮群</span></span><br><span class="line">|       |-- Table           <span class="comment"># 表格组件</span></span><br><span class="line">|           |-- Pagination  <span class="comment"># 分页组件</span></span><br><span class="line">|       |-- FormModal       <span class="comment"># 弹出的编辑表单</span></span><br><span class="line">|           |-- Factory     <span class="comment"># 表单工厂</span></span><br></pre></td></tr></table></figure>
+<p>在最终的 react 组件中，按照重要程度，结构大致如上。我们通过下图来了解组件间具体如何通信。</p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/03/09/%E4%BB%8E%E4%B8%80%E4%B8%AA%20CRUD%20%E4%B8%8A%E6%89%8B%20React%20%E5%92%8C%20AntD/react-antd-crud.png" alt="react-antd-crud"></p>
+<p>基本的结构有了之后，接下来就是 ajax 具体如何使用了，这里我们使用了 axios，并对 ajax 进行一个全局的默认设置，把所有的错误都进行了同样的提示，这些设置保存在 <code>libs/ajax.js</code> 文件中。</p>
+<h2 id="开发总结">开发总结</h2><p>整个开发过程使用了三天时间。最难的第一个地方就是在接受 <code>props</code> 之后选择哪一个生命周期的钩子函数进行 <code>setState</code> 更新；第二个地方是组件之间各种状态传递的时候实在把我绕晕了，主要还是没有适应 react 的模式；第三个地方是在使用 antd 的 <code>table</code> 组件的 <code>rowSelection</code> 时，为了每一次都能让 <code>selectedRowKeys</code> 与组件对应 <code>state</code> 中的该值同步，需要把 <code>rowSelection</code> 的赋值操作放在 <code>render</code> 中，从而触发每一次组件更新的 <code>render</code> 方法。</p>
+<p>除了缺点之外，本项目做到了抽离及复用组件，项目中的 <code>Factory</code> 组件可以根据配置文件生成对应类型的表单元素，进一步开发的话可以把 <code>validators</code> 的功能增加进去。对于编辑和新增表单这些验证规则可能和搜索组件 <code>Search</code> 中的不太一样，如果有要求的话，可以再定制维护一份对应搜索组件的 <code>Factory</code> 也是可以的。综上而言本项目在之后引入新的数据库表和对应的接口的话，配置相关的 <code>sqlConfig</code> 文件即能轻松实现复用。另外项目中简单的配置了 axios 的响应数据类型后的规则，做到了总的处理，具体的相关配置还需要参考<a href="https://github.com/mzabriskie/axios" target="_blank" rel="external">官方文档</a>。</p>
+<p>综上，本篇文章侧重记录了项目的主要流程及思考方式，并没有详细解释 react 或者 antd 的相关知识，权当抛砖引玉，深入的内容还需要不断学习才能掌握，多看文档多实践。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>换了新公司后，技术栈使用的是 react。虽然一路从 vue 1 到 vue 2，但是我还是对 react 有好感的，当初学习 vue 1 文档少的可怜的时候也是借鉴了不少 react 的文章才得以理解，因此在接下来的文章中会小部分的对比下 react 和 vue 的不同。本次的文章主要是关于初次接触 react，并开发出一个具有 CRUD 功能页面的过程。提前了解本项目的详情请点击 <a href="https://github.com/cnzsb/react-antd-crud">GitHub 地址</a>和<a href="http://www.zhaoshibo.net/react-antd-crud/">线上预览地址</a>。</p>]]>
+    
+    </summary>
+    
+      <category term="AntD" scheme="http://zhaoshibo.net/tags/AntD/"/>
+    
+      <category term="React" scheme="http://zhaoshibo.net/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[添加多个 SSH 秘钥]]></title>
     <link href="http://zhaoshibo.net/blog/2017/02/28/%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%20SSH%20%E7%A7%98%E9%92%A5/"/>
     <id>http://zhaoshibo.net/blog/2017/02/28/添加多个 SSH 秘钥/</id>
     <published>2017-02-28T15:40:30.000Z</published>
-    <updated>2017-02-28T15:40:32.000Z</updated>
+    <updated>2017-03-06T10:04:39.000Z</updated>
     <content type="html"><![CDATA[<p>本月堆积了好几篇文章没写了，趁着最后几十分钟，为了完成年初计划马虎更新一篇记录性的文章吧。由于本月刚换了新的公司，新公司的代码托管在 GitLab 上，因此有了管理 2 个 SSH 秘钥的需求，查阅资料后发现并不难，记录与分享一下。</p>
 <p>首先生成 SSH 的指令不陌生：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
@@ -811,273 +858,6 @@ file.addEventListener('change', function(e) {
       <category term="HTML" scheme="http://zhaoshibo.net/tags/HTML/"/>
     
       <category term="Tips" scheme="http://zhaoshibo.net/tags/Tips/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Github Pages配合Hexo3搭建个人网站]]></title>
-    <link href="http://zhaoshibo.net/blog/2015/08/31/Github%20Pages%E9%85%8D%E5%90%88Hexo3%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/"/>
-    <id>http://zhaoshibo.net/blog/2015/08/31/Github Pages配合Hexo3搭建个人网站/</id>
-    <published>2015-08-31T06:06:37.000Z</published>
-    <updated>2016-10-31T13:06:09.000Z</updated>
-    <content type="html"><![CDATA[<p>这是一篇关于使用Github Pages和Hexo3搭建网站并绑定独立域名的个人总结，目录顺序为个人实际操作顺序。</p>
-<a id="more"></a>
-<h2 id="目录">目录</h2><ul>
-<li><a href="#1">1. 购买域名</a></li>
-<li><a href="#2">2. 环境安装</a></li>
-<li><a href="#3">3. 配置和使用Github</a><ul>
-<li><a href="#3.1">3.1 配置SSH keys</a></li>
-<li><a href="#3.2">3.2 添加SSH keys到Github</a></li>
-<li><a href="#3.3">3.3 设置用户信息</a></li>
-</ul>
-</li>
-<li><a href="#4">4. 使用Github Pages</a></li>
-<li><a href="#5">5. 使用Hexo</a><ul>
-<li><a href="#5.1">5.1 安装</a></li>
-<li><a href="#5.2">5.2 配置与部署</a></li>
-<li><a href="#5.3">5.3 主题克隆</a></li>
-</ul>
-</li>
-<li><a href="#6">6. 绑定域名</a><ul>
-<li><a href="#6.1">6.1 Github上的设置</a></li>
-<li><a href="#6.2">6.2 DNS设置</a></li>
-</ul>
-</li>
-<li><a href="#7">7. 其他</a><ul>
-<li><a href="#7.1">7.1 新建文章及页面</a></li>
-<li><a href="#7.2">7.2 配置主题</a></li>
-<li><a href="#7.3">7.3 评论</a></li>
-<li><a href="#7.4">7.4 RSS订阅</a></li>
-<li><a href="#7.5">7.5 Sitemap网站地图</a></li>
-<li><a href="#7.6">7.6 404页面</a></li>
-<li><a href="#7.7">7.7 添加小图标</a></li>
-<li><a href="#7.8">7.8 robots.txt</a></li>
-<li><a href="#7.9">7.9 图床</a></li>
-</ul>
-</li>
-<li><a href="#8">8. 参考资料</a></li>
-</ul>
-<h2 id="1">1. 购买域名</h2>
-
-<p>域名并非为必选项。此前从网上收集后的信息表明，大家都推荐到godaddy上购买，并且支持支付宝。但是如果不喜欢麻烦或者国外域名注册商的话，那就在万网购买吧。以后只是为了安安静静的更新个个人网站的话，域名在哪里购买都差不多。</p>
-<p>我选择了万网，就拿万网来说吧。首先查询自己期望的域名是否可用，个人倾向选择.com，.cn，.net等结尾的后缀，待加入清单结算并填写相关的个人信息后就已经购买成功了。在填写个人信息的时候不必太过纠结，后续都是可以更改并且可以选择隐私保护的。购买之后的.com，.net之类的国际域名不需要再实名认证是可以使用的，不需要担心所提示的红色警告。</p>
-<h2 id="2">2. 环境安装</h2>
-
-<p>首先下载所需软件并安装。</p>
-<ul>
-<li><a href="http://nodejs.org" target="_blank">Node.js</a></li>
-<li><a href="http://git-scm.com" target="_blank">Git</a></li>
-</ul>
-<h2 id="3">3. 配置和使用Github</h2>
-
-<p>在Github注册完账号后，注意用户名（可作为登陆账号）和昵称的区别，另外这里的邮箱很重要。</p>
-<h3 id="3.1">3.1 配置SSH keys</h3>
-
-<p>这里需要用到刚才下载好的Git，打开Git Bash。这里不得不提一下，在Git中有一个和Linux中相同的原则，如果输入一串指令而没有任何提示，是表明成功的预兆，不要怀疑没有反应或者失败了。</p>
-<p>首先检查SSH key。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/<span class="class">.ssh</span>  <span class="comment">//检查本机是否有SSH key,弹出No such file or directory说明是第一次使用。</span></span><br></pre></td></tr></table></figure>
-<p>生成新的SSH key，注意大小写和空格。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></span><br><span class="line">Generating public/<span class="keyword">private</span> rsa key pair.</span><br><span class="line">Enter <span class="built_in">file</span> <span class="operator">in</span> which <span class="built_in">to</span> save <span class="operator">the</span> key (/Users/your_user_directory/.ssh/id_rsa): <span class="comment"> //回车</span></span><br><span class="line">Created <span class="built_in">directory</span> <span class="string">'/c/Users/your_user_directory/.ssh'</span>.</span><br></pre></td></tr></table></figure>
-<p>然后设置密码并确认，这里的密码用来以后提交项目使用，输入时无*号提示，如果为空，则以后提交项目时无需验证。</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> <span class="literal">no</span> passphrase):</span><br><span class="line">Enter same passphrase <span class="attribute">again</span>:</span><br></pre></td></tr></table></figure>
-<p>之后看到以下图案就成功啦。</p>
-<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github.jpg" alt=""></p>
-<h3 id="3.2">3.2 添加SSH keys到Github</h3>
-
-<p>在本机设置SSH key成功后，会在<code>\users\your_user_directory\.ssh</code>目录下生成<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件。</p>
-<ol>
-<li>打开<code>ssh.pub</code>文件并拷贝其中的内容。</li>
-<li>打开Github登陆后找到<em>Settings</em>中的<em>SSH keys</em>，选择<em>Add SSH key</em>，输入<em>Title</em>，并粘贴所复制的内容到<em>Key</em>中，确认即可。</li>
-</ol>
-<p>最后来测试一下。</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure>
-<p>会得到如下反馈：</p>
-<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github-test.jpg" alt=""></p>
-<p>输入yes后弹出如下代码即代表成功。</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi 账户名! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.</span><br></pre></td></tr></table></figure>
-<h3 id="3.3">3.3 设置用户信息</h3>
-
-<p>现在本机已经可以通过SSH链接到Github了接下来完善一下个人信息。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user<span class="class">.name</span> <span class="string">"用户名"</span></span><br><span class="line">$ git config --global user<span class="class">.email</span>  <span class="string">"邮箱地址"</span></span><br></pre></td></tr></table></figure>
-<p>Github会通过这些信息来做权限处理。</p>
-<p>以上所有步骤可能遇到的错误：</p>
-<p><a href="http://help.github.com/articles/generating-ssh-keys" target="_blank">GitHub Help - Generating SSH Keys</a></p>
-<p><a href="http://help.github.com/articles/error-permission-denied-publickey" target="_blank">GitHub Help - Error Permission denied (publickey)</a></p>
-<h2 id="4">4. 使用Github Pages</h2>
-
-<p>基础的环境和配置都设置完后，接下来就是利用Github的Github Pages这个功能来搭建自己的静态页面。</p>
-<p>首先登陆Github并且新建一个Repository，项目名称要输入“<strong>username.github.io</strong>”这样的形式，其中username替换为自己的用户名即可，接下来一步步往下填写相关信息即可创建完成。到此个人的Github Pages就创建完成额，每个用户只能创建一个这个项目。</p>
-<p>此刻，已经可以自己编辑网站的样式了，只要在master分支下拥有index.html文件即可通过申请的域名进行访问了。为了方便和快捷，接下来使用一些框架来进行搭建。</p>
-<h2 id="5">5. 使用Hexo</h2>
-
-<p><a href="https://github.com/tommy351/hexo" target="_blank">Hexo</a>是一款便捷的博客发布框架。正如作者描述的一样，很给力。</p>
-<blockquote>
-<p>A fast, simple &amp; powerful blog framework, powered by Node.js.</p>
-</blockquote>
-<h3 id="5.1">5.1 安装</h3>
-
-<p>在Git中输入指令。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> -<span class="keyword">g</span> hexo-cli</span></span><br></pre></td></tr></table></figure>
-<p>如果在这里卡住没有反应，可以尝试把官方源替换为<a href="https://npm.taobao.org/" target="_blanK">淘宝npm源</a>后再安装Hexo，注意安装<a href="https://npm.taobao.org/" target="_blanK">淘宝npm源</a>后，与<code>npm</code>有关的指令要替换为<code>cnpm</code>操作才有效。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> -<span class="keyword">g</span> cnpm <span class="comment">--registry=https://registry.npm.taobao.org</span></span></span><br></pre></td></tr></table></figure>
-<p>在Hexo3中，包括hexo-server等一些模块已经独立了出来，需要先安装。可以到<code>node_modules</code>目录下对照着安装：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-generator-<span class="keyword">archive</span> <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-generator-<span class="keyword">category</span> <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-generator-tag <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-<span class="keyword">server</span> <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-renderer-marked@<span class="number">0.2</span> <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-renderer-stylus@<span class="number">0.2</span> <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-generator-feed@<span class="number">1</span> <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">install</span> hexo-generator-sitemap@<span class="number">1</span> <span class="comment">--save</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="5.2">5.2 配置与部署</h3>
-
-<p>安装完成后运行如下指令。<code>&lt;folder&gt;</code>的格式为<code>/e/name</code>，随便选择一个位置即可。</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo init &lt;folder&gt;</span><br><span class="line"><span class="variable">$ </span>cd &lt;folder&gt;</span><br><span class="line"><span class="variable">$ </span>npm install</span><br></pre></td></tr></table></figure>
-<p>之后生成静态文档，并开启本地server调试。</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo generate</span><br><span class="line"><span class="variable">$ </span>hexo server</span><br></pre></td></tr></table></figure>
-<p>此时在浏览器中打开“local:4000”可以再本地看到生成的页面，回到git中操作“ctrl + c”即可关闭server。</p>
-<h3 id="5.3">5.3 主题克隆</h3>
-
-<p>因为默认的主题实在是有点丑，于是还是换上其他的<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank">Hexo主题</a>来美化一下自己即将搭建起来的网站吧。这里我使用了<a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>的主题，按照作者的方法进行安装和配置。</p>
-<ul>
-<li>安装</li>
-</ul>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">clone</span> <span class="title">https</span>://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用</li>
-</ul>
-<p>修改目录<code>hexo</code>下的<code>_config.yml</code>文件，将其中的<code>theme</code>项设置为<code>yilia</code>。</p>
-<ul>
-<li>更新</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>cd themes/yilia</span><br><span class="line"><span class="variable">$ </span>git pull</span><br></pre></td></tr></table></figure>
-<ul>
-<li>部署</li>
-</ul>
-<p>部署到Github前需要配置目录<code>hexo</code>下的<code>_config.yml</code>文件。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="string">deploy:</span></span><br><span class="line">$ <span class="string">type:</span> git</span><br><span class="line">$ <span class="string">repository:</span>    <span class="comment">//Github上自己username.github.io项目下的地址</span></span><br><span class="line">$ <span class="string">branch:</span> master</span><br></pre></td></tr></table></figure>
-<p>然后就可以部署了。</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo clean</span><br><span class="line"><span class="variable">$ </span>hexo generate</span><br><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
-<p>注意，如果出现错误，请先检查对应文件夹<code>hexo\node_modules</code>中的模块是否完全。</p>
-<h2 id="6">6. 绑定域名</h2>
-
-<p>上述所有步骤完成之后，已经可以发布文章，并且可以访问<em>username.github.io</em>了。现在来设置前面已经准备好的个人域名。</p>
-<h3 id="6.1">6.1 Github上的设置</h3>
-
-<p>在这里设置其实很简单，只要在Repository的根目录下面，新建一个名为CNAME的文本文件，里面写入你要绑定的域名地址就可以了。</p>
-<p>但是为了防止以后通过Git部署到Github上的时候把CNAME给覆盖掉，建议在目录<code>hexo</code>下的文件夹<code>source</code>中直接新建一个CNAME的纯文本文件。</p>
-<h3 id="6.2">6.2 DNS设置</h3>
-
-<p>这里使用<a href="https://www.dnspod.cn/" target="_blank">DNSPod</a>来解析。注册登录后，添加域名并如下设置。</p>
-<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/DNSPod-settings.jpg" alt=""></p>
-<p>其中A的两条记录指向的IP地址是Github Pages提供的IP，如有改动，在<a href="" target="">Github Pages</a>查看最新IP。其中www指定的记录是个人的Github上的Repository。</p>
-<p>做完这一步后，登录万网，找到自己购买的域名并更改DNS服务器，对应上图设置中的两条NS记录。</p>
-<p>这时已经可以成功访问到自己的域名了。</p>
-<h2 id="7">7. 其他</h2>
-
-<p>以下内容是进阶篇，用于改造主题并加入一些新功能，暂时用到的只有这么多。</p>
-<h3 id="7.1">7.1 新建文章页面</h3>
-
-<h4 id="新建文章">新建文章</h4><p>Hexo使用Markdown语法的纯文本存放文章，后缀为<code>.md</code>，可以手动在<code>hexo\source\_post</code>文件夹下新建UTF-8编码的文档后来编写文章。也可以输入一下指令来自动生成。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="built_in">new</span> <span class="built_in">post</span> &lt;title&gt;</span><br></pre></td></tr></table></figure>
-<p>新建文章的内部格式如下。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: title <span class="preprocessor">#文章标题</span></span><br><span class="line">date: <span class="number">2015</span>-<span class="number">08</span>-<span class="number">31</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> <span class="preprocessor">#文章生成时间</span></span><br><span class="line">categories: <span class="preprocessor">#文章分类目录，可以省略</span></span><br><span class="line">tags: <span class="preprocessor">#文章标签，可以省略。</span></span><br><span class="line">description: <span class="preprocessor">#本页描述，可以省略</span></span><br><span class="line">---   </span><br><span class="line">这里开始使用markdown格式输入你的正文。</span><br></pre></td></tr></table></figure>
-<p>多标签语法格式。</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">-<span class="ruby"> 标签<span class="number">1</span></span><br><span class="line"></span>-<span class="ruby"> 标签<span class="number">2</span></span><br><span class="line"></span>-<span class="ruby"> 标签<span class="number">3</span></span><br><span class="line"></span>-<span class="ruby"> ...</span></span><br></pre></td></tr></table></figure>
-<p>正文中设置文章在网站首页的摘要而不全部显示。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">以上是文章摘要</span><br><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br><span class="line">以下是余下全文</span><br></pre></td></tr></table></figure>
-<h4 id="自定义页面">自定义页面</h4><p>以<em>关于</em>页面为例。</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> page <span class="string">"about"</span></span><br></pre></td></tr></table></figure>
-<p>编辑<code>source\about\index.md</code>。</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: About</span><br><span class="line"><span class="header">date: 2015-08-31 00:00:00</span><br><span class="line">---</span></span><br><span class="line">About Me</span><br></pre></td></tr></table></figure>
-<p>在主题的配置文件中添加入口。</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">menu</span>:</span><br><span class="line">  <span class="attribute">About</span>: /about</span><br></pre></td></tr></table></figure>
-<h3 id="7.2">7.2 配置主题</h3>
-
-<p>关于Hexo的结构及一些指令如下。</p>
-<h4 id="目录结构">目录结构</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .deploy       <span class="preprocessor">#待部署文件</span></span><br><span class="line">├── node_modules  <span class="preprocessor">#插件</span></span><br><span class="line">├── <span class="keyword">public</span>        <span class="preprocessor">#生成的静态网页文件</span></span><br><span class="line">├── scaffolds     <span class="preprocessor">#工具模板</span></span><br><span class="line">├── source        <span class="preprocessor">#博客正文和其他源文件，<span class="number">404</span>、favicon、CNAME等都放在这里</span></span><br><span class="line">|   ├── _drafts   <span class="preprocessor">#草稿</span></span><br><span class="line">|   └── _posts    <span class="preprocessor">#文章</span></span><br><span class="line">├── themes        <span class="preprocessor">#主题</span></span><br><span class="line">├── _config.yml   <span class="preprocessor">#全局配置文件</span></span><br><span class="line">└── package.json</span><br></pre></td></tr></table></figure>
-<h4 id="全局配置__config-yml">全局配置 _config.yml</h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Hexo Configuration</span></span><br><span class="line"><span class="preprocessor">## Docs: http://hexo.io/docs/configuration.html</span></span><br><span class="line"><span class="preprocessor">## Source: https://github.com/hexojs/hexo/</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Site</span></span><br><span class="line"><span class="label">title:</span>   <span class="preprocessor">#网站标题</span></span><br><span class="line"><span class="label">subtitle:</span>   <span class="preprocessor">#网站副标题</span></span><br><span class="line"><span class="label">description:</span>   <span class="preprocessor">#网站描述</span></span><br><span class="line"><span class="label">author:</span> John Doe  <span class="preprocessor">#作者</span></span><br><span class="line"><span class="label">email:</span>   <span class="preprocessor">#邮箱地址</span></span><br><span class="line"><span class="label">language:</span>   <span class="preprocessor">#语言，简体中文：zh-CN</span></span><br><span class="line"><span class="label">timezone:</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># URL</span></span><br><span class="line"><span class="preprocessor">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="label">url:</span> http://yoursite.com   <span class="preprocessor">#网站地址</span></span><br><span class="line"><span class="label">root:</span> /	 <span class="preprocessor">#网站根目录</span></span><br><span class="line"><span class="label">permalink:</span> :year/:month/:day/:title/  <span class="preprocessor">#网站url地址结构</span></span><br><span class="line"><span class="label">permalink_defaults:</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Directory</span></span><br><span class="line"><span class="label">source_dir:</span> source  <span class="preprocessor">#源文件目录</span></span><br><span class="line"><span class="label">public_dir:</span> public	<span class="preprocessor">#生成网页的文件目录</span></span><br><span class="line"><span class="label">tag_dir:</span> tags  <span class="preprocessor">#标签目录</span></span><br><span class="line"><span class="label">archive_dir:</span> archives  <span class="preprocessor">#存档目录</span></span><br><span class="line"><span class="label">category_dir:</span> categories  <span class="preprocessor">#分类目录</span></span><br><span class="line"><span class="label">code_dir:</span> downloads/code</span><br><span class="line"><span class="label">i18n_dir:</span> :lang</span><br><span class="line"><span class="label">skip_render:</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Writing</span></span><br><span class="line"><span class="label">new_post_name:</span> :title.md  <span class="preprocessor">#新文章标题</span></span><br><span class="line"><span class="label">default_layout:</span> post  <span class="preprocessor">#默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）</span></span><br><span class="line"><span class="label">titlecase:</span> false  <span class="preprocessor">#标题转换成大写</span></span><br><span class="line"><span class="label">external_link:</span> true  <span class="preprocessor">#在新选项卡打开链接</span></span><br><span class="line"><span class="label">filename_case:</span> <span class="number">0</span></span><br><span class="line"><span class="label">render_drafts:</span> false</span><br><span class="line"><span class="label">post_asset_folder:</span> false</span><br><span class="line"><span class="label">relative_link:</span> false</span><br><span class="line"><span class="label">future:</span> true</span><br><span class="line"><span class="label">highlight:</span>  <span class="preprocessor">#语法高亮</span></span><br><span class="line">  enable: true  <span class="preprocessor">#是否启用</span></span><br><span class="line">  line_number: true  <span class="preprocessor">#显示行号</span></span><br><span class="line">  auto_detect: true  <span class="preprocessor">#自动对齐</span></span><br><span class="line">  tab_replace:</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Category &amp; Tag</span></span><br><span class="line"><span class="label">default_category:</span> uncategorized  <span class="preprocessor">#默认分类</span></span><br><span class="line"><span class="label">category_map:</span></span><br><span class="line"><span class="label">tag_map:</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Archives</span></span><br><span class="line"><span class="number">2</span>: 开启分页</span><br><span class="line"><span class="number">1</span>: 禁用分页</span><br><span class="line"><span class="number">0</span>: 全部禁用</span><br><span class="line"><span class="label">archive:</span> <span class="number">2</span></span><br><span class="line"><span class="label">category:</span> <span class="number">2</span></span><br><span class="line"><span class="label">tag:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Server #本地服务器</span></span><br><span class="line"><span class="label">port:</span> <span class="number">4000</span>  <span class="preprocessor">#端口号</span></span><br><span class="line"><span class="label">server_ip:</span> localhost  <span class="preprocessor">#IP地址</span></span><br><span class="line"><span class="label">logger:</span> false</span><br><span class="line"><span class="label">logger_format:</span> dev</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Date / Time format</span></span><br><span class="line"><span class="preprocessor">## Hexo uses Moment.js to parse and display date</span></span><br><span class="line"><span class="preprocessor">## You can customize the date format as defined in</span></span><br><span class="line"><span class="preprocessor">## http://momentjs.com/docs/#/displaying/format/</span></span><br><span class="line"><span class="label">date_format:</span> YYYY-MM-DD</span><br><span class="line"><span class="label">time_format:</span> HH:mm:ss</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Pagination</span></span><br><span class="line"><span class="preprocessor">## Set per_page to 0 to disable pagination</span></span><br><span class="line"><span class="label">per_page:</span> <span class="number">10</span>  <span class="preprocessor">#每页文章数，设置成 0 禁用分页#</span></span><br><span class="line"><span class="label">pagination_dir:</span> page</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Disqus  #disqus评论，多说在主题中配置</span></span><br><span class="line"><span class="label">disqus_shortname:</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Extensions  #扩展插件</span></span><br><span class="line"><span class="preprocessor">## Plugins: http://hexo.io/plugins/</span></span><br><span class="line"><span class="preprocessor">## Themes: http://hexo.io/themes/</span></span><br><span class="line"><span class="label">theme:</span> landscape  <span class="preprocessor">#主题</span></span><br><span class="line"><span class="label">exclude_generator:</span></span><br><span class="line"></span><br><span class="line"><span class="label">plugins:</span>   <span class="preprocessor">#插件，例如生成 RSS 和站点地图的</span></span><br><span class="line">- hexo-generator-feed</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Deployment  #部署</span></span><br><span class="line"><span class="preprocessor">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="label">deploy:</span></span><br><span class="line">  type: git</span><br><span class="line">  repository:   <span class="preprocessor">#自己Github的项目地址</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<h4 id="命令行">命令行</h4><ul>
-<li>常用命令</li>
-</ul>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ hexo help  <span class="comment">//查看帮助</span></span><br><span class="line">$ hexo init  <span class="comment">//初始化一个目录</span></span><br><span class="line">$ hexo <span class="keyword">new</span> <span class="string">"postName"</span>  <span class="comment">//新建文章</span></span><br><span class="line">$ hexo <span class="keyword">new</span> page <span class="string">"pageName"</span>  <span class="comment">//新建页面</span></span><br><span class="line">$ hexo generate  <span class="comment">//生成网页，可以在 public 目录查看整个网站的文件</span></span><br><span class="line">$ hexo <span class="keyword">server</span>  <span class="comment">//本地预览，'Ctrl+C'关闭</span></span><br><span class="line">$ hexo deploy  <span class="comment">//部署.deploy目录</span></span><br><span class="line">$ hexo clean  <span class="comment">//清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>复合命令</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo deploy -g</span><br><span class="line"><span class="variable">$ </span>hexo server -g</span><br></pre></td></tr></table></figure>
-<ul>
-<li>简写</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo n == hexo new</span><br><span class="line"><span class="variable">$ </span>hexo g == hexo generate</span><br><span class="line"><span class="variable">$ </span>hexo s == hexo server</span><br><span class="line"><span class="variable">$ </span>hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装插件</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> &lt;<span class="keyword">plugin</span>-<span class="keyword">name</span>&gt; <span class="comment">--save</span></span><br><span class="line">$ npm <span class="keyword">update</span> #升级</span><br><span class="line">$ npm <span class="keyword">uninstall</span> &lt;<span class="keyword">plugin</span>-<span class="keyword">name</span>&gt;  #卸载</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装主题</li>
-</ul>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">clone</span> <span class="title">&lt;repository</span>&gt; themes/<span class="tag">&lt;theme-name&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="主题优化">主题优化</h4><p>可以从Hexo的<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank">主题列表</a>中找到自己喜欢的主题。</p>
-<p>下载主题并修改全局配置文件<code>_config.yml</code>中<em>theme</em>一行应用主题。</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">clone</span> <span class="title">&lt;repository</span>&gt; themes/<span class="tag">&lt;theme-name&gt;</span></span><br></pre></td></tr></table></figure>
-<p>也可以手动下载后解压到<code>themes</code>目录中。</p>
-<ul>
-<li>主题目录结构</li>
-</ul>
-<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── languages          <span class="preprocessor">#国际化</span></span><br><span class="line">|   ├── <span class="keyword">default</span>.yml    <span class="preprocessor">#默认</span></span><br><span class="line">|   └── zh-CN.yml      <span class="preprocessor">#中文</span></span><br><span class="line">├── <span class="keyword">layout</span>             <span class="preprocessor">#布局</span></span><br><span class="line">|   ├── _partial       <span class="preprocessor">#局部的布局</span></span><br><span class="line">|   └── _widget        <span class="preprocessor">#小挂件的布局</span></span><br><span class="line">├── script             <span class="preprocessor">#js脚本</span></span><br><span class="line">├── source             <span class="preprocessor">#源代码文件</span></span><br><span class="line">|   ├── css            <span class="preprocessor">#CSS</span></span><br><span class="line">|   |   ├── _base      <span class="preprocessor">#基础CSS</span></span><br><span class="line">|   |   ├── _partial   <span class="preprocessor">#局部CSS</span></span><br><span class="line">|   |   ├── fonts      <span class="preprocessor">#字体</span></span><br><span class="line">|   |   ├── images     <span class="preprocessor">#图片</span></span><br><span class="line">|   |   └── style.styl <span class="preprocessor">#style.css</span></span><br><span class="line">|   ├── fancybox       <span class="preprocessor">#fancybox</span></span><br><span class="line">|   └── js             <span class="preprocessor">#js</span></span><br><span class="line">├── _config.yml        <span class="preprocessor">#主题配置文件</span></span><br><span class="line">└── README.md          <span class="preprocessor">#主题介绍</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>的主题配置文件</li>
-</ul>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Header</span></span><br><span class="line">menu:</span><br><span class="line">  主页: /</span><br><span class="line">  所有文章: /archives</span><br><span class="line">  # 随笔: /tags/随笔</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># SubNav</span></span><br><span class="line">subnav:</span><br><span class="line">  github: <span class="string">"#"</span></span><br><span class="line">  weibo: <span class="string">"#"</span></span><br><span class="line">  rss: <span class="string">"#"</span>  #域名地址/atom.xml</span><br><span class="line">  zhihu: <span class="string">"#"</span></span><br><span class="line">  #douban: <span class="string">"#"</span></span><br><span class="line">  #mail: <span class="string">"#"</span>  #mailto:邮箱地址</span><br><span class="line">  #facebook: <span class="string">"#"</span></span><br><span class="line">  #google: <span class="string">"#"</span></span><br><span class="line">  #twitter: <span class="string">"#"</span></span><br><span class="line">  #linkedin: <span class="string">"#"</span></span><br><span class="line"></span><br><span class="line">rss: /atom.xml</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Content</span></span><br><span class="line">excerpt_link: more</span><br><span class="line">fancybox: <span class="literal">true</span></span><br><span class="line">mathjax: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Miscellaneous</span></span><br><span class="line">google_analytics: <span class="string">''</span></span><br><span class="line">favicon: /favicon.png</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#你的头像url</span></span><br><span class="line">avatar: <span class="string">""</span></span><br><span class="line"><span class="preprocessor">#是否开启分享</span></span><br><span class="line">share: <span class="literal">true</span></span><br><span class="line"><span class="preprocessor">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></span><br><span class="line"><span class="preprocessor">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span></span><br><span class="line">duoshuo: <span class="literal">true</span>  #这里使用多说直接改为多说的项目名称即可</span><br><span class="line"><span class="preprocessor">#是否开启云标签</span></span><br><span class="line">tagcloud: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#是否开启友情链接</span></span><br><span class="line"><span class="preprocessor">#不开启——</span></span><br><span class="line"><span class="preprocessor">#friends: false</span></span><br><span class="line"><span class="preprocessor">#开启——</span></span><br><span class="line">friends:</span><br><span class="line">  奥巴马的博客: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  卡卡的美丽传说: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  本泽马的博客: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  吉格斯的博客: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  习大大大不同: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  托蒂的博客: http:<span class="comment">//localhost:4000/</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#是否开启“关于我”。</span></span><br><span class="line"><span class="preprocessor">#不开启——</span></span><br><span class="line"><span class="preprocessor">#aboutme: false</span></span><br><span class="line"><span class="preprocessor">#开启——</span></span><br><span class="line">aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</span><br></pre></td></tr></table></figure>
-<h3 id="7.3">7.3 评论</h3>
-
-<p>这里使用的是<a href="http://duoshuo.com/" target="_blank">多说</a>的评论，登陆后在<em>后台管理</em>找到<em>工具</em>可以看到一些代码，在代码中找到<strong>short_name:”XXX”</strong>。然后打开主题文件下的<code>_config.yml</code>，替换以下代码即可。</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">duoshuo: true</span><br><span class="line">=<span class="ruby"><span class="status">=&gt;</span></span><br><span class="line"></span>duoshuo: XXX</span><br></pre></td></tr></table></figure>
-<h3 id="7.4">7.4 RSS订阅</h3>
-
-<p>安装插件。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> hexo-generator-feed</span><br></pre></td></tr></table></figure>
-<p>并在全局配置文件中开启插件。</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plugins:</span><br><span class="line"><span class="bullet">- </span>hexo-generator-feed</span><br></pre></td></tr></table></figure>
-<p>在主题配置文件中添加入口。</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rss</span>: <span class="string">/atom.xml</span></span><br></pre></td></tr></table></figure>
-<p>开启server可以本地测试<em><a href="http://localhost:4000/atom.xml" target="_blank" rel="external">http://localhost:4000/atom.xml</a></em>是否生效。</p>
-<h3 id="7.5">7.5 Sitemap网站地图</h3>
-
-<p>安装插件。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
-<p>开启插件。</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plugins:</span><br><span class="line"><span class="bullet">- </span>hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
-<p>浏览<em><a href="http://localhost:4000/sitemap.xml" target="_blank" rel="external">http://localhost:4000/sitemap.xml</a></em>查看是否生效。</p>
-<h3 id="7.6">7.6 404页面</h3>
-
-<p>添加<code>source\404.html</code>文件。</p>
-<p>404页面不需要Hexo解析。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">layout: false</span><br><span class="line">--------</span><br><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">href</span>=<span class="value">"/favicon.ico"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">align</span>=<span class="value">"center"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">p</span>&gt;</span>Page 404<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="7.7">7.7 添加小图标</h3>
-
-<p>将<code>favicon.ico</code>文件放在<code>source</code>目录下,配置主题里的全局设置文件。</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">favicon</span>: <span class="string">/favicon.ico</span></span><br></pre></td></tr></table></figure>
-<h3 id="7.8">7.8 robots.txt</h3>
-
-<p><code>source</code>目录下添加<code>robots.txt</code>。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">User-<span class="string">agent:</span> Baiduspider</span><br><span class="line"><span class="string">Disallow:</span></span><br><span class="line">User-<span class="string">agent:</span> Googlebot</span><br><span class="line"><span class="string">Disallow:</span></span><br><span class="line">User-<span class="string">agent:</span> *</span><br><span class="line"><span class="string">Disallow:</span> /</span><br></pre></td></tr></table></figure>
-<h3 id="7.9">7.9 图床</h3>
-
-<p>网站中不免会使用到一些图片，这里推荐使用<a href="https://portal.qiniu.com/signup?code=3ln23ux9ydhzm" target="_blank">七牛</a>的来进行存储。</p>
-<h2 id="8">8. 参考资料</h2>
-
-<ol>
-<li><a href="http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
-<li><a href="http://segmentfault.com/a/1190000002538363" target="_blank">Hexo静态博客使用指南</a></li>
-<li><a href="http://forsweet.github.io/hexo/%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/" target="_blank">用Hexo 3 搭建github blog</a></li>
-<li><a href="http://blog.lmintlcx.com/post/blog-with-hexo.html" target="_blank">使用Hexo搭建博客 </a></li>
-<li><a href="http://segmentfault.com/a/1190000002398039" target="_blank">更换博客系统——从jekyll到hexo</a></li>
-<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">hexo你的博客</a></li>
-<li><a href="http://segmentfault.com/a/1190000002632530" target="_blank">hexo常用命令笔记</a></li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>这是一篇关于使用Github Pages和Hexo3搭建网站并绑定独立域名的个人总结，目录顺序为个人实际操作顺序。</p>]]>
-    
-    </summary>
-    
-      <category term="Github Pages" scheme="http://zhaoshibo.net/tags/Github-Pages/"/>
-    
-      <category term="Hexo" scheme="http://zhaoshibo.net/tags/Hexo/"/>
     
   </entry>
   
