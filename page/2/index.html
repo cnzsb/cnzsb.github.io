@@ -179,6 +179,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Javascript 的复制操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/08/17/Javascript 的复制操作/" class="article-date">
+  	<time datetime="2016-08-17T15:47:46.000Z" itemprop="datePublished">2016-08-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/08/17/Javascript 的复制操作/">JavaScript 的复制操作</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于点击按钮就能复制一个链接或其他内容的操作，在很多网站都会有用到。使用原生的js方法 <code>document.execCommand</code> 即可实现，它能够对<strong>可以编辑的文档对象（设置contentEditable等）</strong>进行操作。</p>
+<h2 id="语法">语法</h2><p>它的基本语法如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool = document.execCommand(aCommandName, aShowDefaultUI, aValueArgument)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/blog/2016/08/17/Javascript 的复制操作/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-jQuery插件写法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -685,64 +745,6 @@
         <p class="article-more-link">
           <a  href="/blog/2015/09/25/object标签和embed标签/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-点击QQ号码弹出聊天窗口" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2015/09/07/点击QQ号码弹出聊天窗口/" class="article-date">
-  	<time datetime="2015-09-07T06:10:23.000Z" itemprop="datePublished">2015-09-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2015/09/07/点击QQ号码弹出聊天窗口/">点击QQ号码弹出聊天窗口</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2种旧方法。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"tencent://message/?exe=qq&amp;menu=yes&amp;uin=QQ号码"</span> <span class="attribute">rel</span>=<span class="value">"nofollow"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://wpa.qq.com/msgrd?v=3&amp;uin=QQ号码&amp;site=qq&amp;menu=yes"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">rel</span>=<span class="value">"nofollow"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">img</span> <span class="attribute">border</span>=<span class="value">"0"</span> <span class="attribute">src</span>=<span class="value">"http://wpa.qq.com/pa?p=2:QQ号码:41"</span> <span class="attribute">alt</span>=<span class="value">"点击这里给我发消息"</span> <span class="attribute">title</span>=<span class="value">"点击这里给我发消息"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>1种新的方法，不会提示因“对方按钮版本过低”而无法打开。其中的<code>aty</code>和<code>a</code>值的参数影响着营销QQ中的分组及对应人员，具体设置时候还是需要重新生成。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://crm2.qq.com/page/portalpage/wpa.php?uin=QQ号码&amp;aty=0&amp;a=0&amp;curl=&amp;ty=1</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tips/">Tips</a></li></ul>
-	</div>
-
-      
-
       
       <div class="clearfix"></div>
     </div>
