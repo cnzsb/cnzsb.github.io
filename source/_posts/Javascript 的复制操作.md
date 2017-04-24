@@ -52,23 +52,23 @@ input.blur()
 然而现实运行后却发现并没有成功。后来反复试验发现对于任何一个不可见的元素： `display: none`、`type="hidden"`、`width: 0； height: 0` 等，该指令均无效。回头仔细研究基本语法，发现**可编辑的文档对象**似乎有什么猫腻，假设一个元素无法看见，或者无法点击，那么确实好像没办法**直接编辑**，所以这就是没有成功的原因了。但是非要实现这样一个功能怎么办呢，思前想后不妨试试 `opacity: 0`，这下竟然成功了。因此为了不影响UI的前提下可以这样实现功能。
 
 ```HTML
-<button id="copy-btn" type="button">复制链接</button>
+<button id="copyBtn" type="button">复制链接</button>
 
 <script type="text/babel">
-document.getElementById('button')
+document.getElementById('copyBtn')
     .addEventListener('click', (e) => {
         const _target = e.target
         let input = document.createElement('input')
         input.type = 'text'
-        input.className = 'copy-text'	// 利用 class 设置样式
-        input.value = someData		// 一些数据
+        input.className = 'copy-text'   // 利用 class 设置样式
+        input.value = someData          // 一些数据
         
-        const _i = _target.appendChild('input')	 // 暂时添加进 button 节点中了，也可以放在其他地方
+        const _i = _target.appendChild(input) // 暂时添加进 button 节点中了，也可以放在其他地方
 
         _i.select()
         document.execCommand('copy')
 
-        _target.removeElement('_i')
+        _target.removeChild(_i)
         input = null
     }, false)
 </script>
@@ -78,7 +78,7 @@ document.getElementById('button')
     position: relative;
 
     .copy-text {
-        position: absolute;	// 脱离文档流，防止对 UI 影响
+        position: absolute; // 脱离文档流，防止对 UI 影响
         width: 1px;         // 没啥大用，强迫症：）
         height: 1px;        // 没啥大用，强迫症：）
         opacity: 0;         // 重点
