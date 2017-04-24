@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-03-17T08:30:40.000Z</updated>
+  <updated>2017-03-09T16:11:43.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,21 +13,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title><![CDATA[谈谈 JS 的异步进化史]]></title>
-    <link href="http://zhaoshibo.net/blog/2017/03/17/%E8%B0%88%E8%B0%88%20JS%20%E7%9A%84%E5%BC%82%E6%AD%A5%E8%BF%9B%E5%8C%96%E5%8F%B2/"/>
-    <id>http://zhaoshibo.net/blog/2017/03/17/谈谈 JS 的异步进化史/</id>
-    <published>2017-03-17T08:30:04.000Z</published>
-    <updated>2017-03-17T08:30:40.000Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://zhaoshibo.net/tags/JavaScript/"/>
-    
-  </entry>
   
   <entry>
     <title><![CDATA[从一个 CRUD 上手 React 和 AntD]]></title>
@@ -846,6 +831,28 @@ file.addEventListener('change', function(e) {
     <summary type="html">
     <![CDATA[<p>最近用到.swf的文件，一时不知如何调用，搜索后知道可以使用<code>object</code>标签或者<code>embed</code>标签来嵌入，参照着其他代码改完后，马马虎虎可以使用了。今天特意整理了其中的一些说明。原网页使用的代码如下：</p>]]>
     
+    </summary>
+    
+      <category term="HTML" scheme="http://zhaoshibo.net/tags/HTML/"/>
+    
+      <category term="Tips" scheme="http://zhaoshibo.net/tags/Tips/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[点击QQ号码弹出聊天窗口]]></title>
+    <link href="http://zhaoshibo.net/blog/2015/09/07/%E7%82%B9%E5%87%BBQQ%E5%8F%B7%E7%A0%81%E5%BC%B9%E5%87%BA%E8%81%8A%E5%A4%A9%E7%AA%97%E5%8F%A3/"/>
+    <id>http://zhaoshibo.net/blog/2015/09/07/点击QQ号码弹出聊天窗口/</id>
+    <published>2015-09-07T06:10:23.000Z</published>
+    <updated>2016-10-31T12:18:49.000Z</updated>
+    <content type="html"><![CDATA[<p>2种旧方法。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"tencent://message/?exe=qq&amp;menu=yes&amp;uin=QQ号码"</span> <span class="attribute">rel</span>=<span class="value">"nofollow"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://wpa.qq.com/msgrd?v=3&amp;uin=QQ号码&amp;site=qq&amp;menu=yes"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">rel</span>=<span class="value">"nofollow"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">img</span> <span class="attribute">border</span>=<span class="value">"0"</span> <span class="attribute">src</span>=<span class="value">"http://wpa.qq.com/pa?p=2:QQ号码:41"</span> <span class="attribute">alt</span>=<span class="value">"点击这里给我发消息"</span> <span class="attribute">title</span>=<span class="value">"点击这里给我发消息"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>1种新的方法，不会提示因“对方按钮版本过低”而无法打开。其中的<code>aty</code>和<code>a</code>值的参数影响着营销QQ中的分组及对应人员，具体设置时候还是需要重新生成。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://crm2.qq.com/page/portalpage/wpa.php?uin=QQ号码&amp;aty=0&amp;a=0&amp;curl=&amp;ty=1</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>2种旧方法。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><]]>
     </summary>
     
       <category term="HTML" scheme="http://zhaoshibo.net/tags/HTML/"/>
