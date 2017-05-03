@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-03-09T16:11:43.000Z</updated>
+  <updated>2017-05-03T11:07:43.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,6 +13,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[文本框光标处插入数据的方法]]></title>
+    <link href="http://zhaoshibo.net/blog/2017/05/03/%E6%96%87%E6%9C%AC%E6%A1%86%E5%85%89%E6%A0%87%E5%A4%84%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://zhaoshibo.net/blog/2017/05/03/文本框光标处插入数据的方法/</id>
+    <published>2017-05-03T11:07:33.000Z</published>
+    <updated>2017-05-03T11:07:43.000Z</updated>
+    <content type="html"><![CDATA[<p>在 React 项目中遇到一个需求，点击 <code>tags</code> 后插入进正在编辑的 <code>textarea</code> 中。</p>
+<p>在翻阅了一些网上的答案后发现基本上都在围绕 <code>setSelectionRange</code> 展开，然而我并不想选中啊，好吧，没有耐心再去找了。自己再去尝试下，每次把光标移出文本框后通过控制台 <code>focus</code> 会发现光标依旧定位在移出时的位置，再联系上面的 <code>api</code>，让我意识到 <code>input</code> 是存在一个记录光标位置的类似属性的。在控制台直接打印出 <code>input</code>，寻寻觅觅发现了神奇的东西 <code>selectionStart</code> 和 <code>selectionEnd</code>。修改相应的值，发现两值不一样时会选中区间内的文本，再次 <code>focus</code> 也就是定位到了可以修改这个选中值的地方了，完美~</p>
+<a id="more"></a>
+<p>因此通过修改当前文本框的 <code>selectionStart</code> 和 <code>selectionEnd</code> 即可自定义 <code>focus</code> 的光标位置了。下面是<a href="https://codepen.io/cnzsb/pen/aWybrR" target="_blank" rel="external">示例代码</a>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">textarea</span> <span class="attribute">id</span>=<span class="value">"textarea"</span> <span class="attribute">rows</span>=<span class="value">"5"</span> <span class="attribute">cols</span>=<span class="value">"50"</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">id</span>=<span class="value">"button"</span>&gt;</span>插入一个随机值<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'textarea'</span>)</span><br><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>)</span><br><span class="line"></span><br><span class="line">button.addEventListener(<span class="string">'click'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">var</span> value = textarea.value.split(<span class="string">''</span>)</span><br><span class="line">  <span class="keyword">var</span> pos = textarea.selectionStart</span><br><span class="line">  <span class="comment">// 光标处插入 4 位数随机值</span></span><br><span class="line">  <span class="keyword">var</span> insertValue = <span class="string">`&#123;&#123;<span class="subst">$&#123;Math.random().toString().slice(2, 6)&#125;</span>&#125;&#125;`</span></span><br><span class="line">  value.splice(pos, <span class="number">0</span>, insertValue)</span><br><span class="line">  textarea.value = value.join(<span class="string">''</span>)</span><br><span class="line">  <span class="comment">// 定位新的光标位置</span></span><br><span class="line">  textarea.selectionStart = textarea.selectionEnd = pos + insertValue.length</span><br><span class="line">  textarea.focus()</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p>最后，我们的项目使用了 <a href="https://ant.design" target="_blank" rel="external">antd</a>，对文本框使用 <a href="https://ant.design/components/form/" target="_blank" rel="external">setFieldsValue</a> 赋值，这时候需要注意异步的问题，可以使用 <code>setTimeout(func, 0)</code> 来解决。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在 React 项目中遇到一个需求，点击 <code>tags</code> 后插入进正在编辑的 <code>textarea</code> 中。</p>
+<p>在翻阅了一些网上的答案后发现基本上都在围绕 <code>setSelectionRange</code> 展开，然而我并不想选中啊，好吧，没有耐心再去找了。自己再去尝试下，每次把光标移出文本框后通过控制台 <code>focus</code> 会发现光标依旧定位在移出时的位置，再联系上面的 <code>api</code>，让我意识到 <code>input</code> 是存在一个记录光标位置的类似属性的。在控制台直接打印出 <code>input</code>，寻寻觅觅发现了神奇的东西 <code>selectionStart</code> 和 <code>selectionEnd</code>。修改相应的值，发现两值不一样时会选中区间内的文本，再次 <code>focus</code> 也就是定位到了可以修改这个选中值的地方了，完美~</p>]]>
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://zhaoshibo.net/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[从一个 CRUD 上手 React 和 AntD]]></title>
@@ -831,28 +855,6 @@ file.addEventListener('change', function(e) {
     <summary type="html">
     <![CDATA[<p>最近用到.swf的文件，一时不知如何调用，搜索后知道可以使用<code>object</code>标签或者<code>embed</code>标签来嵌入，参照着其他代码改完后，马马虎虎可以使用了。今天特意整理了其中的一些说明。原网页使用的代码如下：</p>]]>
     
-    </summary>
-    
-      <category term="HTML" scheme="http://zhaoshibo.net/tags/HTML/"/>
-    
-      <category term="Tips" scheme="http://zhaoshibo.net/tags/Tips/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[点击QQ号码弹出聊天窗口]]></title>
-    <link href="http://zhaoshibo.net/blog/2015/09/07/%E7%82%B9%E5%87%BBQQ%E5%8F%B7%E7%A0%81%E5%BC%B9%E5%87%BA%E8%81%8A%E5%A4%A9%E7%AA%97%E5%8F%A3/"/>
-    <id>http://zhaoshibo.net/blog/2015/09/07/点击QQ号码弹出聊天窗口/</id>
-    <published>2015-09-07T06:10:23.000Z</published>
-    <updated>2016-10-31T12:18:49.000Z</updated>
-    <content type="html"><![CDATA[<p>2种旧方法。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"tencent://message/?exe=qq&amp;menu=yes&amp;uin=QQ号码"</span> <span class="attribute">rel</span>=<span class="value">"nofollow"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://wpa.qq.com/msgrd?v=3&amp;uin=QQ号码&amp;site=qq&amp;menu=yes"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">rel</span>=<span class="value">"nofollow"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">img</span> <span class="attribute">border</span>=<span class="value">"0"</span> <span class="attribute">src</span>=<span class="value">"http://wpa.qq.com/pa?p=2:QQ号码:41"</span> <span class="attribute">alt</span>=<span class="value">"点击这里给我发消息"</span> <span class="attribute">title</span>=<span class="value">"点击这里给我发消息"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>1种新的方法，不会提示因“对方按钮版本过低”而无法打开。其中的<code>aty</code>和<code>a</code>值的参数影响着营销QQ中的分组及对应人员，具体设置时候还是需要重新生成。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://crm2.qq.com/page/portalpage/wpa.php?uin=QQ号码&amp;aty=0&amp;a=0&amp;curl=&amp;ty=1</span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<p>2种旧方法。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><]]>
     </summary>
     
       <category term="HTML" scheme="http://zhaoshibo.net/tags/HTML/"/>
