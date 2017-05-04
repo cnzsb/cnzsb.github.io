@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-05-03T11:07:43.000Z</updated>
+  <updated>2017-05-04T03:01:52.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -13,6 +13,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[对象解构赋值的坑]]></title>
+    <link href="http://zhaoshibo.net/blog/2017/05/04/%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E7%9A%84%E5%9D%91/"/>
+    <id>http://zhaoshibo.net/blog/2017/05/04/对象解构赋值的坑/</id>
+    <published>2017-05-04T03:01:52.000Z</published>
+    <updated>2017-05-04T03:01:52.000Z</updated>
+    <content type="html"><![CDATA[<p>对象的解构赋值为日常代码的开发提供了很大的便利，尤其适用 React 开发中对 <code>state</code> 中的引用数据类型 copy 一份再去操作的情况。在使用了如此久的情况下一直没有深究解构赋值或者 <code>Object.assign</code> 的浅拷贝会产生什么影响，于是终于踩到坑了。</p>
+<a id="more"></a>
+<p>由于浅拷贝的原因，上面所说的在 React 中的应用也就存在了问题。来看下面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> deepObj = &#123;</span><br><span class="line">    obj: &#123;a: <span class="number">1</span>&#125;,</span><br><span class="line">    num: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> copyObj = &#123;...deepObj&#125;</span><br><span class="line"><span class="built_in">console</span>.log(copyObj === deepObj)    <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(copyObj.obj === deepObj.obj)    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>从代码中可清晰的发现浅拷贝仅影响被拷贝的第一层结构，而内部数据还是保持了与原数据的引用关系，即此时若操作 <code>copyObj.obj</code> 则会引发 <code>deepObj.obj</code> 数据的同步变更，这显然不是我们想要的结果。</p>
+<p>因此，一定要注意在浅拷贝的时候如果要操作内部数据的话则需要再次对引用类型进行拷贝，或者一开始就使用 <code>JSON.parse(JSON.stringify(deepObj))</code> 这种小技巧对原数据进行深拷贝，或是干脆使用 <a href="http://facebook.github.io/immutable-js/" target="_blank" rel="external">Immutable</a> 来避免可变数据。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>对象的解构赋值为日常代码的开发提供了很大的便利，尤其适用 React 开发中对 <code>state</code> 中的引用数据类型 copy 一份再去操作的情况。在使用了如此久的情况下一直没有深究解构赋值或者 <code>Object.assign</code> 的浅拷贝会产生什么影响，于是终于踩到坑了。</p>]]>
+    
+    </summary>
+    
+      <category term="JavaScript，React" scheme="http://zhaoshibo.net/tags/JavaScript%EF%BC%8CReact/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[文本框光标处插入数据的方法]]></title>
@@ -785,81 +807,6 @@ file.addEventListener('change', function(e) {
     </summary>
     
       <category term="JavaScript" scheme="http://zhaoshibo.net/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[object标签和embed标签]]></title>
-    <link href="http://zhaoshibo.net/blog/2015/09/25/object%E6%A0%87%E7%AD%BE%E5%92%8Cembed%E6%A0%87%E7%AD%BE/"/>
-    <id>http://zhaoshibo.net/blog/2015/09/25/object标签和embed标签/</id>
-    <published>2015-09-25T07:21:51.000Z</published>
-    <updated>2016-10-31T12:18:49.000Z</updated>
-    <content type="html"><![CDATA[<p>最近用到.swf的文件，一时不知如何调用，搜索后知道可以使用<code>object</code>标签或者<code>embed</code>标签来嵌入，参照着其他代码改完后，马马虎虎可以使用了。今天特意整理了其中的一些说明。原网页使用的代码如下：</p>
-<a id="more"></a>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">object</span> <span class="attribute">classid</span>=<span class="value">"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"</span> <span class="attribute">codebase</span>=<span class="value">"&lt;a href='http://www.adobe.com/go/getflash'&gt;&lt;img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /&gt;&lt;/a&gt;"</span> <span class="attribute">width</span>=<span class="value">"100%"</span> <span class="attribute">height</span>=<span class="value">"352"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"movie"</span> <span class="attribute">value</span>=<span class="value">"1.swf"</span> <span class="attribute">id</span>=<span class="value">"movie"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"wmode"</span> <span class="attribute">value</span>=<span class="value">"transparent"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"quality"</span> <span class="attribute">value</span>=<span class="value">"high"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"bgcolor"</span> <span class="attribute">value</span>=<span class="value">"#e1f7ff"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"play"</span> <span class="attribute">value</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"loop"</span> <span class="attribute">value</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"scale"</span> <span class="attribute">value</span>=<span class="value">"showall"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"menu"</span> <span class="attribute">value</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"devicefont"</span> <span class="attribute">value</span>=<span class="value">"false"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"salign"</span> <span class="attribute">value</span>=<span class="value">""</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"allowScriptAccess"</span> <span class="attribute">value</span>=<span class="value">"sameDomain"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">embed</span> <span class="attribute">src</span>=<span class="value">"1.swf"</span> <span class="attribute">wmode</span>=<span class="value">"transparent"</span> <span class="attribute">quality</span>=<span class="value">"high"</span> <span class="attribute">bgcolor</span>=<span class="value">"#e1f7ff"</span> <span class="attribute">loop</span>=<span class="value">"true"</span> <span class="attribute">scale</span>=<span class="value">"showall"</span> <span class="attribute">menu</span>=<span class="value">"true"</span> <span class="attribute">devicefont</span>=<span class="value">"false"</span> <span class="attribute">allowScriptAccess</span>=<span class="value">"sameDomain"</span> <span class="attribute">width</span>=<span class="value">"100%"</span> <span class="attribute">height</span>=<span class="value">"352"</span> <span class="attribute">type</span>=<span class="value">"application/x-shockwave-flash"</span> <span class="attribute">pluginspage</span>=<span class="value">"&lt;a href='http://www.adobe.com/go/getflash'&gt;&lt;img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /&gt;&lt;/a&gt;"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">object</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里同时使用了<code>object</code>和<code>embed</code>标签来嵌入，目的是为了浏览器的兼容性。因此这两种写法对应的属性和参数要一致。</p>
-<p>下面记录一些属性的意义。</p>
-<h3 id="必需属性">必需属性</h3><ul>
-<li><code>classid</code>，设置浏览器的AcriveX控件，与上述使用代码必须一致，仅用于<code>object</code>。</li>
-<li><code>codebase</code>，设置flash插件的下载地址，若浏览器未安装，可自动下载安装，仅用于<code>object</code>。</li>
-<li><code>width</code>和<code>height</code>，设置文件的宽度和高度，以百分比或像素表示。</li>
-<li><code>movie</code>，设置文件地址，仅用于<code>object</code>。</li>
-<li><code>pluginspage</code>，设置flash插件的下载地址，若浏览器未安装，可自动下载安装，仅用于<code>embed</code>。</li>
-<li><code>src</code>，设置文件地址，仅用于<code>embed</code>。</li>
-</ul>
-<h3 id="可选属性">可选属性</h3><ul>
-<li><code>wmode</code>，设置文件的window mode属性，指定文件在浏览器中的透明，层叠及位置。<ul>
-<li><code>window</code>，文件在浏览器中自己的矩形窗口内播放。</li>
-<li><code>opaque</code>，文件隐藏了所有在它后面的内容。</li>
-<li><code>transparent</code>，文件透明，显示文件后面的网页内容，将会降低动画性能，且并不适用于所有浏览器。</li>
-</ul>
-</li>
-<li><code>quality</code><ul>
-<li><code>low</code>，速度优于美观，但不应用反锯齿。</li>
-<li><code>autolow</code>，刚开始着重于速度，但当需要时随时提升美观。</li>
-<li><code>autohigh</code>，同时着重播放速度和美观，但需要时则牺牲美观来保证播放速度。</li>
-<li><code>medium</code>，应用一些反锯齿而不平滑位图。它质量高于<code>low</code>设置而低于<code>high</code>设置。</li>
-<li><code>high</code>，美观优于播放速度，而且一直应用反锯齿。如果影片不包含动画，位图会被平滑化；而如果影片包含动画，位图将不变平滑。</li>
-<li><code>best</code>，提供最好的显示质量而不考虑播放速度。所有输出都应用反锯齿及所有位图都被平滑化。</li>
-</ul>
-</li>
-<li><code>bgcolor</code>，设置文件背景颜色。使用这个属性覆盖文件中设定的背景颜色。</li>
-<li><code>play</code>，设置文件加载完成后是否自动播放，默认为<code>true</code>。</li>
-<li><code>loop</code>，设置文件播放完后是否循环，默认为<code>true</code>。</li>
-<li><code>scale</code><ul>
-<li><code>showall</code>，默认设置，文件在指定区域显示，但保持原始比例，文件两侧会出现边框。</li>
-<li><code>noborder</code>，收缩文件以适应指定区域，但保持原始比例，文件不失真，但部分文件可能被裁切。</li>
-<li><code>exactfit</code>，使文件自适应指定区域，文件可能失真变形或改变显示比例。</li>
-</ul>
-</li>
-<li><code>menu</code><ul>
-<li><code>true</code>，显示全部的菜单，允许用户放大，缩小等控制文件播放的操作。</li>
-<li><code>false</code>，只显示包含设置选项和关于文件的菜单。</li>
-</ul>
-</li>
-<li><code>allowScriptAccess</code><ul>
-<li><code>always</code>，默认设置，代表任何文件都被允许调用脚本。</li>
-<li><code>sameDomain</code>，设置文件的脚本调用权限范围为同一域名。    </li>
-<li><code>never</code>，代表不允许调用脚本。</li>
-</ul>
-</li>
-<li><code>devicefont</code>，是否设置为设备字体样式。</li>
-<li><code>align</code>，默认为居中，当浏览器窗口小于文件时，边缘会被裁切。可设置为<code>left</code>，<code>right</code>，<code>top</code>，<code>bottom</code>，设置后如有需要，另外三边将被裁切。</li>
-<li><code>standby</code>，设置文件正在加载时显示的文本。</li>
-</ul>
-<h3 id="遇到的问题">遇到的问题</h3><ol>
-<li>在<code>embed</code>中设置<code>play=“false”</code>即文件加载后不自动播放时如果出问题，可再设置<code>flashvars=&quot;autoplay=false&amp;play=false&quot;</code>。</li>
-<li>视频全屏按钮点击无效时，可设置<code>allowFullScreen=&quot;true&quot;</code>。</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>最近用到.swf的文件，一时不知如何调用，搜索后知道可以使用<code>object</code>标签或者<code>embed</code>标签来嵌入，参照着其他代码改完后，马马虎虎可以使用了。今天特意整理了其中的一些说明。原网页使用的代码如下：</p>]]>
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://zhaoshibo.net/tags/HTML/"/>
-    
-      <category term="Tips" scheme="http://zhaoshibo.net/tags/Tips/"/>
     
   </entry>
   
