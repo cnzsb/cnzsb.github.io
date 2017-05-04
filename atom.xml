@@ -4,7 +4,7 @@
   <subtitle><![CDATA[奔跑的Q丶]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhaoshibo.net/"/>
-  <updated>2017-05-04T03:01:52.000Z</updated>
+  <updated>2017-05-04T03:03:45.000Z</updated>
   <id>http://zhaoshibo.net/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[对象解构赋值的坑]]></title>
-    <link href="http://zhaoshibo.net/blog/2017/05/04/%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E7%9A%84%E5%9D%91/"/>
-    <id>http://zhaoshibo.net/blog/2017/05/04/对象解构赋值的坑/</id>
-    <published>2017-05-04T03:01:52.000Z</published>
-    <updated>2017-05-04T03:01:52.000Z</updated>
+    <title><![CDATA[踩坑对象解构赋值]]></title>
+    <link href="http://zhaoshibo.net/blog/2017/05/04/%E8%B8%A9%E5%9D%91%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/"/>
+    <id>http://zhaoshibo.net/blog/2017/05/04/踩坑对象解构赋值/</id>
+    <published>2017-05-04T03:03:45.000Z</published>
+    <updated>2017-05-04T03:03:45.000Z</updated>
     <content type="html"><![CDATA[<p>对象的解构赋值为日常代码的开发提供了很大的便利，尤其适用 React 开发中对 <code>state</code> 中的引用数据类型 copy 一份再去操作的情况。在使用了如此久的情况下一直没有深究解构赋值或者 <code>Object.assign</code> 的浅拷贝会产生什么影响，于是终于踩到坑了。</p>
 <a id="more"></a>
 <p>由于浅拷贝的原因，上面所说的在 React 中的应用也就存在了问题。来看下面的代码：</p>
