@@ -179,6 +179,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-广度与深度优先遍历" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2017/05/09/广度与深度优先遍历/" class="article-date">
+  	<time datetime="2017-05-09T09:37:57.000Z" itemprop="datePublished">2017-05-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/05/09/广度与深度优先遍历/">广度与深度优先遍历</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 <code>{key: &#39;one&#39;, value: &#39;1&#39;, children: [...]}</code>，都包含 <code>key</code> 和 <code>value</code>，如果存在 <code>children</code> 则内部会存在 <code>n</code> 个和此结构相同的节点，现模拟数据如下图：</p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/data.png" alt="原始数据结构"></p>
+<p>已知一个 <code>value</code> 如 <code>3-2-1</code>，需要取出该路径上的所有 <code>key</code>，即期望得到 <code>[&#39;three&#39;, &#39;three-two&#39;, &#39;three-two-one&#39;]</code>。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/blog/2017/05/09/广度与深度优先遍历/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-git rebase 批量合并 commits" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -698,70 +758,6 @@
       
         <p class="article-more-link">
           <a  href="/blog/2017/01/05/2016 年终总结/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-理解 JavaScipt new 操作符" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2016/10/19/理解 JavaScipt new 操作符/" class="article-date">
-  	<time datetime="2016-10-19T10:10:53.000Z" itemprop="datePublished">2016-10-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/10/19/理解 JavaScipt new 操作符/">理解 JavaScipt new 操作符</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在《JavaScript 高级程序设计》中提到使用 <code>new</code> 操作符会经历 4 个步骤：</p>
-<blockquote>
-<p>(1) 创建一个新对象；</p>
-<p>(2) 将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）；</p>
-<p>(3) 执行构造函数中的代码（为这个新对象添加属性）；</p>
-<p>(4) 返回新对象。</p>
-</blockquote>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/blog/2016/10/19/理解 JavaScipt new 操作符/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

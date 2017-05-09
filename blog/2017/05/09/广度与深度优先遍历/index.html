@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>广度与深度优先遍历 | 奔跑的Q丶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 {key: &amp;#39;one&amp;#39;, value: &amp;#39;1&amp;#39;, children: [...]}，都包含 key 和 value，如果存在 children 则内部会存在 n 个和此结构相同的节点，现模拟数据如下图：
+
+已知一个 value 如 3-2-1，需要取出该路径上的所有 key，即期望得到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="广度与深度优先遍历">
+<meta property="og:url" content="http://zhaoshibo.net/blog/2017/05/09/广度与深度优先遍历/index.html">
+<meta property="og:site_name" content="奔跑的Q丶">
+<meta property="og:description" content="现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 {key: &amp;#39;one&amp;#39;, value: &amp;#39;1&amp;#39;, children: [...]}，都包含 key 和 value，如果存在 children 则内部会存在 n 个和此结构相同的节点，现模拟数据如下图：
+
+已知一个 value 如 3-2-1，需要取出该路径上的所有 key，即期望得到">
+<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/data.png">
+<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/bfs.png">
+<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/dfs.png">
+<meta property="og:updated_time" content="2017-05-09T09:41:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="广度与深度优先遍历">
+<meta name="twitter:description" content="现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 {key: &amp;#39;one&amp;#39;, value: &amp;#39;1&amp;#39;, children: [...]}，都包含 key 和 value，如果存在 children 则内部会存在 n 个和此结构相同的节点，现模拟数据如下图：
+
+已知一个 value 如 3-2-1，需要取出该路径上的所有 key，即期望得到">
+  
+    <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">赵世博</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">奔跑的Q丶</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/mydemo">Demo</a></li>
+				        
+							<li><a href="/ifetask">MYIFE</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://github.com/cnzsb" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2821242461" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="mailto:cnzsb@foxmail.com" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AntD/" style="font-size: 10px;">AntD</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 15px;">CSS3</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/Tips/" style="font-size: 17.5px;">Tips</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/面试题/" style="font-size: 12.5px;">面试题</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">赵世博，昵称奔跑的Q丶。热爱前端，奋斗中~↖(^ω^)↗</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">赵世博</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">赵世博</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">奔跑的Q丶</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/mydemo">Demo</a></li>
+		        
+					<li><a href="/ifetask">MYIFE</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/cnzsb" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2821242461" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="mailto:cnzsb@foxmail.com" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-广度与深度优先遍历" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2017/05/09/广度与深度优先遍历/" class="article-date">
+  	<time datetime="2017-05-09T09:37:57.000Z" itemprop="datePublished">2017-05-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      广度与深度优先遍历
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 <code>{key: &#39;one&#39;, value: &#39;1&#39;, children: [...]}</code>，都包含 <code>key</code> 和 <code>value</code>，如果存在 <code>children</code> 则内部会存在 <code>n</code> 个和此结构相同的节点，现模拟数据如下图：</p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/data.png" alt="原始数据结构"></p>
+<p>已知一个 <code>value</code> 如 <code>3-2-1</code>，需要取出该路径上的所有 <code>key</code>，即期望得到 <code>[&#39;three&#39;, &#39;three-two&#39;, &#39;three-two-one&#39;]</code>。</p>
+<a id="more"></a>
+<h2 id="广度优先遍历">广度优先遍历</h2><p>广度优先的算法如下图：</p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/bfs.png" alt="bfs"></p>
+<p>从上图可以轻易看出广度优先即是按照数据结构的层次一层层遍历搜索。首先需要把外层的数据结构放入一个待搜索的队列（Queue）中，进而对这个队列进行遍历，当正在遍历的节点存在子节点（<code>children</code>）时则把此子节点下所有节点放入待搜索队列的末端。因为本需求需要记录路径，因此还需要对这些数据做一些特殊处理，此处采用了为这些节点增加 <code>parent</code> 即来源的方法。对此队列依次搜索直至找到目标节点时，可通过深度遍历此节点的 <code>parent</code> 从而获得到整个目标路径。具体代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 广度优先遍历</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findPathBFS</span>(<span class="params">source, goal</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 深拷贝原始数据</span></span><br><span class="line">  <span class="keyword">var</span> dataSource = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(source))</span><br><span class="line">  <span class="keyword">var</span> res = []</span><br><span class="line">  <span class="comment">// 每一层的数据都 push 进 res</span></span><br><span class="line">  res.push(...dataSource)</span><br><span class="line">  <span class="comment">// res 动态增加长度</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; res.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> curData = res[i]</span><br><span class="line">    <span class="comment">// 匹配成功</span></span><br><span class="line">    <span class="keyword">if</span> (curData.value === goal) &#123;</span><br><span class="line">      <span class="keyword">var</span> result = []</span><br><span class="line">      <span class="comment">// 返回当前对象及其父节点所组成的结果</span></span><br><span class="line">      <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span> <span class="title">findParent</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        result.unshift(data.key)</span><br><span class="line">        <span class="keyword">if</span> (data.parent) <span class="keyword">return</span> findParent(data.parent)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">      &#125;)(curData)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果有 children 则 push 进 res 中待搜索</span></span><br><span class="line">    <span class="keyword">if</span> (curData.children) &#123;</span><br><span class="line">      res.push(...curData.children.map(d =&gt; &#123;</span><br><span class="line">        <span class="comment">// 在每一个数据中增加 parent，为了记录路径使用</span></span><br><span class="line">        d.parent = curData</span><br><span class="line">        <span class="keyword">return</span> d</span><br><span class="line">      &#125;))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 没有搜索到结果，默认返回空数组</span></span><br><span class="line">  <span class="keyword">return</span> []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="深度优先遍历">深度优先遍历</h2><p>深度优先的算法如下图：</p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/dfs.png" alt="dfs"></p>
+<p>深度优先即是取得要遍历的节点时如果发现有子节点（<code>children</code>） 时，则不断的深度遍历，并把这些节点放入一个待搜索的栈（Stack）中，直到最后一个没有子节点的节点时，开始对栈进行搜索。后进先出（下列代码中使用了 <code>push</code> 方法入栈，因此需使用 <code>pop</code> 方法出栈），如果没有匹配到，则删掉此节点，同时删掉父节点中的自身，不断重复遍历直到匹配为止。<strong>注意，常规的深度优先并不会破坏原始数据结构，而是采用 <code>isVisited</code> 或者颜色标记法进行表示，原理相同，此处简单粗暴做了删除处理。</strong>代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 深度优先遍历</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findPathDFS</span>(<span class="params">source, goal</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//  把所有资源放到一个树的节点下，因为会改变原数据，因此做深拷贝处理</span></span><br><span class="line">  <span class="keyword">var</span> dataSource = [&#123;children: <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(source))&#125;]</span><br><span class="line">  <span class="keyword">var</span> res = []</span><br><span class="line">  <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!data.length) <span class="keyword">return</span> res</span><br><span class="line">    res.push(data[<span class="number">0</span>])</span><br><span class="line">    <span class="comment">// 深度搜索一条数据，存取在数组 res 中</span></span><br><span class="line">    <span class="keyword">if</span> (data[<span class="number">0</span>].children) <span class="keyword">return</span> dfs(data[<span class="number">0</span>].children)</span><br><span class="line">    <span class="comment">// 匹配成功</span></span><br><span class="line">    <span class="keyword">if</span> (res[res.length - <span class="number">1</span>].value === goal) &#123;</span><br><span class="line">      <span class="comment">// 删除自己添加树的根节点</span></span><br><span class="line">      res.shift()</span><br><span class="line">      <span class="keyword">return</span> res.map(r =&gt; r.key)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 匹配失败则删掉当前比对的节点</span></span><br><span class="line">    res.pop()</span><br><span class="line">    <span class="comment">// 没有匹配到任何值则 return</span></span><br><span class="line">    <span class="keyword">if</span> (!res.length) <span class="keyword">return</span> res</span><br><span class="line">    <span class="comment">// 取得最后一个节点，待做再次匹配</span></span><br><span class="line">    <span class="keyword">var</span> lastNode = res[res.length - <span class="number">1</span>]</span><br><span class="line">    <span class="comment">// 删除已经匹配失败的节点（即为上面 res.pop() 的内容）</span></span><br><span class="line">    lastNode.children.shift()</span><br><span class="line">    <span class="comment">// 没有 children 时</span></span><br><span class="line">    <span class="keyword">if</span> (!lastNode.children.length) &#123;</span><br><span class="line">      <span class="comment">// 删除空 children，且此时需要深度搜索的为 res 的最后一个值</span></span><br><span class="line">      <span class="keyword">delete</span> lastNode.children</span><br><span class="line">      <span class="keyword">return</span> dfs([res.pop()])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dfs(lastNode.children)</span><br><span class="line">  &#125;)(dataSource)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该方法在思考时，添加了根节点以把数据转换成树，并在做深度遍历时传入了子节点数组 <code>children</code> 作为参数，其实多有不便，于是优化后的代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 优化后的深度搜索</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findPathDFS</span>(<span class="params">source, goal</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 因为会改变原数据，因此做深拷贝处理</span></span><br><span class="line">  <span class="keyword">var</span> dataSource = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(source))</span><br><span class="line">  <span class="keyword">var</span> res = []</span><br><span class="line">  <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    res.push(data)</span><br><span class="line">    <span class="comment">// 深度搜索一条数据，存取在数组 res 中</span></span><br><span class="line">    <span class="keyword">if</span> (data.children) <span class="keyword">return</span> dfs(data.children[<span class="number">0</span>])</span><br><span class="line">    <span class="comment">// 匹配成功</span></span><br><span class="line">    <span class="keyword">if</span> (res[res.length - <span class="number">1</span>].value === goal) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.map(r =&gt; r.key)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 匹配失败则删掉当前比对的节点</span></span><br><span class="line">    res.pop()</span><br><span class="line">    <span class="comment">// 没有匹配到任何值则 return，如果源数据有值则再次深度搜索</span></span><br><span class="line">    <span class="keyword">if</span> (!res.length) <span class="keyword">return</span> !!dataSource.length ? dfs(dataSource.shift()) : res</span><br><span class="line">    <span class="comment">// 取得最后一个节点，待做再次匹配</span></span><br><span class="line">    <span class="keyword">var</span> lastNode = res[res.length - <span class="number">1</span>]</span><br><span class="line">    <span class="comment">// 删除已经匹配失败的节点（即为上面 res.pop() 的内容）</span></span><br><span class="line">    lastNode.children.shift()</span><br><span class="line">    <span class="comment">// 没有 children 时</span></span><br><span class="line">    <span class="keyword">if</span> (!lastNode.children.length) &#123;</span><br><span class="line">      <span class="comment">// 删除空 children，且此时需要深度搜索的为 res 的最后一个值</span></span><br><span class="line">      <span class="keyword">delete</span> lastNode.children</span><br><span class="line">      <span class="keyword">return</span> dfs(res.pop())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dfs(lastNode.children[<span class="number">0</span>])</span><br><span class="line">  &#125;)(dataSource.shift())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改进后的方法只关心传入的节点，如果存在子节点则内部自行处理，而非预先传入所有子节点数组进行处理，此方法更易理解一些。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2017/05/04/git rebase 批量合并 commits/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git rebase 批量合并 commits</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="广度与深度优先遍历" data-title="广度与深度优先遍历" data-url="http://zhaoshibo.net/blog/2017/05/09/广度与深度优先遍历/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zhaoshibo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 赵世博
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71274501-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
