@@ -1,4 +1,4 @@
-title: '广度与深度优先遍历'
+title: 'JS 中的广度与深度优先遍历'
 date: 2017-05-09 17:37:57
 tags: [JavaScript]
 
@@ -135,3 +135,7 @@ function findPathDFS(source, goal) {
 ```
 
 改进后的方法只关心传入的节点，如果存在子节点则内部自行处理，而非预先传入所有子节点数组进行处理，此方法更易理解一些。
+
+## 结语
+
+以上便是广度与深度遍历在 JS 中的应用，代码可在 [codepen](https://codepen.io/cnzsb/pen/LyjgXL) 中查看。
