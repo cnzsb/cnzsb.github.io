@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>广度与深度优先遍历 | 奔跑的Q丶</title>
+  <title>JS 中的广度与深度优先遍历 | 奔跑的Q丶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 {key: &amp;#39;one&amp;#39;, value: &amp;#39;1&amp;#39;, children: [...]}，都包含 key 和 value，如果存在 children 则内部会存在 n 个和此结构相同的节点，现模拟数据如下图：
 
 已知一个 value 如 3-2-1，需要取出该路径上的所有 key，即期望得到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="广度与深度优先遍历">
-<meta property="og:url" content="http://zhaoshibo.net/blog/2017/05/09/广度与深度优先遍历/index.html">
+<meta property="og:title" content="JS 中的广度与深度优先遍历">
+<meta property="og:url" content="http://zhaoshibo.net/blog/2017/05/09/JS 中的广度与深度优先遍历/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
 <meta property="og:description" content="现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 {key: &amp;#39;one&amp;#39;, value: &amp;#39;1&amp;#39;, children: [...]}，都包含 key 和 value，如果存在 children 则内部会存在 n 个和此结构相同的节点，现模拟数据如下图：
 
@@ -18,9 +18,9 @@
 <meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/data.png">
 <meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/bfs.png">
 <meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/dfs.png">
-<meta property="og:updated_time" content="2017-05-09T09:41:17.000Z">
+<meta property="og:updated_time" content="2017-05-09T09:46:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="广度与深度优先遍历">
+<meta name="twitter:title" content="JS 中的广度与深度优先遍历">
 <meta name="twitter:description" content="现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 {key: &amp;#39;one&amp;#39;, value: &amp;#39;1&amp;#39;, children: [...]}，都包含 key 和 value，如果存在 children 则内部会存在 n 个和此结构相同的节点，现模拟数据如下图：
 
 已知一个 value 如 3-2-1，需要取出该路径上的所有 key，即期望得到">
@@ -187,10 +187,10 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-广度与深度优先遍历" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS 中的广度与深度优先遍历" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2017/05/09/广度与深度优先遍历/" class="article-date">
+      <a href="/blog/2017/05/09/JS 中的广度与深度优先遍历/" class="article-date">
   	<time datetime="2017-05-09T09:37:57.000Z" itemprop="datePublished">2017-05-09</time>
 </a>
     </div>
@@ -204,7 +204,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      广度与深度优先遍历
+      JS 中的广度与深度优先遍历
     </h1>
   
 
@@ -239,6 +239,7 @@
 <p>该方法在思考时，添加了根节点以把数据转换成树，并在做深度遍历时传入了子节点数组 <code>children</code> 作为参数，其实多有不便，于是优化后的代码如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 优化后的深度搜索</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findPathDFS</span>(<span class="params">source, goal</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 因为会改变原数据，因此做深拷贝处理</span></span><br><span class="line">  <span class="keyword">var</span> dataSource = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(source))</span><br><span class="line">  <span class="keyword">var</span> res = []</span><br><span class="line">  <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    res.push(data)</span><br><span class="line">    <span class="comment">// 深度搜索一条数据，存取在数组 res 中</span></span><br><span class="line">    <span class="keyword">if</span> (data.children) <span class="keyword">return</span> dfs(data.children[<span class="number">0</span>])</span><br><span class="line">    <span class="comment">// 匹配成功</span></span><br><span class="line">    <span class="keyword">if</span> (res[res.length - <span class="number">1</span>].value === goal) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.map(r =&gt; r.key)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 匹配失败则删掉当前比对的节点</span></span><br><span class="line">    res.pop()</span><br><span class="line">    <span class="comment">// 没有匹配到任何值则 return，如果源数据有值则再次深度搜索</span></span><br><span class="line">    <span class="keyword">if</span> (!res.length) <span class="keyword">return</span> !!dataSource.length ? dfs(dataSource.shift()) : res</span><br><span class="line">    <span class="comment">// 取得最后一个节点，待做再次匹配</span></span><br><span class="line">    <span class="keyword">var</span> lastNode = res[res.length - <span class="number">1</span>]</span><br><span class="line">    <span class="comment">// 删除已经匹配失败的节点（即为上面 res.pop() 的内容）</span></span><br><span class="line">    lastNode.children.shift()</span><br><span class="line">    <span class="comment">// 没有 children 时</span></span><br><span class="line">    <span class="keyword">if</span> (!lastNode.children.length) &#123;</span><br><span class="line">      <span class="comment">// 删除空 children，且此时需要深度搜索的为 res 的最后一个值</span></span><br><span class="line">      <span class="keyword">delete</span> lastNode.children</span><br><span class="line">      <span class="keyword">return</span> dfs(res.pop())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dfs(lastNode.children[<span class="number">0</span>])</span><br><span class="line">  &#125;)(dataSource.shift())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>改进后的方法只关心传入的节点，如果存在子节点则内部自行处理，而非预先传入所有子节点数组进行处理，此方法更易理解一些。</p>
+<h2 id="结语">结语</h2><p>以上便是广度与深度遍历在 JS 中的应用，代码可在 <a href="https://codepen.io/cnzsb/pen/LyjgXL" target="_blank" rel="external">codepen</a> 中查看。</p>
 
       
     </div>
@@ -279,7 +280,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="广度与深度优先遍历" data-title="广度与深度优先遍历" data-url="http://zhaoshibo.net/blog/2017/05/09/广度与深度优先遍历/"></div>
+	<div class="ds-thread" data-thread-key="JS 中的广度与深度优先遍历" data-title="JS 中的广度与深度优先遍历" data-url="http://zhaoshibo.net/blog/2017/05/09/JS 中的广度与深度优先遍历/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
