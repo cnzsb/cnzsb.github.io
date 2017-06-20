@@ -13,7 +13,7 @@ subnav:
   mail: "mailto:cnzsb@foxmail.com"
   rss: "/atom.xml"
   #zhihu: "http://www.zhihu.com/people/cnzsb"
-  #douban: "#"  
+  #douban: "#"
   #facebook: "#"
   #google: "#"
   #twitter: "#"
@@ -37,7 +37,7 @@ google_analytics: 'UA-71274501-1'
 favicon: "/favicon.ico"
 
 #你的头像url
-avatar: "/avatar.jpg"
+avatar: "/avatar.png"
 #是否开启分享
 share: true
 #是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
