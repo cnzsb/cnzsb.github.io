@@ -6,18 +6,18 @@
   <title>隐藏滚动条方法 | 奔跑的Q丶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="隐藏滚动条方法：
-1234567/* 隐藏滚动条 */-ms-overflow-style: none;overflow: -moz-scrollbars-none;&amp;amp;::-webkit-scrollbar &amp;#123;  width: 0;&amp;#125;">
+1234567891011121314151617181920/* 隐藏滚动条, ie, chrome */.target &amp;#123;    overflow-y: scroll;    -ms-overflow-style: none;        &amp;amp;::-webkit-scrollbar &amp;#123;      width: 0;    &amp;#125;&amp;#125;/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐藏滚动条方法">
 <meta property="og:url" content="http://zhaoshibo.net/blog/2017/08/14/隐藏滚动条方法/index.html">
 <meta property="og:site_name" content="奔跑的Q丶">
 <meta property="og:description" content="隐藏滚动条方法：
-1234567/* 隐藏滚动条 */-ms-overflow-style: none;overflow: -moz-scrollbars-none;&amp;amp;::-webkit-scrollbar &amp;#123;  width: 0;&amp;#125;">
-<meta property="og:updated_time" content="2017-08-14T03:30:50.000Z">
+1234567891011121314151617181920/* 隐藏滚动条, ie, chrome */.target &amp;#123;    overflow-y: scroll;    -ms-overflow-style: none;        &amp;amp;::-webkit-scrollbar &amp;#123;      width: 0;    &amp;#125;&amp;#125;/">
+<meta property="og:updated_time" content="2017-08-23T06:14:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐藏滚动条方法">
 <meta name="twitter:description" content="隐藏滚动条方法：
-1234567/* 隐藏滚动条 */-ms-overflow-style: none;overflow: -moz-scrollbars-none;&amp;amp;::-webkit-scrollbar &amp;#123;  width: 0;&amp;#125;">
+1234567891011121314151617181920/* 隐藏滚动条, ie, chrome */.target &amp;#123;    overflow-y: scroll;    -ms-overflow-style: none;        &amp;amp;::-webkit-scrollbar &amp;#123;      width: 0;    &amp;#125;&amp;#125;/">
   
     <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
   
@@ -219,7 +219,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>隐藏滚动条方法：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 隐藏滚动条 */</span></span><br><span class="line"><span class="tag">-ms-overflow-style</span>: <span class="tag">none</span>;</span><br><span class="line"><span class="tag">overflow</span>: <span class="tag">-moz-scrollbars-none</span>;</span><br><span class="line"></span><br><span class="line">&amp;<span class="pseudo">::-webkit-scrollbar</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/* 隐藏滚动条, ie, chrome */</span><br><span class="line">.target &#123;</span><br><span class="line">    overflow-y: scroll;</span><br><span class="line">    -ms-overflow-style: none;</span><br><span class="line">    </span><br><span class="line">    &amp;::-webkit-scrollbar &#123;</span><br><span class="line">      width: 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* firefox 下没有直接方法隐藏，只能 hack (unreliable) */</span><br><span class="line">.container &#123;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    </span><br><span class="line">    .target &#123;</span><br><span class="line">        overflow-y: scroll;</span><br><span class="line">        margin-right: -16px;</span><br><span class="line">        padding-right: 16px;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
