@@ -41,6 +41,30 @@
   </entry>
   
   <entry>
+    <title>Node 爬虫实践 - Gitlab 文件下载</title>
+    <link href="http://zhaoshibo.net/blog/2017/07/14/Node%20%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5%20-%20Gitlab%20%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://zhaoshibo.net/blog/2017/07/14/Node 爬虫实践 - Gitlab 文件下载/</id>
+    <published>2017-07-14T07:27:46.000Z</published>
+    <updated>2017-08-28T07:27:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>公司的设计图稿等全部存在 Gitlab 上的某个仓库中，恰好某次开发需要使用到其中的图稿，因为历史图稿使这个仓库异常大，而我只需要其中很小的一部分，索性就不想 clone 整个仓库而只想下载需要的文件夹。但是在使用 Git 时如果只想下载其中部分的文件夹是一件很复杂的事情，尝试了各种指令后发现无论如何都要先 fetch 整个项目，而下载其中的一个文件却是一件简单的事情，那不如动手写个爬虫吧。</p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/08/18/Node%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-Gitlab%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/gitlab-fileDownloader.gif" alt="demo-gitlab-fileDownload"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;公司的设计图稿等全部存在 Gitlab 上的某个仓库中，恰好某次开发需要使用到其中的图稿，因为历史图稿使这个仓库异常大，而我只需要其中很小的一部分，索性就不想 clone 整个仓库而只想下载需要的文件夹。但是在使用 Git 时如果只想下载其中部分的文件夹是一件很复杂的事情，
+    
+    </summary>
+    
+    
+      <category term="Node" scheme="http://zhaoshibo.net/tags/Node/"/>
+    
+      <category term="Crawler" scheme="http://zhaoshibo.net/tags/Crawler/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JS 中的广度与深度优先遍历</title>
     <link href="http://zhaoshibo.net/blog/2017/05/09/JS%20%E4%B8%AD%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/"/>
     <id>http://zhaoshibo.net/blog/2017/05/09/JS 中的广度与深度优先遍历/</id>
@@ -547,7 +571,7 @@ file.addEventListener('change', function(e) {
 </script>
 
 
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"file"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/jpg, image/jpeg, image/png, image/gif"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"preview"</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"200"</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript"><span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">'file'</span>),</span></div><div class="line"><span class="javascript">    preview = <span class="built_in">document</span>.getElementById(<span class="string">'preview'</span>);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">file.addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span><span class="params">(e)</span> </span>&#123;</span></div><div class="line"><span class="actionscript">    <span class="keyword">var</span> file = e.target.files[<span class="number">0</span>],</span></div><div class="line"><span class="actionscript">        fr = <span class="keyword">new</span> FileReader();</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">    fr.onload = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> </span>&#123;</span></div><div class="line"><span class="undefined">        preview.src = e.target.result;</span></div><div class="line"><span class="actionscript">        preview.style.display = <span class="string">'block'</span>;</span></div><div class="line"><span class="undefined">    &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">    fr.readAsDataURL(file);</span></div><div class="line"><span class="actionscript">&#125;, <span class="literal">false</span>);</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"file"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/jpg, image/jpeg, image/png, image/gif"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"preview"</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"200"</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">var file = document.getElementById('file'),</span></div><div class="line"><span class="undefined">    preview = document.getElementById('preview');</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">file.addEventListener('change', function(e) &#123;</span></div><div class="line"><span class="undefined">    var file = e.target.files[0],</span></div><div class="line"><span class="undefined">        fr = new FileReader();</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">    fr.onload = function(e) &#123;</span></div><div class="line"><span class="undefined">        preview.src = e.target.result;</span></div><div class="line"><span class="undefined">        preview.style.display = 'block';</span></div><div class="line"><span class="undefined">    &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">    fr.readAsDataURL(file);</span></div><div class="line"><span class="undefined">&#125;, false);</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>我们用 <code>FileReader</code> 的一个实例利用方法 <code>readAsDataURL</code> 读取了上传的文件，并且我们事先设置了在读取即 <code>onload</code> 时，触发了视图更新。</p>
 <p><code>FileReader</code> 的这个特性，主要是把上传的图片给转化为了 <code>base64</code> 的格式，因此实现了预览。其实它还可以读取 <code>Blob</code> 和 <code>File</code> 等文件，具体的方法可以看<a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" target="_blank" rel="external">这里</a>。</p>
 ]]></content>
@@ -851,33 +875,6 @@ file.addEventListener('change', function(e) {
     
     </summary>
     
-    
-      <category term="CSS3" scheme="http://zhaoshibo.net/tags/CSS3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS3 text-shadow在IE下的解决</title>
-    <link href="http://zhaoshibo.net/blog/2016/01/12/IE9%E5%8F%8A%E4%BB%A5%E4%B8%8B%E7%9A%84%E6%96%87%E5%AD%97%E9%98%B4%E5%BD%B1/"/>
-    <id>http://zhaoshibo.net/blog/2016/01/12/IE9及以下的文字阴影/</id>
-    <published>2016-01-12T10:09:07.000Z</published>
-    <updated>2016-10-31T12:18:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>text-shadow</code>兼容IE10及FF3.5以上，在IE8、9下可以使用滤镜<code>filter：glow</code>使元素发光来替代。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">filter</span>： <span class="selector-tag">grow</span>(<span class="selector-tag">color</span>: <span class="selector-id">#000</span>, <span class="selector-tag">strength</span>: 1);</div><div class="line"><span class="selector-tag">filter</span>： <span class="selector-tag">grow</span>(<span class="selector-tag">color</span>: <span class="selector-id">#000</span>, <span class="selector-tag">direction</span>: 2);</div></pre></td></tr></table></figure>
-<p><code>color</code>设置发光颜色，在这里<code>strength</code>和<code>direction</code>均设置阴影强度，但它们2个的表现也不太一样。</p>
-<p>在IE7以下这个属性暂时无效。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;code&gt;text-shadow&lt;/code&gt;兼容IE10及FF3.5以上，在IE8、9下可以使用滤镜&lt;code&gt;filter：glow&lt;/code&gt;使元素发光来替代。&lt;/p&gt;
-&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cl
-    
-    </summary>
-    
-    
-      <category term="Tips" scheme="http://zhaoshibo.net/tags/Tips/"/>
     
       <category term="CSS3" scheme="http://zhaoshibo.net/tags/CSS3/"/>
     

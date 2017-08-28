@@ -80,6 +80,62 @@
 
   
     
+    <h3 class="article-title"><a href="/blog/2016/01/12/IE9及以下的文字阴影/"><span>CSS3 text-shadow在IE下的解决</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/01/12/IE9及以下的文字阴影/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-01-12T10:09:07.000Z">
+          2016-01-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><code>text-shadow</code>兼容IE10及FF3.5以上，在IE8、9下可以使用滤镜<code>filter：glow</code>使元素发光来替代。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">filter</span>： <span class="selector-tag">grow</span>(<span class="selector-tag">color</span>: <span class="selector-id">#000</span>, <span class="selector-tag">strength</span>: 1);</div><div class="line"><span class="selector-tag">filter</span>： <span class="selector-tag">grow</span>(<span class="selector-tag">color</span>: <span class="selector-id">#000</span>, <span class="selector-tag">direction</span>: 2);</div></pre></td></tr></table></figure>
+<p><code>color</code>设置发光颜色，在这里<code>strength</code>和<code>direction</code>均设置阴影强度，但它们2个的表现也不太一样。</p>
+<p>在IE7以下这个属性暂时无效。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Tips/">Tips</a><a href="/tags/CSS3/">CSS3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/blog/2015/12/18/一个简单JS迭代器的总结/"><span>一个简单JS迭代器的总结</span></a></h3>
     
   
