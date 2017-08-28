@@ -442,17 +442,21 @@ th {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-mail::before {
+.icon-mail:before {
   content: "\e609";
+  color: #4b96e3;
 }
-.icon-weibo::before {
+.icon-weibo:before {
   content: "\e619";
+  color: #e6162d;
 }
-.icon-rss::before {
+.icon-rss:before {
   content: "\e877";
+  color: #ff8140;
 }
-.icon-github::before {
+.icon-github:before {
   content: "\e735";
+  color: #000;
 }
 html {
   font-size: 10px;
