@@ -1,226 +1,94 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>callee、caller、call和apply | 奔跑的Q丶</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一致，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="callee、caller、call和apply">
-<meta property="og:url" content="http://zhaoshibo.net/blog/2015/10/16/callee、caller、call和apply/index.html">
-<meta property="og:site_name" content="奔跑的Q丶">
-<meta property="og:description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一致，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。">
-<meta property="og:updated_time" content="2016-10-31T12:18:49.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="callee、caller、call和apply">
-<meta name="twitter:description" content="1. calleecallee，返回正在执行的函数本身的引用，是arguments的一个属性。只有在函数执行时有效；有一个length属性，可用于获得形参的个数，来比较是否和实参个数一致，即比较arguments.length == arguments.callee.length；还可用于递归匿名参数；可以用来消除耦合。">
+
   
-    <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
+  <meta name="author" content="赵世博">
+  
+
+  
+  <meta name="description" content="奔跑在前端的路上，记录学习，记录生活">
+  
+
   
   
-    <link rel="icon" href="/favicon.ico">
+  <meta name="keywords" content="JavaScript">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="callee、caller、call和apply"/>
+
+  <meta property="og:site_name" content="奔跑的Q丶"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 </head>
+
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="/avatar.png" class="js-avatar">
-			
-		</a>
+<div class="blog">
+  <div class="content">
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">赵世博</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">奔跑的Q丶</p>
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">归档</a></li>
-				        
-							<li><a href="/mydemo">Demo</a></li>
-				        
-							<li><a href="/ifetask">MYIFE</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="http://github.com/cnzsb" title="github">github</a>
-					        
-								<a class="weibo" target="_blank" href="http://weibo.com/u/2821242461" title="weibo">weibo</a>
-					        
-								<a class="mail" target="_blank" href="mailto:cnzsb@foxmail.com" title="mail">mail</a>
-					        
-								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AntD/" style="font-size: 10px;">AntD</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 15px;">CSS3</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/Tips/" style="font-size: 17.5px;">Tips</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/面试题/" style="font-size: 12.5px;">面试题</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">赵世博，昵称奔跑的Q丶。热爱前端，奋斗中~↖(^ω^)↗</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">赵世博</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="/avatar.png" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">赵世博</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">奔跑的Q丶</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">归档</a></li>
-		        
-					<li><a href="/mydemo">Demo</a></li>
-		        
-					<li><a href="/ifetask">MYIFE</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="http://github.com/cnzsb" title="github">github</a>
-			        
-						<a class="weibo" target="_blank" href="http://weibo.com/u/2821242461" title="weibo">weibo</a>
-			        
-						<a class="mail" target="_blank" href="mailto:cnzsb@foxmail.com" title="mail">mail</a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-callee、caller、call和apply" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2015/10/16/callee、caller、call和apply/" class="article-date">
-  	<time datetime="2015-10-16T10:27:01.000Z" itemprop="datePublished">2015-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      callee、caller、call和apply
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">奔跑的Q丶</a>
     </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>callee、caller、call和apply</span></h3>
+    
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2015/10/16/callee、caller、call和apply/" rel="bookmark">
+        <time class="entry-date published" datetime="2015-10-16T10:27:01.000Z">
+          2015-10-16
+        </time>
+      </a>
+    </span>
+  </div>
 
-        
 
-        <div class="clearfix"></div>
-      </div>
+  
+
+  <div class="article-content">
+    <div class="entry">
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-_callee">1. callee</h2><p><code>callee</code>，返回正在执行的函数本身的引用，是<code>arguments</code>的一个属性。只有在函数执行时有效；有一个<code>length</code>属性，可用于获得形参的个数，来比较是否和实参个数一致，即比较<code>arguments.length == arguments.callee.length</code>；还可用于递归匿名参数；可以用来消除耦合。</p>
+        <h2 id="1-callee"><a href="#1-callee" class="headerlink" title="1. callee"></a>1. callee</h2><p><code>callee</code>，返回正在执行的函数本身的引用，是<code>arguments</code>的一个属性。只有在函数执行时有效；有一个<code>length</code>属性，可用于获得形参的个数，来比较是否和实参个数一致，即比较<code>arguments.length == arguments.callee.length</code>；还可用于递归匿名参数；可以用来消除耦合。</p>
 <a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不用()()立即执行时，则无效。</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">center</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);		<span class="comment">// &gt; center()</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);	<span class="comment">// &gt; inner()</span></span><br><span class="line">		&#125;</span><br><span class="line">		inner();</span><br><span class="line">	&#125;</span><br><span class="line">	center();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<h2 id="2-_caller">2. caller</h2><p><code>caller</code>，返回一个对函数的引用，该函数调用了当前的函数。只有在函数执行时有效；如果函数由顶层调用，那么返回<code>null</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不用()()立即执行时，则无效。</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">center</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">// 调用当前作用域，此时center.caller指向outer</span></span><br><span class="line">		<span class="comment">// center.caller可用arguments.callee.caller表示</span></span><br><span class="line">		<span class="built_in">console</span>.log(center.caller);			<span class="comment">// &gt; outer</span></span><br><span class="line">		<span class="built_in">console</span>.log(outer.caller);			<span class="comment">// &gt; null</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(inner.caller);		<span class="comment">// &gt; center()</span></span><br><span class="line">			<span class="built_in">console</span>.log(center.caller);		<span class="comment">// &gt; outer()</span></span><br><span class="line">			<span class="built_in">console</span>.log(outer.caller);		<span class="comment">// &gt; null</span></span><br><span class="line">		&#125;</span><br><span class="line">		inner();</span><br><span class="line">	&#125;</span><br><span class="line">	center();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<h2 id="3-_call&amp;apply">3. call&amp;apply</h2><p>每个函数都包含两个非继承的方法，<code>call</code>和<code>apply</code>。他们的用途都是在特定的作用域中调用函数，获取了另一个对象的方法，并继承对象的属性，只是接收的参数格式不同。它们的重要作用在于能够扩充函数的作用域，而且对象不需要与函数有任何的耦合。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不用()()立即执行时，则无效。</span></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">center</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);		<span class="comment">// &gt; center()</span></div><div class="line">		<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);	<span class="comment">// &gt; inner()</span></div><div class="line">		&#125;</div><div class="line">		inner();</div><div class="line">	&#125;</div><div class="line">	center();</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h2 id="2-caller"><a href="#2-caller" class="headerlink" title="2. caller"></a>2. caller</h2><p><code>caller</code>，返回一个对函数的引用，该函数调用了当前的函数。只有在函数执行时有效；如果函数由顶层调用，那么返回<code>null</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 不用()()立即执行时，则无效。</span></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">center</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// 调用当前作用域，此时center.caller指向outer</span></div><div class="line">		<span class="comment">// center.caller可用arguments.callee.caller表示</span></div><div class="line">		<span class="built_in">console</span>.log(center.caller);			<span class="comment">// &gt; outer</span></div><div class="line">		<span class="built_in">console</span>.log(outer.caller);			<span class="comment">// &gt; null</span></div><div class="line">		<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(inner.caller);		<span class="comment">// &gt; center()</span></div><div class="line">			<span class="built_in">console</span>.log(center.caller);		<span class="comment">// &gt; outer()</span></div><div class="line">			<span class="built_in">console</span>.log(outer.caller);		<span class="comment">// &gt; null</span></div><div class="line">		&#125;</div><div class="line">		inner();</div><div class="line">	&#125;</div><div class="line">	center();</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h2 id="3-call-amp-apply"><a href="#3-call-amp-apply" class="headerlink" title="3. call&amp;apply"></a>3. call&amp;apply</h2><p>每个函数都包含两个非继承的方法，<code>call</code>和<code>apply</code>。他们的用途都是在特定的作用域中调用函数，获取了另一个对象的方法，并继承对象的属性，只是接收的参数格式不同。它们的重要作用在于能够扩充函数的作用域，而且对象不需要与函数有任何的耦合。</p>
 <ul>
 <li><code>function.call(obj, arg1, arg2, ...)</code></li>
 <li><code>function.apply(obj, [param1, param2, ...])</code></li>
@@ -228,156 +96,55 @@
 <li><code>call</code>中第二个参数是一个参数列表</li>
 <li><code>apply</code>中第二个参数是一个数组，用来传参给函数中的<code>arguments</code></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name, size</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.size = size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Boxes</span>(<span class="params">name, size, number</span>)</span>&#123;</span><br><span class="line">	Box.call(<span class="keyword">this</span>, name, size);</span><br><span class="line">	<span class="comment">// Box.apply(this, arguments);</span></span><br><span class="line">	<span class="keyword">this</span>.number = number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mybox = <span class="keyword">new</span> Boxes(<span class="string">'mybox'</span>, <span class="string">'5*5*5'</span>, <span class="number">1001</span>);</span><br><span class="line"><span class="comment">// boxes中并未给name和size属性赋值，但是还是显示了预期结果，否则应为undefined</span></span><br><span class="line">alert(<span class="string">'name: '</span> + mybox.name + <span class="string">'\nsize: '</span> + mybox.size + <span class="string">'\nnumber: '</span> + mybox.number);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name, size</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.size = size;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Boxes</span>(<span class="params">name, size, number</span>)</span>&#123;</div><div class="line">	Box.call(<span class="keyword">this</span>, name, size);</div><div class="line">	<span class="comment">// Box.apply(this, arguments);</span></div><div class="line">	<span class="keyword">this</span>.number = number;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> mybox = <span class="keyword">new</span> Boxes(<span class="string">'mybox'</span>, <span class="string">'5*5*5'</span>, <span class="number">1001</span>);</div><div class="line"><span class="comment">// boxes中并未给name和size属性赋值，但是还是显示了预期结果，否则应为undefined</span></div><div class="line">alert(<span class="string">'name: '</span> + mybox.name + <span class="string">'\nsize: '</span> + mybox.size + <span class="string">'\nnumber: '</span> + mybox.number);</div></pre></td></tr></table></figure>
 <p>使用时，如果希望输出结果的参数位置改变，如为<code>Boxes（size, name, number）</code>，则使用<code>call</code>更方便<code>Box.call(this, size， name)</code>。而需要按照顺序对应的情况下，使用<code>apply</code>的数组参数<code>arguments</code>则更方便。</p>
-<h2 id="4-_其他一些高级用法">4. 其他一些高级用法</h2><p>对于<code>apply</code>和<code>call</code>，还有一些特别的用法，鉴于它两并无太大区别，这里以<code>apply</code>为例。个人总结该用法如下，非标准表达：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">Fun</span><span class="class">.apply</span>(<span class="tag">Obj</span>, <span class="tag">arguments</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="4-其他一些高级用法"><a href="#4-其他一些高级用法" class="headerlink" title="4. 其他一些高级用法"></a>4. 其他一些高级用法</h2><p>对于<code>apply</code>和<code>call</code>，还有一些特别的用法，鉴于它两并无太大区别，这里以<code>apply</code>为例。个人总结该用法如下，非标准表达：</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Fun.<span class="built_in">apply</span>(Obj, arguments);</div></pre></td></tr></table></figure>
 <p>解释为，Obj对象调用Fun内部提供的方法，对arguments参数进行操作，此处，Obj对象可为this，null等。此方法颇适用于需要传入列表而非数组表达的参数时，即<code>param1, parram2, param3, ...</code>而非<code>[param1, param2, param3, ...]</code>时。</p>
 <p>以下三个示例，分别展示了表达式中Obj，Fun和arguments的含义：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> maxNum1 = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, arr);</span><br><span class="line"><span class="keyword">var</span> maxNum2 = <span class="built_in">Math</span>.max.apply(maxNum, arr);</span><br><span class="line"><span class="built_in">console</span>.log(maxNum1);</span><br><span class="line"><span class="built_in">console</span>.log(maxNum2);</span><br><span class="line"><span class="comment">// 结果都为5，这里更方便理解apply接收的第一个参数的含义</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Arr</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> vals = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//此处表达vals对象调用了apply前面所示数组的push方法，等价于下面注释掉的表达方法</span></span><br><span class="line">	vals.push.apply(vals, <span class="built_in">arguments</span>);</span><br><span class="line">	<span class="comment">// Array.prototype.push.apply(vals, arguments);</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> vals;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> Arr(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name, size</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.size = size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Boxes</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Box.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aB = <span class="keyword">new</span> Boxes(<span class="string">'aBox'</span>, <span class="string">'5*5*5'</span>);</span><br><span class="line"><span class="keyword">var</span> bB = <span class="keyword">new</span> Boxes(<span class="string">'bBox'</span>, <span class="string">'sth else'</span>, <span class="string">'blah blah'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(aB);  <span class="comment">// Boxes &#123;name: "aBox", size: "5*5*5"&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(bB);  <span class="comment">// Boxes &#123;name: "bBox", size: "sth else"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里可以看最后的参数调用Box的方法时，如果没有提供方法，则不会进行操作</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> maxNum1 = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, arr);</div><div class="line"><span class="keyword">var</span> maxNum2 = <span class="built_in">Math</span>.max.apply(maxNum, arr);</div><div class="line"><span class="built_in">console</span>.log(maxNum1);</div><div class="line"><span class="built_in">console</span>.log(maxNum2);</div><div class="line"><span class="comment">// 结果都为5，这里更方便理解apply接收的第一个参数的含义</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Arr</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> vals = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line">	</div><div class="line">	<span class="comment">//此处表达vals对象调用了apply前面所示数组的push方法，等价于下面注释掉的表达方法</span></div><div class="line">	vals.push.apply(vals, <span class="built_in">arguments</span>);</div><div class="line">	<span class="comment">// Array.prototype.push.apply(vals, arguments);</span></div><div class="line"></div><div class="line">	<span class="keyword">return</span> vals;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> Arr(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name, size</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.size = size;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Boxes</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Box.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> aB = <span class="keyword">new</span> Boxes(<span class="string">'aBox'</span>, <span class="string">'5*5*5'</span>);</div><div class="line"><span class="keyword">var</span> bB = <span class="keyword">new</span> Boxes(<span class="string">'bBox'</span>, <span class="string">'sth else'</span>, <span class="string">'blah blah'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(aB);  <span class="comment">// Boxes &#123;name: "aBox", size: "5*5*5"&#125;</span></div><div class="line"><span class="built_in">console</span>.log(bB);  <span class="comment">// Boxes &#123;name: "bBox", size: "sth else"&#125;</span></div><div class="line"></div><div class="line"><span class="comment">// 这里可以看最后的参数调用Box的方法时，如果没有提供方法，则不会进行操作</span></div></pre></td></tr></table></figure>
       
     </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/JavaScript/">JavaScript</a>
+    </span>
+    
+
+    </div>
+
     
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/blog/2015/12/18/一个简单JS迭代器的总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          一个简单JS迭代器的总结
-        
-      </div>
-    </a>
-  
-  
-    <a href="/blog/2015/09/25/object标签和embed标签/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">object标签和embed标签</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
 </article>
 
 
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
+    </main>
 
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="callee、caller、call和apply" data-title="callee、caller、call和apply" data-url="http://zhaoshibo.net/blog/2015/10/16/callee、caller、call和apply/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"zhaoshibo"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 赵世博
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
-
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-71274501-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
+    &copy; 2017 赵世博
+    
+  </p>
+</footer>
+    
   </div>
+</div>
 </body>
 </html>

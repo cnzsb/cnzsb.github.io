@@ -1,239 +1,94 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>Flex布局 | 奔跑的Q丶</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Flexible Box Layout
-CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面设计而优化的 CSS 框模型。在弹性布局模型中，弹性容器的子元素可以在任何方向上排布，也可以“弹性伸缩”其尺寸，既可以增加尺寸以填满未使用的空间，也可以收缩尺寸以避免父元素溢出。子元素的水平对齐和垂直对齐都能很方便的进行操控。通过嵌套这些框（水平框在垂直框内，或垂直框在水平框内）可以在两个维度上">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Flex布局">
-<meta property="og:url" content="http://zhaoshibo.net/blog/2016/05/04/flex布局/index.html">
-<meta property="og:site_name" content="奔跑的Q丶">
-<meta property="og:description" content="Flexible Box Layout
-CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面设计而优化的 CSS 框模型。在弹性布局模型中，弹性容器的子元素可以在任何方向上排布，也可以“弹性伸缩”其尺寸，既可以增加尺寸以填满未使用的空间，也可以收缩尺寸以避免父元素溢出。子元素的水平对齐和垂直对齐都能很方便的进行操控。通过嵌套这些框（水平框在垂直框内，或垂直框在水平框内）可以在两个维度上">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flexbox.png">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-direction.png">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-wrap.png">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/justify-content.png">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-items.png">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-content.png">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/order.png">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-grow.png">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-shrink.jpg">
-<meta property="og:image" content="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-self.png">
-<meta property="og:updated_time" content="2016-10-31T12:18:49.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flex布局">
-<meta name="twitter:description" content="Flexible Box Layout
-CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面设计而优化的 CSS 框模型。在弹性布局模型中，弹性容器的子元素可以在任何方向上排布，也可以“弹性伸缩”其尺寸，既可以增加尺寸以填满未使用的空间，也可以收缩尺寸以避免父元素溢出。子元素的水平对齐和垂直对齐都能很方便的进行操控。通过嵌套这些框（水平框在垂直框内，或垂直框在水平框内）可以在两个维度上">
+
   
-    <link rel="alternative" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
+  <meta name="author" content="赵世博">
+  
+
+  
+  <meta name="description" content="奔跑在前端的路上，记录学习，记录生活">
+  
+
   
   
-    <link rel="icon" href="/favicon.ico">
+  <meta name="keywords" content="CSS3">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Flex布局"/>
+
+  <meta property="og:site_name" content="奔跑的Q丶"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 </head>
+
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="/avatar.png" class="js-avatar">
-			
-		</a>
+<div class="blog">
+  <div class="content">
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">赵世博</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">奔跑的Q丶</p>
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">归档</a></li>
-				        
-							<li><a href="/mydemo">Demo</a></li>
-				        
-							<li><a href="/ifetask">MYIFE</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="http://github.com/cnzsb" title="github">github</a>
-					        
-								<a class="weibo" target="_blank" href="http://weibo.com/u/2821242461" title="weibo">weibo</a>
-					        
-								<a class="mail" target="_blank" href="mailto:cnzsb@foxmail.com" title="mail">mail</a>
-					        
-								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AntD/" style="font-size: 10px;">AntD</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 15px;">CSS3</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github-Pages/" style="font-size: 10px;">Github Pages</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/Tips/" style="font-size: 17.5px;">Tips</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/面试题/" style="font-size: 12.5px;">面试题</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">赵世博，昵称奔跑的Q丶。热爱前端，奋斗中~↖(^ω^)↗</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">赵世博</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="/avatar.png" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">赵世博</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">奔跑的Q丶</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">归档</a></li>
-		        
-					<li><a href="/mydemo">Demo</a></li>
-		        
-					<li><a href="/ifetask">MYIFE</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="http://github.com/cnzsb" title="github">github</a>
-			        
-						<a class="weibo" target="_blank" href="http://weibo.com/u/2821242461" title="weibo">weibo</a>
-			        
-						<a class="mail" target="_blank" href="mailto:cnzsb@foxmail.com" title="mail">mail</a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-flex布局" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2016/05/04/flex布局/" class="article-date">
-  	<time datetime="2016-05-04T00:06:01.000Z" itemprop="datePublished">2016-05-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Flex布局
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">奔跑的Q丶</a>
     </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Flex布局</span></h3>
+    
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
-	</div>
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/05/04/flex布局/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-04T00:06:01.000Z">
+          2016-05-04
+        </time>
+      </a>
+    </span>
+  </div>
 
-        
 
-        <div class="clearfix"></div>
-      </div>
+  
+
+  <div class="article-content">
+    <div class="entry">
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Flexible_Box_Layout">Flexible Box Layout</h1><blockquote>
+        <h1 id="Flexible-Box-Layout"><a href="#Flexible-Box-Layout" class="headerlink" title="Flexible Box Layout"></a>Flexible Box Layout</h1><blockquote>
 <p>CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面设计而优化的 CSS 框模型。在弹性布局模型中，弹性容器的子元素可以在任何方向上排布，也可以“弹性伸缩”其尺寸，既可以增加尺寸以填满未使用的空间，也可以收缩尺寸以避免父元素溢出。子元素的水平对齐和垂直对齐都能很方便的进行操控。通过嵌套这些框（水平框在垂直框内，或垂直框在水平框内）可以在两个维度上构建布局。</p>
 </blockquote>
 <a id="more"></a>
 <p>弹性布局在定义方面是指调整其内项目宽高从而在任何显示设备上实现对可用显示空间最佳填充的能力。弹性容器扩展其内项目来填充可用空间，或将其收缩来避免溢出。</p>
-<h2 id="1-_基本概念">1. 基本概念</h2><p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flexbox.png" alt="flexbox"></p>
+<h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h2><p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flexbox.png" alt="flexbox"></p>
 <p>容器默认存在两根轴：<code>main axis</code>（从<code>main-start</code>向<code>main-end</code>）或者<code>cross axis</code>（从<code>cross-start</code>向<code>cross-end</code>）。</p>
 <p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的侧轴空间叫做<code>cross size</code>。</p>
 <ul>
@@ -244,8 +99,8 @@ CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面�
 <li><strong>cross-start</strong> | <strong>cross-end</strong>：伸缩行的配置从容器的侧轴起点边开始，往侧轴终点边结束。</li>
 <li><strong>cross size</strong>：Flex项目的在侧轴方向的宽度或高度就是项目的侧轴长度，Flex项目的侧轴长度属性是<code>width</code>或<code>height</code>属性，由哪一个对着侧轴方向决定。</li>
 </ul>
-<h2 id="2-_外层父容器属性">2. 外层父容器属性</h2><p>定义一个Flex容器，根据其取的值来决定是内联还是块。Flex容器会为其内容建立新的伸缩格式化上下文。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">	display: flex | inline-flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-外层父容器属性"><a href="#2-外层父容器属性" class="headerlink" title="2. 外层父容器属性"></a>2. 外层父容器属性</h2><p>定义一个Flex容器，根据其取的值来决定是内联还是块。Flex容器会为其内容建立新的伸缩格式化上下文。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">	display: flex | inline-flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>注意，Flex容器不是块容器，因此有些设计用来控制块布局的属性在Flexbox布局中不适用。特别是：多列组中所有<code>column-*</code>属性、<code>float</code>、<code>clear</code>属性和<code>vertical-align</code>属性在Flex容器上没有作用。</p>
 <p>以下6个属性设置在父容器上。</p>
 <ul>
@@ -256,27 +111,27 @@ CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面�
 <li>align-items</li>
 <li>align-content</li>
 </ul>
-<h3 id="2-1_flex-direction">2.1 flex-direction</h3><p>弹性容器的各个边描述了弹性条目流的起点与终点。它们决定了弹性容器的主轴方向（从左到右、从右到左，等等）。</p>
+<h3 id="2-1-flex-direction"><a href="#2-1-flex-direction" class="headerlink" title="2.1 flex-direction"></a>2.1 flex-direction</h3><p>弹性容器的各个边描述了弹性条目流的起点与终点。它们决定了弹性容器的主轴方向（从左到右、从右到左，等等）。</p>
 <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-direction.png" alt="flex-direction"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">  flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">  flex-direction: row | row-reverse | column | column-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>row（默认值）：主轴为水平方向，起点在左端。</li>
 <li>row-reverse：主轴为水平方向，起点在右端。</li>
 <li>column：主轴为垂直方向，起点在上沿。</li>
 <li>column-reverse：主轴为垂直方向，起点在下沿。</li>
 </ul>
-<h3 id="2-2_flex-wrap">2.2 flex-wrap</h3><p>默认情况之下，Flex项目都尽可能在一行显示。你可以根据flex-wrap的属性值来改变，让Flex项目多行显示。</p>
+<h3 id="2-2-flex-wrap"><a href="#2-2-flex-wrap" class="headerlink" title="2.2 flex-wrap"></a>2.2 flex-wrap</h3><p>默认情况之下，Flex项目都尽可能在一行显示。你可以根据flex-wrap的属性值来改变，让Flex项目多行显示。</p>
 <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-wrap.png" alt="flex-wrap"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">   flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">   flex-wrap: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>nowrap(默认值)：不换行。</li>
 <li>wrap：换行，第一行在<strong>下方</strong>。</li>
 <li>wrap-reverse：换行，第一行在<strong>上方</strong>。</li>
 </ul>
-<h3 id="2-3_flex-flow">2.3 flex-flow</h3><p>这是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">   flex-flow: <span class="xml"><span class="tag">&lt;<span class="title">flex-direction</span>&gt;</span> || <span class="tag">&lt;<span class="title">flex-wrap</span>&gt;</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-4_justify-content">2.4 justify-content</h3><p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/justify-content.png" alt="justify-content"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">   justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-flex-flow"><a href="#2-3-flex-flow" class="headerlink" title="2.3 flex-flow"></a>2.3 flex-flow</h3><p>这是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">   flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-4-justify-content"><a href="#2-4-justify-content" class="headerlink" title="2.4 justify-content"></a>2.4 justify-content</h3><p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/justify-content.png" alt="justify-content"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">   justify-content: flex-start | flex-end | center | space-between | space-around;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>flex-start（默认值）：左对齐。</li>
 <li>flex-end：右对齐。</li>
@@ -284,9 +139,9 @@ CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面�
 <li>space-between：两端对齐，项目之间的间隔都相等。</li>
 <li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
 </ul>
-<h3 id="2-5_align-items">2.5 align-items</h3><p>定义项目在侧轴上如何对齐。</p>
+<h3 id="2-5-align-items"><a href="#2-5-align-items" class="headerlink" title="2.5 align-items"></a>2.5 align-items</h3><p>定义项目在侧轴上如何对齐。</p>
 <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-items.png" alt="align-items"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">   align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">   align-items: flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>flex-start：侧轴的起点对齐。</li>
 <li>flex-end：侧轴的终点对齐。</li>
@@ -294,9 +149,9 @@ CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面�
 <li>baseline：项目的第一行文字的基线对齐。</li>
 <li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
 </ul>
-<h3 id="2-6_align-content">2.6 align-content</h3><p>定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<h3 id="2-6-align-content"><a href="#2-6-align-content" class="headerlink" title="2.6 align-content"></a>2.6 align-content</h3><p>定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
 <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-content.png" alt="align-content"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">   align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">   align-content: flex-start | flex-end | center | space-between | space-around | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>flex-start：与侧轴的起点对齐。</li>
 <li>flex-end：与侧轴的终点对齐。</li>
@@ -305,7 +160,7 @@ CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面�
 <li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
 <li>stretch（默认值）：轴线占满整个侧轴。</li>
 </ul>
-<h2 id="3-_子元素项目属性">3. 子元素项目属性</h2><p>以下6个属性设置在子项目上。</p>
+<h2 id="3-子元素项目属性"><a href="#3-子元素项目属性" class="headerlink" title="3. 子元素项目属性"></a>3. 子元素项目属性</h2><p>以下6个属性设置在子项目上。</p>
 <ul>
 <li>order</li>
 <li>flex-grow</li>
@@ -314,29 +169,29 @@ CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面�
 <li>flex</li>
 <li>align-self</li>
 </ul>
-<h3 id="3-1_order">3.1 order</h3><p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0，有最小（负值最大）order的伸缩项目排在第一个。</p>
+<h3 id="3-1-order"><a href="#3-1-order" class="headerlink" title="3.1 order"></a>3.1 order</h3><p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0，有最小（负值最大）order的伸缩项目排在第一个。</p>
 <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/order.png" alt="order"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">	order: <span class="xml"><span class="tag">&lt;<span class="title">integer</span>&gt;</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-2_flex-grow">3.2 flex-grow</h3><p>定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">	order: <span class="xml"><span class="tag">&lt;<span class="name">integer</span>&gt;</span>;</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure>
+<h3 id="3-2-flex-grow"><a href="#3-2-flex-grow" class="headerlink" title="3.2 flex-grow"></a>3.2 flex-grow</h3><p>定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
 <p>如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
 <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-grow.png" alt="flex-grow"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">	flex-grow: <span class="xml"><span class="tag">&lt;<span class="title">number</span>&gt;</span>;</span> <span class="comment">/* default 0 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-3_flex-shrink">3.3 flex-shrink</h3><p>定义了项目的缩小比例，默认为1(负值无效)，即如果空间不足，该项目将缩小。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">	flex-grow: <span class="xml"><span class="tag">&lt;<span class="name">number</span>&gt;</span>; /* default 0 */</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure>
+<h3 id="3-3-flex-shrink"><a href="#3-3-flex-shrink" class="headerlink" title="3.3 flex-shrink"></a>3.3 flex-shrink</h3><p>定义了项目的缩小比例，默认为1(负值无效)，即如果空间不足，该项目将缩小。</p>
 <p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
 <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-shrink.jpg" alt="flex-shrink"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">	flex-shrink: <span class="xml"><span class="tag">&lt;<span class="title">number</span>&gt;</span>;</span> <span class="comment">/* default 1 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-4_flex-basis">3.4 flex-basis</h3><p>定义了Flex项目在分配Flex容器剩余空间之前的一个默认尺寸。<code>main-size</code>值使它具有匹配的宽度或高度，不过都需要取决于<code>flex-direction</code>的值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-basis: <span class="xml"><span class="tag">&lt;<span class="title">length</span>&gt;</span> | auto; /* default auto */</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-5_flex">3.5 flex</h3><p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。    </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex: none | [ <span class="xml"><span class="tag">&lt;<span class="title">'flex-grow'</span>&gt;</span> <span class="tag">&lt;<span class="title">'flex-shrink'</span>&gt;</span>? || <span class="tag">&lt;<span class="title">'flex-basis'</span>&gt;</span> ]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">	flex-shrink: <span class="xml"><span class="tag">&lt;<span class="name">number</span>&gt;</span>; /* default 1 */</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure>
+<h3 id="3-4-flex-basis"><a href="#3-4-flex-basis" class="headerlink" title="3.4 flex-basis"></a>3.4 flex-basis</h3><p>定义了Flex项目在分配Flex容器剩余空间之前的一个默认尺寸。<code>main-size</code>值使它具有匹配的宽度或高度，不过都需要取决于<code>flex-direction</code>的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  flex-basis: <span class="xml"><span class="tag">&lt;<span class="name">length</span>&gt;</span> | auto; /* default auto */</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure>
+<h3 id="3-5-flex"><a href="#3-5-flex" class="headerlink" title="3.5 flex"></a>3.5 flex</h3><p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  flex: none | [ <span class="xml"><span class="tag">&lt;<span class="name">'flex-grow'</span>&gt;</span> <span class="tag">&lt;<span class="name">'flex-shrink'</span>&gt;</span>? || <span class="tag">&lt;<span class="name">'flex-basis'</span>&gt;</span> ]</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure>
 <p>建议使用简写属性，而不是设置单独属性。</p>
 <ul>
 <li>auto (1 1 auto)</li>
 <li>none (0 0 auto)。</li>
 </ul>
-<h3 id="3-6_align-self">3.6 align-self</h3><p>允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+<h3 id="3-6-align-self"><a href="#3-6-align-self" class="headerlink" title="3.6 align-self"></a>3.6 align-self</h3><p>允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
 <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-self.png" alt="align-self"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">	align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">	align-self: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>flex-start：侧轴的起点对齐。</li>
 <li>flex-end：侧轴的终点对齐。</li>
@@ -344,159 +199,58 @@ CSS 弹性框布局是 CSS 的模块之一，定义了一种针对用户界面�
 <li>baseline：项目的第一行文字的基线对齐。</li>
 <li>stretch：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
 </ul>
-<h2 id="4-_兼容性">4. 兼容性</h2><iframe width="100%" height="380" src="http://caniuse.com/flexbox/embed"></iframe>
+<h2 id="4-兼容性"><a href="#4-兼容性" class="headerlink" title="4. 兼容性"></a>4. 兼容性</h2><iframe width="100%" height="380" src="http://caniuse.com/flexbox/embed"></iframe>
 
 <ul>
 <li>iOS和Android4.4以上可以使用最新的flex布局</li>
 <li>Android4.4以下兼容旧版flexbox布局</li>
 </ul>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: <span class="string">-webkit-box;</span></span><br><span class="line"><span class="attribute">display</span>: <span class="string">-webkit-flex;</span></span><br><span class="line"><span class="attribute">display</span>: <span class="string">-ms-flexbox;</span></span><br><span class="line"><span class="attribute">display</span>: <span class="string">flex;</span></span><br><span class="line"></span><br><span class="line"><span class="less"><span class="attribute">-webkit-box-flex</span>: <span class="number">1</span>;</span><br><span class="line">	<span class="attribute">-webkit-flex</span>: <span class="number">1</span>;</span><br><span class="line">	    <span class="attribute">-ms-flex</span>: <span class="number">1</span>;</span><br><span class="line">	        <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">-webkit-box-pack</span>: center;</span><br><span class="line">	<span class="attribute">-webkit-justify-content</span>: center;</span><br><span class="line">	    <span class="attribute">-ms-flex-pack</span>: center;</span><br><span class="line">	        <span class="attribute">justify-content</span>: center;</span><br><span class="line"></span><br><span class="line"><span class="attribute">-webkit-box-align</span>: center;</span><br><span class="line">	<span class="attribute">-webkit-align-items</span>: center;</span><br><span class="line">	    <span class="attribute">-ms-flex-align</span>: center;</span><br><span class="line">	        <span class="attribute">align-items</span>: center;</span></span><br></pre></td></tr></table></figure>
-<h2 id="5_参考资料">5 参考资料</h2><ol>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">display</span>: -webkit-box;</div><div class="line"><span class="attribute">display</span>: -webkit-flex;</div><div class="line"><span class="attribute">display</span>: -ms-flexbox;</div><div class="line"><span class="attribute">display</span>: flex;</div><div class="line"></div><div class="line">-webkit-box-<span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">	-webkit-<span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">	    -ms-<span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line"></div><div class="line">-webkit-box-pack: center;</div><div class="line">	-webkit-<span class="attribute">justify-content</span>: center;</div><div class="line">	    -ms-<span class="attribute">flex</span>-pack: center;</div><div class="line">	        <span class="attribute">justify-content</span>: center;</div><div class="line"></div><div class="line">-webkit-box-align: center;</div><div class="line">	-webkit-<span class="attribute">align-items</span>: center;</div><div class="line">	    -ms-<span class="attribute">flex</span>-align: center;</div><div class="line">	        <span class="attribute">align-items</span>: center;</div></pre></td></tr></table></figure>
+<h2 id="5-参考资料"><a href="#5-参考资料" class="headerlink" title="5 参考资料"></a>5 参考资料</h2><ol>
 <li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex 布局教程：语法篇</a></li>
 <li><a href="http://www.w3cplus.com/css3/a-guide-to-flexbox-new.html" target="_blank" rel="external">一个完整的Flexbox指南</a></li>
 </ol>
 
       
     </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/CSS3/">CSS3</a>
+    </span>
+    
+
+    </div>
+
     
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/blog/2016/07/17/去除select等标签默认浏览器样式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          去除select等标签默认浏览器样式
-        
-      </div>
-    </a>
-  
-  
-    <a href="/blog/2016/01/31/关于CSS3的3D属性/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于CSS3的3D属性</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
 </article>
 
 
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
+    </main>
 
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="flex布局" data-title="Flex布局" data-url="http://zhaoshibo.net/blog/2016/05/04/flex布局/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"zhaoshibo"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 赵世博
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
-
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-71274501-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
+    &copy; 2017 赵世博
+    
+  </p>
+</footer>
+    
   </div>
+</div>
 </body>
 </html>
