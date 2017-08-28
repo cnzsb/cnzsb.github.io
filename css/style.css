@@ -589,7 +589,7 @@ article .article-title a span {
   padding-bottom: 3px;
   -webkit-transition: 0.15s;
   transition: 0.15s;
-  box-shadow: inset 0 -2px 0 rgba(240,56,56,0);
+  box-shadow: inset 0 -2px 0 rgba(25,202,173,0);
 }
 article .article-title a:hover {
   color: #212121;
@@ -757,13 +757,13 @@ article.archive {
   padding-bottom: 3px;
   -webkit-transition: box-shadow 0.15s;
   transition: box-shadow 0.15s;
-  box-shadow: inset 0 -2px 0 rgba(240,56,56,0);
+  box-shadow: inset 0 -2px 0 rgba(25,202,173,0);
 }
 .archive-post .archive-title a:hover {
   color: #212121;
 }
 .archive-post .archive-title a:hover span {
-  box-shadow: inset 0 -2px 0 rgba(240,56,56,0.4);
+  box-shadow: inset 0 -2px 0 rgba(25,202,173,0.4);
 }
 .archive-post time {
   font-style: italic;
