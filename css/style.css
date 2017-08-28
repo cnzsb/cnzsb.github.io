@@ -1094,7 +1094,7 @@ pre .deletion {
   }
 }
 html {
-  cursor: url("./img/cursor.ico"), auto;
+  cursor: url("../images/cursor.ico"), auto;
 }
 body {
   background-color: #fff;
