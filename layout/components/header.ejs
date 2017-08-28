@@ -3,7 +3,14 @@
     <h1 class="site-title">
       <a href="<%- config.root %>"><%= config.title %></a>
     </h1>
-    <p class="site-description"><% if (config.subtitle){ %><%= config.subtitle %><% } %></p>
+    <p class="site-description"><% if (config.description){ %><%= config.description %><% } %></p>
+    <div class="site-navigation contact-me">
+        <ul>
+          <% for (var i in theme.subnav){ %>
+            <li><a class="icon-<%= i %>" href="<%- url_for(theme.subnav[i]) %>" target="_blank"></a></li>
+          <% } %>
+        </ul>
+    </div>
   </div>
   <nav class="site-navigation">
     <ul>

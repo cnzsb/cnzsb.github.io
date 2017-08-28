@@ -1,6 +1,13 @@
 menu:
   Home: /
   Archives: /archives
+  Demo: /mydemo
+
+subnav:
+  github: "http://github.com/cnzsb"
+  weibo: "http://weibo.com/u/2821242461"
+  mail: "mailto:cnzsb@foxmail.com"
+  rss: "/atom.xml"
 
 # duoshuo comment
 duoshuo: false
@@ -11,4 +18,4 @@ disqus: false
 disqus_shortname:
 
 # google analytics
-googleTrackId:
+googleTrackId: 'UA-71274501-1'
