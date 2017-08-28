@@ -4,7 +4,7 @@
 
 # Site
 title: 奔跑的Q丶
-subtitle: 奔跑的Q丶
+subtitle: 
 description: 奔跑在前端的路上，记录学习，记录生活
 author: 赵世博
 email: cnzsb@foxmail.com
@@ -64,7 +64,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: yilia
+theme: Hacker
 
 plugins: #插件，例如生成 RSS 和站点地图的
   hexo-generator-feed
