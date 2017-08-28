@@ -13,13 +13,21 @@ header .site-branding .site-title {
   font-size: 2.5rem;
 }
 header .site-branding .site-title a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   color: #19caad;
   font-weight: bolder;
-  -webkit-transition: padding 0.3s ease-out;
-  transition: padding 0.3s ease-out;
 }
-header .site-branding .site-title a:hover {
-  padding: 0 1.5rem;
+header .site-branding .site-title a img {
+  width: 2em;
+  height: 2em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  transition: margin 0.3s ease-out;
+}
+header .site-branding .site-title a:hover img {
+  margin-right: 0.8em;
 }
 header .site-branding .site-description {
   color: #9e9e9e;
