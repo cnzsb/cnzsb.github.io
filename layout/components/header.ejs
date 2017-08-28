@@ -1,7 +1,10 @@
 <header>
   <div class="site-branding">
     <h1 class="site-title">
-      <a href="<%- config.root %>"><%= config.title %></a>
+      <a href="<%- config.root %>">
+          <img src="<%= theme.avatar %>" alt="avatar">
+          <%= config.title %>
+      </a>
     </h1>
     <p class="site-description"><% if (config.description){ %><%= config.description %><% } %></p>
     <div class="site-navigation contact-me">

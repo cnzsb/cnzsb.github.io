@@ -17,13 +17,21 @@ header
       font-size 2.5rem
 
       a
+        display inline-flex
+        justify-content center
+        align-items center
         color $siteAColor
         font-weight bolder
-        -webkit-transition padding 0.3s ease-out
-        transition padding 0.3s ease-out
 
-        &:hover
-          padding: 0 1.5rem
+        img
+          width 2em
+          height 2em
+          margin-right 0.5em
+          border-radius 50%
+          transition margin 0.3s ease-out
+
+        &:hover img
+          margin-right 0.8em
 
     .site-description
       color $siteDescColor

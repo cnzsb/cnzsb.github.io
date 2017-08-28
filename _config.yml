@@ -9,6 +9,8 @@ subnav:
   mail: "mailto:cnzsb@foxmail.com"
   rss: "/atom.xml"
 
+avatar: "/avatar.png"
+
 # duoshuo comment
 duoshuo: false
 duoshuo_name:
