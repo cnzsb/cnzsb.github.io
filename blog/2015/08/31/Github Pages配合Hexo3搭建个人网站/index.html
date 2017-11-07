@@ -163,7 +163,7 @@
 <p>然后设置密码并确认，这里的密码用来以后提交项目使用，输入时无*号提示，如果为空，则以后提交项目时无需验证。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">Enter</span> <span class="string">passphrase</span> <span class="string">(empty</span> <span class="string">for</span> <span class="literal">no</span> <span class="string">passphrase):</span></div><div class="line"><span class="string">Enter</span> <span class="string">same</span> <span class="string">passphrase</span> <span class="attr">again:</span></div></pre></td></tr></table></figure>
 <p>之后看到以下图案就成功啦。</p>
-<p><img src="//7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github.jpg" alt=""></p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github.jpg" alt=""></p>
 <h3 id="3.2">3.2 添加SSH keys到Github</h3>
 
 <p>在本机设置SSH key成功后，会在<code>\users\your_user_directory\.ssh</code>目录下生成<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件。</p>
@@ -174,7 +174,7 @@
 <p>最后来测试一下。</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>ssh -T git<span class="variable">@github</span>.com</div></pre></td></tr></table></figure>
 <p>会得到如下反馈：</p>
-<p><img src="//7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github-test.jpg" alt=""></p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github-test.jpg" alt=""></p>
 <p>输入yes后弹出如下代码即代表成功。</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hi 账户名! You<span class="symbol">'ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.</div></pre></td></tr></table></figure>
 <h3 id="3.3">3.3 设置用户信息</h3>
@@ -244,7 +244,7 @@
 <h3 id="6.2">6.2 DNS设置</h3>
 
 <p>这里使用<a href="https://www.dnspod.cn/" target="_blank">DNSPod</a>来解析。注册登录后，添加域名并如下设置。</p>
-<p><img src="//7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/DNSPod-settings.jpg" alt=""></p>
+<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/DNSPod-settings.jpg" alt=""></p>
 <p>其中A的两条记录指向的IP地址是Github Pages提供的IP，如有改动，在<a href="" target="">Github Pages</a>查看最新IP。其中www指定的记录是个人的Github上的Repository。</p>
 <p>做完这一步后，登录万网，找到自己购买的域名并更改DNS服务器，对应上图设置中的两条NS记录。</p>
 <p>这时已经可以成功访问到自己的域名了。</p>
