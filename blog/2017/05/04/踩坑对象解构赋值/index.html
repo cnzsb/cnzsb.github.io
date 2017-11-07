@@ -107,7 +107,7 @@
 <p>由于浅拷贝的原因，上面所说的在 React 中的应用也就存在了问题。来看下面的代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> deepObj = &#123;</div><div class="line">    obj: &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;,</div><div class="line">    num: <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> copyObj = &#123;...deepObj&#125;</div><div class="line"><span class="built_in">console</span>.log(copyObj === deepObj)    <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(copyObj.obj === deepObj.obj)    <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <p>从代码中可清晰的发现浅拷贝仅影响被拷贝的第一层结构，而内部数据还是保持了与原数据的引用关系，即此时若操作 <code>copyObj.obj</code> 则会引发 <code>deepObj.obj</code> 数据的同步变更，这显然不是我们想要的结果。</p>
-<p>因此，一定要注意在浅拷贝的时候如果要操作内部数据的话则需要再次对引用类型进行拷贝，或者一开始就使用 <code>JSON.parse(JSON.stringify(deepObj))</code> 这种小技巧对原数据进行深拷贝，或是干脆使用 <a href="http://facebook.github.io/immutable-js/" target="_blank" rel="external">Immutable</a> 来避免可变数据。</p>
+<p>因此，一定要注意在浅拷贝的时候如果要操作内部数据的话则需要再次对引用类型进行拷贝，或者一开始就使用 <code>JSON.parse(JSON.stringify(deepObj))</code> 这种小技巧对原数据进行深拷贝，或是干脆使用 <a href="//facebook.github.io/immutable-js/">Immutable</a> 来避免可变数据。</p>
 
       
     </div>
@@ -145,8 +145,12 @@
     
     &copy; 2017 赵世博
     
+    
+    </br> 豫ICP备17044531号-1
+    
   </p>
 </footer>
+
     
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -107,7 +107,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bool = document.execCommand(aCommandName, aShowDefaultUI, aValueArgument)</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>接受三个参数，并返回一个 <code>Boolean</code>，如果是 <code>false</code> 则表示操作不被支持或未被启用。</p>
-<p>第一个参数是一个 <code>DOMString</code>，即为用到的命令名称，如 <code>copy</code>、<code>cut</code> 等，具体的实现因浏览器而异，目前多数的浏览器都能支持，可以<a href="http://codepen.io/netsi1964/full/QbLLGW/" target="_blank" rel="external"><strong>点此预览</strong></a>这些指令并检测当前浏览器是否支持。</p>
+<p>第一个参数是一个 <code>DOMString</code>，即为用到的命令名称，如 <code>copy</code>、<code>cut</code> 等，具体的实现因浏览器而异，目前多数的浏览器都能支持，可以<a href="//codepen.io/netsi1964/full/QbLLGW/"><strong>点此预览</strong></a>这些指令并检测当前浏览器是否支持。</p>
 <p>第二个参数是一个 <code>Boolean</code> 是否展示用户界面，一般为 <code>false</code>。Mozilla 没有实现。实际使用中并未用到。</p>
 <p>第三个参数是某些命令需要的一些额外参数值（如 insertimage 需要提供这个 image 的 url）。默认为 <code>null。</code>实际使用中也为用到。</p>
 <h2 id="实现复制功能"><a href="#实现复制功能" class="headerlink" title="实现复制功能"></a>实现复制功能</h2><p>对于一个页面中已经存在的 <code>input</code> 元素来讲，我们只需要直接对调用即可实现。</p>
@@ -158,8 +158,12 @@
     
     &copy; 2017 赵世博
     
+    
+    </br> 豫ICP备17044531号-1
+    
   </p>
 </footer>
+
     
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
