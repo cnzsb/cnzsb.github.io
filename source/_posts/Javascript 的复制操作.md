@@ -18,7 +18,7 @@ bool = document.execCommand(aCommandName, aShowDefaultUI, aValueArgument)
 
 接受三个参数，并返回一个 `Boolean`，如果是 `false` 则表示操作不被支持或未被启用。
 
-第一个参数是一个 `DOMString`，即为用到的命令名称，如 `copy`、`cut` 等，具体的实现因浏览器而异，目前多数的浏览器都能支持，可以[**点此预览**](http://codepen.io/netsi1964/full/QbLLGW/)这些指令并检测当前浏览器是否支持。
+第一个参数是一个 `DOMString`，即为用到的命令名称，如 `copy`、`cut` 等，具体的实现因浏览器而异，目前多数的浏览器都能支持，可以[**点此预览**](//codepen.io/netsi1964/full/QbLLGW/)这些指令并检测当前浏览器是否支持。
 
 第二个参数是一个 `Boolean` 是否展示用户界面，一般为 `false`。Mozilla 没有实现。实际使用中并未用到。
 

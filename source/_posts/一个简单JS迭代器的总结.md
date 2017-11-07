@@ -4,7 +4,7 @@ tags: JavaScript
 
 ---
 
-近来一直在[codewars](http://www.codewars.com)上练习JS，遇到了一个关于迭代的问题[Function iteration](http://www.codewars.com/kata/54b679eaac3d54e6ca0008c9/train/javascript)。原题目如下：
+近来一直在[codewars](//www.codewars.com)上练习JS，遇到了一个关于迭代的问题[Function iteration](//www.codewars.com/kata/54b679eaac3d54e6ca0008c9/train/javascript)。原题目如下：
 
 <!-- more -->
 

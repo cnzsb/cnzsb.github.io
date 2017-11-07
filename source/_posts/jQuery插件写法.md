@@ -147,5 +147,5 @@ $.fn.pluginName = function(opts) {
 
 ## 参考资料
 
-1. [深入理解jQuery插件开发](http://blog.jobbole.com/30550/)
-2. [jQuery插件开发精品教程，让你的jQuery提升一个台阶](http://www.cnblogs.com/Wayou/p/jquery_plugin_tutorial.html#!comments)
+1. [深入理解jQuery插件开发](//blog.jobbole.com/30550/)
+2. [jQuery插件开发精品教程，让你的jQuery提升一个台阶](//www.cnblogs.com/Wayou/p/jquery_plugin_tutorial.html#!comments)

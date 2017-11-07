@@ -9,7 +9,7 @@ tags: [Tips, HTML]
 <!-- more -->
 
 ```HTML
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="<a href='http://www.adobe.com/go/getflash'><img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /></a>" width="100%" height="352">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="<a href='//www.adobe.com/go/getflash'><img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /></a>" width="100%" height="352">
       <param name="movie" value="1.swf" id="movie">
       <param name="wmode" value="transparent">
       <param name="quality" value="high">
@@ -21,7 +21,7 @@ tags: [Tips, HTML]
       <param name="devicefont" value="false">
       <param name="salign" value="">
       <param name="allowScriptAccess" value="sameDomain">
-      <embed src="1.swf" wmode="transparent" quality="high" bgcolor="#e1f7ff" loop="true" scale="showall" menu="true" devicefont="false" allowScriptAccess="sameDomain" width="100%" height="352" type="application/x-shockwave-flash" pluginspage="<a href='http://www.adobe.com/go/getflash'><img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /></a>" />
+      <embed src="1.swf" wmode="transparent" quality="high" bgcolor="#e1f7ff" loop="true" scale="showall" menu="true" devicefont="false" allowScriptAccess="sameDomain" width="100%" height="352" type="application/x-shockwave-flash" pluginspage="<a href='//www.adobe.com/go/getflash'><img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /></a>" />
 </object>
 ```
 

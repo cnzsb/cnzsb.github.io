@@ -46,8 +46,8 @@ tags: [Github Pages, Hexo]
 
 首先下载所需软件并安装。
 
-* <a href="http://nodejs.org" target="_blank">Node.js</a>
-* <a href="http://git-scm.com" target="_blank">Git</a>
+* <a href="//nodejs.org" target="_blank">Node.js</a>
+* <a href="//git-scm.com" target="_blank">Git</a>
 
 <h2 id="3">3. 配置和使用Github</h2>
 
@@ -81,7 +81,7 @@ Enter same passphrase again:
 
 之后看到以下图案就成功啦。
 
-![](http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github.jpg)
+![](//7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github.jpg)
 
 <h3 id="3.2">3.2 添加SSH keys到Github</h3>
 
@@ -98,7 +98,7 @@ $ ssh -T git@github.com
 
 会得到如下反馈：
 
-![](http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github-test.jpg)
+![](//7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github-test.jpg)
 
 输入yes后弹出如下代码即代表成功。
 
@@ -120,9 +120,9 @@ Github会通过这些信息来做权限处理。
 
 以上所有步骤可能遇到的错误：
 
-<a href="http://help.github.com/articles/generating-ssh-keys" target="_blank">GitHub Help - Generating SSH Keys</a>
+<a href="//help.github.com/articles/generating-ssh-keys" target="_blank">GitHub Help - Generating SSH Keys</a>
 
-<a href="http://help.github.com/articles/error-permission-denied-publickey" target="_blank">GitHub Help - Error Permission denied (publickey)</a>
+<a href="//help.github.com/articles/error-permission-denied-publickey" target="_blank">GitHub Help - Error Permission denied (publickey)</a>
 
 <h2 id="4">4. 使用Github Pages</h2>
 
@@ -242,7 +242,7 @@ $ hexo deploy
 
 这里使用<a href="https://www.dnspod.cn/" target="_blank">DNSPod</a>来解析。注册登录后，添加域名并如下设置。
 
-![](http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/DNSPod-settings.jpg)
+![](//7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/DNSPod-settings.jpg)
 
 其中A的两条记录指向的IP地址是Github Pages提供的IP，如有改动，在<a href="" target="">Github Pages</a>查看最新IP。其中www指定的记录是个人的Github上的Repository。
 
@@ -342,7 +342,7 @@ menu:
 
 ```
 # Hexo Configuration
-## Docs: http://hexo.io/docs/configuration.html
+## Docs: //hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
@@ -355,8 +355,8 @@ language:   #语言，简体中文：zh-CN
 timezone:
 
 # URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com   #网站地址
+## If your site is put in a subdirectory, set url as '//yoursite.com/child' and root as '/child/'
+url: //yoursite.com   #网站地址
 root: /	 #网站根目录
 permalink: :year/:month/:day/:title/  #网站url地址结构
 permalink_defaults:
@@ -409,7 +409,7 @@ logger_format: dev
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
-## http://momentjs.com/docs/#/displaying/format/
+## //momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
@@ -423,8 +423,8 @@ pagination_dir: page
 disqus_shortname:
 
 # Extensions  #扩展插件
-## Plugins: http://hexo.io/plugins/
-## Themes: http://hexo.io/themes/
+## Plugins: //hexo.io/plugins/
+## Themes: //hexo.io/themes/
 theme: landscape  #主题
 exclude_generator:
 
@@ -433,7 +433,7 @@ plugins:   #插件，例如生成 RSS 和站点地图的
 - hexo-generator-sitemap
 
 # Deployment  #部署
-## Docs: http://hexo.io/docs/deployment.html
+## Docs: //hexo.io/docs/deployment.html
 deploy:
   type: git
   repository:   #自己Github的项目地址
@@ -569,12 +569,12 @@ tagcloud: true
 #friends: false
 #开启——
 friends:
-  奥巴马的博客: http://localhost:4000/
-  卡卡的美丽传说: http://localhost:4000/
-  本泽马的博客: http://localhost:4000/
-  吉格斯的博客: http://localhost:4000/
-  习大大大不同: http://localhost:4000/
-  托蒂的博客: http://localhost:4000/
+  奥巴马的博客: //localhost:4000/
+  卡卡的美丽传说: //localhost:4000/
+  本泽马的博客: //localhost:4000/
+  吉格斯的博客: //localhost:4000/
+  习大大大不同: //localhost:4000/
+  托蒂的博客: //localhost:4000/
 
 #是否开启“关于我”。
 #不开启——
@@ -585,7 +585,7 @@ aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜�
 
 <h3 id="7.3">7.3 评论</h3>
 
-这里使用的是<a href="http://duoshuo.com/" target="_blank">多说</a>的评论，登陆后在*后台管理*找到*工具*可以看到一些代码，在代码中找到**short_name:"XXX"**。然后打开主题文件下的`_config.yml`，替换以下代码即可。
+这里使用的是<a href="//duoshuo.com/" target="_blank">多说</a>的评论，登陆后在*后台管理*找到*工具*可以看到一些代码，在代码中找到**short_name:"XXX"**。然后打开主题文件下的`_config.yml`，替换以下代码即可。
 
 ```
 duoshuo: true
@@ -614,7 +614,7 @@ plugins:
 rss: /atom.xml
 ```
 
-开启server可以本地测试*http://localhost:4000/atom.xml*是否生效。
+开启server可以本地测试*//localhost:4000/atom.xml*是否生效。
 
 <h3 id="7.5">7.5 Sitemap网站地图</h3>
 
@@ -631,7 +631,7 @@ plugins:
 - hexo-generator-sitemap
 ```
 
-浏览*http://localhost:4000/sitemap.xml*查看是否生效。
+浏览*//localhost:4000/sitemap.xml*查看是否生效。
 
 <h3 id="7.6">7.6 404页面</h3>
 
@@ -684,10 +684,10 @@ Disallow: /
 
 <h2 id="8">8. 参考资料</h2>
 
-1. <a href="http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>
-2. <a href="http://segmentfault.com/a/1190000002538363" target="_blank">Hexo静态博客使用指南</a>
-3. <a href="http://forsweet.github.io/hexo/%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/" target="_blank">用Hexo 3 搭建github blog</a>
-4. <a href="http://blog.lmintlcx.com/post/blog-with-hexo.html" target="_blank">使用Hexo搭建博客 </a>
-5. <a href="http://segmentfault.com/a/1190000002398039" target="_blank">更换博客系统——从jekyll到hexo</a>
-6. <a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">hexo你的博客</a>
-7. <a href="http://segmentfault.com/a/1190000002632530" target="_blank">hexo常用命令笔记</a>
+1. <a href="//cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>
+2. <a href="//segmentfault.com/a/1190000002538363" target="_blank">Hexo静态博客使用指南</a>
+3. <a href="//forsweet.github.io/hexo/%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/" target="_blank">用Hexo 3 搭建github blog</a>
+4. <a href="//blog.lmintlcx.com/post/blog-with-hexo.html" target="_blank">使用Hexo搭建博客 </a>
+5. <a href="//segmentfault.com/a/1190000002398039" target="_blank">更换博客系统——从jekyll到hexo</a>
+6. <a href="//ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">hexo你的博客</a>
+7. <a href="//segmentfault.com/a/1190000002632530" target="_blank">hexo常用命令笔记</a>
