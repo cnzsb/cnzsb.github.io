@@ -4,8 +4,8 @@ menu:
   Demo: /mydemo
 
 subnav:
-  github: "http://github.com/cnzsb"
-  weibo: "http://weibo.com/u/2821242461"
+  github: "//github.com/cnzsb"
+  weibo: "//weibo.com/u/2821242461"
   mail: "mailto:cnzsb@foxmail.com"
   rss: "/atom.xml"
 
