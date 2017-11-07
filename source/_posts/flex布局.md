@@ -14,7 +14,7 @@ tags: [CSS3]
 
 ## 1. 基本概念
 
-![flexbox](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flexbox.png)
+![flexbox](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flexbox.png)
 
 容器默认存在两根轴：`main axis`（从`main-start`向`main-end`）或者`cross axis`（从`cross-start`向`cross-end`）。
 
@@ -52,7 +52,7 @@ tags: [CSS3]
 
 弹性容器的各个边描述了弹性条目流的起点与终点。它们决定了弹性容器的主轴方向（从左到右、从右到左，等等）。
 
-![flex-direction](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-direction.png)
+![flex-direction](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-direction.png)
 
 ```javascript
 .container {
@@ -69,7 +69,7 @@ tags: [CSS3]
 
 默认情况之下，Flex项目都尽可能在一行显示。你可以根据flex-wrap的属性值来改变，让Flex项目多行显示。
 
-![flex-wrap](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-wrap.png)
+![flex-wrap](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-wrap.png)
 
 ```javascript
 .container {
@@ -93,7 +93,7 @@ tags: [CSS3]
 
 ### 2.4 justify-content
 
-![justify-content](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/justify-content.png)
+![justify-content](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/justify-content.png)
 
 ```javascript
 .container {
@@ -111,7 +111,7 @@ tags: [CSS3]
 
 定义项目在侧轴上如何对齐。
 
-![align-items](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-items.png)
+![align-items](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-items.png)
 
 ```javascript
 .container {
@@ -129,7 +129,7 @@ tags: [CSS3]
 
 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
 
-![align-content](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-content.png)
+![align-content](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-content.png)
 
 ```javascript
 .container {
@@ -160,7 +160,7 @@ tags: [CSS3]
 
 order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0，有最小（负值最大）order的伸缩项目排在第一个。
 
-![order](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/order.png)
+![order](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/order.png)
 
 ```javascript
 .item {
@@ -174,7 +174,7 @@ order属性定义项目的排列顺序。数值越小，排列越靠前，默认
 
 如果所有项目的`flex-grow`属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的`flex-grow`属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
 
-![flex-grow](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-grow.png)
+![flex-grow](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-grow.png)
 
 ```javascript
 .item {
@@ -188,7 +188,7 @@ order属性定义项目的排列顺序。数值越小，排列越靠前，默认
 
 如果所有项目的`flex-shrink`属性都为1，当空间不足时，都将等比例缩小。如果一个项目的`flex-shrink`属性为0，其他项目都为1，则空间不足时，前者不缩小。
 
-![flex-shrink](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-shrink.jpg)
+![flex-shrink](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/flex-shrink.jpg)
 
 ```javascript
 .item {
@@ -224,7 +224,7 @@ order属性定义项目的排列顺序。数值越小，排列越靠前，默认
 
 允许单个项目有与其他项目不一样的对齐方式，可覆盖`align-items`属性。默认值为`auto`，表示继承父元素的`align-items`属性，如果没有父元素，则等同于`stretch`。
 
-![align-self](//7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-self.png)
+![align-self](http://7xlivs.com1.z0.glb.clouddn.com/2016/05/flex布局/align-self.png)
 
 ```javascript
 .item {

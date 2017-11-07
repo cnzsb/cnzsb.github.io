@@ -6,7 +6,7 @@ tags: [JavaScript]
 
 现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 `{key: 'one', value: '1', children: [...]}`，都包含 `key` 和 `value`，如果存在 `children` 则内部会存在 `n` 个和此结构相同的节点，现模拟数据如下图：
 
-![原始数据结构](//7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/data.png)
+![原始数据结构](http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/data.png)
 
 已知一个 `value` 如 `3-2-1`，需要取出该路径上的所有 `key`，即期望得到 `['three', 'three-two', 'three-two-one']`。
 
@@ -16,7 +16,7 @@ tags: [JavaScript]
 
 广度优先的算法如下图：
 
-![bfs](//7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/bfs.png)
+![bfs](http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/bfs.png)
 
 从上图可以轻易看出广度优先即是按照数据结构的层次一层层遍历搜索。首先需要把外层的数据结构放入一个待搜索的队列（Queue）中，进而对这个队列进行遍历，当正在遍历的节点存在子节点（`children`）时则把此子节点下所有节点放入待搜索队列的末端。因为本需求需要记录路径，因此还需要对这些数据做一些特殊处理，此处采用了为这些节点增加 `parent` 即来源的方法。对此队列依次搜索直至找到目标节点时，可通过深度遍历此节点的 `parent` 从而获得到整个目标路径。具体代码如下：
 
@@ -59,7 +59,7 @@ function findPathBFS(source, goal) {
 
 深度优先的算法如下图：
 
-![dfs](//7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/dfs.png)
+![dfs](http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/dfs.png)
 
 深度优先即是取得要遍历的节点时如果发现有子节点（`children`） 时，则不断的深度遍历，并把这些节点放入一个待搜索的栈（Stack）中，直到最后一个没有子节点的节点时，开始对栈进行搜索。后进先出（下列代码中使用了 `push` 方法入栈，因此需使用 `pop` 方法出栈），如果没有匹配到，则删掉此节点，同时删掉父节点中的自身，不断重复遍历直到匹配为止。**注意，常规的深度优先并不会破坏原始数据结构，而是采用 `isVisited` 或者颜色标记法进行表示，原理相同，此处简单粗暴做了删除处理。**代码如下：
 
