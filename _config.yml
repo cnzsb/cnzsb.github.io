@@ -1,11 +1,11 @@
 menu:
   Home: /
   Archives: /archives
-  Demo: /mydemo
+  Demo: cnzsb.github.io/mydemo
 
 subnav:
-  github: "//github.com/cnzsb"
-  weibo: "//weibo.com/u/2821242461"
+  github: "https://github.com/cnzsb"
+  weibo: "https://weibo.com/u/2821242461"
   mail: "mailto:cnzsb@foxmail.com"
   rss: "/atom.xml"
 
