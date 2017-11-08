@@ -1,7 +1,7 @@
 menu:
   Home: /
   Archives: /archives
-  Demo: cnzsb.github.io/mydemo
+  Demo: /mydemo
 
 subnav:
   github: "https://github.com/cnzsb"
