@@ -49,6 +49,6 @@ tags: [CSS3]
 
 ```
 
-示例一个简单的3D旋转导航栏效果：[Click Me！](//www.zhaoshibo.net/mydemo/demo/3D旋转导航栏.html)
+示例一个简单的3D旋转导航栏效果：[Click Me！](http://zhaoshibo.net/mydemo/demo/3D旋转导航栏.html)
 
 本文知识面比较浅，单纯的记录了各属性如何使用，还有很多细节需要动手实践才能发现。比如`transform`多属性时，旋转和位移等属性的书写顺序也会影响结果，不过根据这个顺序也可以做出其他的变换。不多说，多实践才可行。

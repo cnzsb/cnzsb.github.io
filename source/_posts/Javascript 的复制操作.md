@@ -1,5 +1,5 @@
 title: 'JavaScript 的复制操作'
-date: 2016-8-17 23:47:46 
+date: 2016-8-17 23:47:46
 tags: JavaScript
 
 ---
@@ -18,7 +18,7 @@ bool = document.execCommand(aCommandName, aShowDefaultUI, aValueArgument)
 
 接受三个参数，并返回一个 `Boolean`，如果是 `false` 则表示操作不被支持或未被启用。
 
-第一个参数是一个 `DOMString`，即为用到的命令名称，如 `copy`、`cut` 等，具体的实现因浏览器而异，目前多数的浏览器都能支持，可以[**点此预览**](//codepen.io/netsi1964/full/QbLLGW/)这些指令并检测当前浏览器是否支持。
+第一个参数是一个 `DOMString`，即为用到的命令名称，如 `copy`、`cut` 等，具体的实现因浏览器而异，目前多数的浏览器都能支持，可以[**点此预览**](https://codepen.io/netsi1964/full/QbLLGW/)这些指令并检测当前浏览器是否支持。
 
 第二个参数是一个 `Boolean` 是否展示用户界面，一般为 `false`。Mozilla 没有实现。实际使用中并未用到。
 
@@ -62,7 +62,7 @@ document.getElementById('copyBtn')
         input.type = 'text'
         input.className = 'copy-text'   // 利用 class 设置样式
         input.value = someData          // 一些数据
-        
+
         const _i = _target.appendChild(input) // 暂时添加进 button 节点中了，也可以放在其他地方
 
         _i.select()

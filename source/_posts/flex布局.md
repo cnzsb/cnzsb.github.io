@@ -270,5 +270,5 @@ display: flex;
 
 ## 5 参考资料
 
-1. [Flex 布局教程：语法篇](//www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
-2. [一个完整的Flexbox指南](//www.w3cplus.com/css3/a-guide-to-flexbox-new.html)
+1. [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+2. [一个完整的Flexbox指南](https://www.w3cplus.com/css3/a-guide-to-flexbox-new.html)

@@ -355,8 +355,8 @@ language:   #语言，简体中文：zh-CN
 timezone:
 
 # URL
-## If your site is put in a subdirectory, set url as '//yoursite.com/child' and root as '/child/'
-url: //yoursite.com   #网站地址
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://yoursite.com   #网站地址
 root: /	 #网站根目录
 permalink: :year/:month/:day/:title/  #网站url地址结构
 permalink_defaults:

@@ -4,24 +4,24 @@ tags: JavaScript
 
 ---
 
-近来一直在[codewars](//www.codewars.com)上练习JS，遇到了一个关于迭代的问题[Function iteration](//www.codewars.com/kata/54b679eaac3d54e6ca0008c9/train/javascript)。原题目如下：
+近来一直在[codewars](https://www.codewars.com)上练习JS，遇到了一个关于迭代的问题[Function iteration](https://www.codewars.com/kata/54b679eaac3d54e6ca0008c9/train/javascript)。原题目如下：
 
 <!-- more -->
 
 > The purpose of this kata is to write a higher-order function which is capable of creating a function that iterates on a specified function a given number of times. This new functions takes in an argument as a seed to start the computation from.
-> 
+>
 > For instance, consider the function `getDouble`. When run twice on value `3`, yields `12` as shown below.
 >
 > ```
  getDouble(3) => 6
  getDouble(6) => 12
  ```
-> 
+>
 > Let us name the new function `createIterator` and we should be able to obtain the same result using `createIterator` as shown below:
-> 
+>
 > var doubleIterator = createIterator(getDouble, 2); // This means, it runs *getDouble* twice
 doubleIterator(3) => 12
-> 
+>
 > For the sake of simplicity, all function inputs to createIterator would be functions returning a small number and number of iterations would always be integers.
 
 开始的时候一直没有理解如何复用函数的返回值，索性在`createIterator(func, n)`中直接`return`函数`func`了。但是后来发现要验证的答案格式如下。
@@ -46,7 +46,7 @@ getQuadruple(5); // => 20
 
 ```
 var createIterator = function (func, n) {
-  // TODO: Write code here to return a function 
+  // TODO: Write code here to return a function
   // that executes *func*, *n* times on a supplied input
     return function(arg){
         for(var i = 0; i < n; i++) {
@@ -60,7 +60,7 @@ var createIterator = function (func, n) {
 
 ```
 var createIterator = function (func, n) {
-  // TODO: Write code here to return a function 
+  // TODO: Write code here to return a function
   // that executes *func*, *n* times on a supplied input
     return function(arg){
         for(var i = 0; i < n; i++) {

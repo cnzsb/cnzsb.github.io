@@ -9,7 +9,7 @@ tags: [Tips, HTML]
 <!-- more -->
 
 ```HTML
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="<a href='//www.adobe.com/go/getflash'><img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /></a>" width="100%" height="352">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="<a href='https://www.adobe.com/go/getflash'><img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /></a>" width="100%" height="352">
       <param name="movie" value="1.swf" id="movie">
       <param name="wmode" value="transparent">
       <param name="quality" value="high">
@@ -21,7 +21,7 @@ tags: [Tips, HTML]
       <param name="devicefont" value="false">
       <param name="salign" value="">
       <param name="allowScriptAccess" value="sameDomain">
-      <embed src="1.swf" wmode="transparent" quality="high" bgcolor="#e1f7ff" loop="true" scale="showall" menu="true" devicefont="false" allowScriptAccess="sameDomain" width="100%" height="352" type="application/x-shockwave-flash" pluginspage="<a href='//www.adobe.com/go/getflash'><img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /></a>" />
+      <embed src="1.swf" wmode="transparent" quality="high" bgcolor="#e1f7ff" loop="true" scale="showall" menu="true" devicefont="false" allowScriptAccess="sameDomain" width="100%" height="352" type="application/x-shockwave-flash" pluginspage="<a href='https://www.adobe.com/go/getflash'><img src='images/TB21HgpbFXXXXX2XpXXXXXXXXXX_!!163498746.gif' alt='获得 Adobe Flash Player' /></a>" />
 </object>
 ```
 
@@ -63,7 +63,7 @@ tags: [Tips, HTML]
 	+ `false`，只显示包含设置选项和关于文件的菜单。
 - `allowScriptAccess`
 	+ `always`，默认设置，代表任何文件都被允许调用脚本。
-	+ `sameDomain`，设置文件的脚本调用权限范围为同一域名。	
+	+ `sameDomain`，设置文件的脚本调用权限范围为同一域名。
 	+ `never`，代表不允许调用脚本。
 - `devicefont`，是否设置为设备字体样式。
 - `align`，默认为居中，当浏览器窗口小于文件时，边缘会被裁切。可设置为`left`，`right`，`top`，`bottom`，设置后如有需要，另外三边将被裁切。

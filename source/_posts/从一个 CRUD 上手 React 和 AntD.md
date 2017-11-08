@@ -4,7 +4,7 @@ tags: [React, AntD]
 
 ---
 
-换了新公司后，技术栈使用的是 react。虽然一路从 vue 1 到 vue 2，但是我还是对 react 有好感的，当初学习 vue 1 文档少的可怜的时候也是借鉴了不少 react 的文章才得以理解，因此在接下来的文章中会小部分的对比下 react 和 vue 的不同。本次的文章主要是关于初次接触 react，并开发出一个具有 CRUD 功能页面的过程。提前了解本项目的详情请点击 [GitHub 地址](https://github.com/cnzsb/react-antd-crud)和[线上预览地址](//www.zhaoshibo.net/react-antd-crud/)。
+换了新公司后，技术栈使用的是 react。虽然一路从 vue 1 到 vue 2，但是我还是对 react 有好感的，当初学习 vue 1 文档少的可怜的时候也是借鉴了不少 react 的文章才得以理解，因此在接下来的文章中会小部分的对比下 react 和 vue 的不同。本次的文章主要是关于初次接触 react，并开发出一个具有 CRUD 功能页面的过程。提前了解本项目的详情请点击 [GitHub 地址](https://github.com/cnzsb/react-antd-crud)和[线上预览地址](//zhaoshibo.net/react-antd-crud/)。
 
 <!-- more -->
 
@@ -56,10 +56,10 @@ class A extends React.Component {
       this.state = {
         value: ''
       }
-      
+
       this.onChange = this.onChange.bind(this)
     }
-    
+
     onChange(event) {
         this.setState({
             value: event.target.value
