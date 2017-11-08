@@ -52,9 +52,9 @@
     <div class="site-navigation contact-me">
         <ul>
           
-            <li><a class="icon-github" href="//github.com/cnzsb" target="_blank"></a></li>
+            <li><a class="icon-github" href="https://github.com/cnzsb" target="_blank"></a></li>
           
-            <li><a class="icon-weibo" href="//weibo.com/u/2821242461" target="_blank"></a></li>
+            <li><a class="icon-weibo" href="https://weibo.com/u/2821242461" target="_blank"></a></li>
           
             <li><a class="icon-mail" href="mailto:cnzsb@foxmail.com" target="_blank"></a></li>
           
@@ -70,7 +70,7 @@
       
         <li><a href="/archives">归档</a></li>
       
-        <li><a href="/mydemo">Demo</a></li>
+        <li><a href="/cnzsb.github.io/mydemo">Demo</a></li>
       
     </ul>
   </nav>
@@ -147,8 +147,8 @@
 
 <p>首先下载所需软件并安装。</p>
 <ul>
-<li><a href="//nodejs.org" target="_blank">Node.js</a></li>
-<li><a href="//git-scm.com" target="_blank">Git</a></li>
+<li><a href="https://nodejs.org" target="_blank">Node.js</a></li>
+<li><a href="https://git-scm.com" target="_blank">Git</a></li>
 </ul>
 <h2 id="3">3. 配置和使用Github</h2>
 
@@ -183,8 +183,8 @@
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"用户名"</span></div><div class="line">$ git<span class="built_in"> config </span>--global user.email  <span class="string">"邮箱地址"</span></div></pre></td></tr></table></figure>
 <p>Github会通过这些信息来做权限处理。</p>
 <p>以上所有步骤可能遇到的错误：</p>
-<p><a href="//help.github.com/articles/generating-ssh-keys" target="_blank">GitHub Help - Generating SSH Keys</a></p>
-<p><a href="//help.github.com/articles/error-permission-denied-publickey" target="_blank">GitHub Help - Error Permission denied (publickey)</a></p>
+<p><a href="https://help.github.com/articles/generating-ssh-keys" target="_blank">GitHub Help - Generating SSH Keys</a></p>
+<p><a href="https://help.github.com/articles/error-permission-denied-publickey" target="_blank">GitHub Help - Error Permission denied (publickey)</a></p>
 <h2 id="4">4. 使用Github Pages</h2>
 
 <p>基础的环境和配置都设置完后，接下来就是利用Github的Github Pages这个功能来搭建自己的静态页面。</p>
@@ -306,7 +306,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Header</span></div><div class="line">menu:</div><div class="line">  主页: /</div><div class="line">  所有文章: /archives</div><div class="line"><span class="meta">  #</span><span class="bash"> 随笔: /tags/随笔</span></div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> SubNav</span></div><div class="line">subnav:</div><div class="line">  github: "#"</div><div class="line">  weibo: "#"</div><div class="line">  rss: "#"  #域名地址/atom.xml</div><div class="line">  zhihu: "#"</div><div class="line"><span class="meta">  #</span><span class="bash">douban: <span class="string">"#"</span></span></div><div class="line"><span class="meta">  #</span><span class="bash">mail: <span class="string">"#"</span>  <span class="comment">#mailto:邮箱地址</span></span></div><div class="line"><span class="meta">  #</span><span class="bash">facebook: <span class="string">"#"</span></span></div><div class="line"><span class="meta">  #</span><span class="bash">google: <span class="string">"#"</span></span></div><div class="line"><span class="meta">  #</span><span class="bash">twitter: <span class="string">"#"</span></span></div><div class="line"><span class="meta">  #</span><span class="bash">linkedin: <span class="string">"#"</span></span></div><div class="line"></div><div class="line">rss: /atom.xml</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Content</span></div><div class="line">excerpt_link: more</div><div class="line">fancybox: true</div><div class="line">mathjax: true</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Miscellaneous</span></div><div class="line">google_analytics: ''</div><div class="line">favicon: /favicon.png</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">你的头像url</span></div><div class="line">avatar: ""</div><div class="line"><span class="meta">#</span><span class="bash">是否开启分享</span></div><div class="line">share: true</div><div class="line"><span class="meta">#</span><span class="bash">是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></div><div class="line"><span class="meta">#</span><span class="bash">若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论</span></div><div class="line">duoshuo: true  #这里使用多说直接改为多说的项目名称即可</div><div class="line"><span class="meta">#</span><span class="bash">是否开启云标签</span></div><div class="line">tagcloud: true</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">是否开启友情链接</span></div><div class="line"><span class="meta">#</span><span class="bash">不开启——</span></div><div class="line"><span class="meta">#</span><span class="bash">friends: <span class="literal">false</span></span></div><div class="line"><span class="meta">#</span><span class="bash">开启——</span></div><div class="line">friends:</div><div class="line">  奥巴马的博客: //localhost:4000/</div><div class="line">  卡卡的美丽传说: //localhost:4000/</div><div class="line">  本泽马的博客: //localhost:4000/</div><div class="line">  吉格斯的博客: //localhost:4000/</div><div class="line">  习大大大不同: //localhost:4000/</div><div class="line">  托蒂的博客: //localhost:4000/</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">是否开启“关于我”。</span></div><div class="line"><span class="meta">#</span><span class="bash">不开启——</span></div><div class="line"><span class="meta">#</span><span class="bash">aboutme: <span class="literal">false</span></span></div><div class="line"><span class="meta">#</span><span class="bash">开启——</span></div><div class="line">aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div></pre></td></tr></table></figure>
 <h3 id="7.3">7.3 评论</h3>
 
-<p>这里使用的是<a href="//duoshuo.com/" target="_blank">多说</a>的评论，登陆后在<em>后台管理</em>找到<em>工具</em>可以看到一些代码，在代码中找到<strong>short_name:”XXX”</strong>。然后打开主题文件下的<code>_config.yml</code>，替换以下代码即可。</p>
+<p>这里使用的是多说的评论，登陆后在<em>后台管理</em>找到<em>工具</em>可以看到一些代码，在代码中找到<strong>short_name:”XXX”</strong>。然后打开主题文件下的<code>_config.yml</code>，替换以下代码即可。</p>
 <figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">duoshuo: true</div><div class="line">=<span class="ruby">=&gt;</span></div><div class="line"><span class="ruby"><span class="symbol">duoshuo:</span> XXX</span></div></pre></td></tr></table></figure>
 <h3 id="7.4">7.4 RSS订阅</h3>
 
@@ -343,13 +343,13 @@
 <h2 id="8">8. 参考资料</h2>
 
 <ol>
-<li><a href="//cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
-<li><a href="//segmentfault.com/a/1190000002538363" target="_blank">Hexo静态博客使用指南</a></li>
-<li><a href="//forsweet.github.io/hexo/%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/" target="_blank">用Hexo 3 搭建github blog</a></li>
-<li><a href="//blog.lmintlcx.com/post/blog-with-hexo.html" target="_blank">使用Hexo搭建博客 </a></li>
-<li><a href="//segmentfault.com/a/1190000002398039" target="_blank">更换博客系统——从jekyll到hexo</a></li>
-<li><a href="//ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">hexo你的博客</a></li>
-<li><a href="//segmentfault.com/a/1190000002632530" target="_blank">hexo常用命令笔记</a></li>
+<li><a href="http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
+<li><a href="https://segmentfault.com/a/1190000002538363" target="_blank">Hexo静态博客使用指南</a></li>
+<li><a href="https://forsweet.github.io/hexo/%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/" target="_blank">用Hexo 3 搭建github blog</a></li>
+<li><a href="https://blog.lmintlcx.com/post/blog-with-hexo.html" target="_blank">使用Hexo搭建博客 </a></li>
+<li><a href="https://segmentfault.com/a/1190000002398039" target="_blank">更换博客系统——从jekyll到hexo</a></li>
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">hexo你的博客</a></li>
+<li><a href="https://segmentfault.com/a/1190000002632530" target="_blank">hexo常用命令笔记</a></li>
 </ol>
 
       
@@ -382,14 +382,14 @@
 
     <footer class="site-footer">
   <p class="site-info">
-    Proudly powered by <a href="//hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="//github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
     </br>
     
     &copy; 2017 赵世博
     
     
-    </br> <a href="//www.miitbeian.gov.cn/" target="_blank">豫ICP备17044531号-1</a>
+    </br> <a href="https://www.miitbeian.gov.cn/" target="_blank">豫ICP备17044531号-1</a>
     
   </p>
 </footer>
@@ -399,12 +399,13 @@
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-71274501-1', 'auto');
     ga('send', 'pageview');
 
 </script>
+
 
   </div>
 </div>
