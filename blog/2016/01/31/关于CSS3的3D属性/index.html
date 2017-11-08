@@ -115,7 +115,7 @@
 <h3 id="backface-visibility"><a href="#backface-visibility" class="headerlink" title="backface-visibility"></a>backface-visibility</h3><p>默认情况当多个图像重叠时，我们会透视看到后面的图像，与现实表现不符。因此设置<code>backface-visibility： hidden</code>，则可以让其与现实表现一致，即被遮挡的部分我们看不到。</p>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>大致情况下的HTML结构为：</p>
 <figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby"> 父元素（舞台元素）（增加一定的视距 perspective）</span></div><div class="line"><span class="ruby">	- <span class="number">3</span>D容器(声明 transform-<span class="symbol">style:</span> preserve-<span class="number">3</span>d)</span></div><div class="line"><span class="ruby">		- 图片等元素（需要<span class="number">3</span>D效果的元素）</span></div><div class="line"><span class="ruby">		- 图片等元素</span></div><div class="line"><span class="ruby">		- 若干...</span></div></pre></td></tr></table></figure>
-<p>示例一个简单的3D旋转导航栏效果：<a href="//www.zhaoshibo.net/mydemo/demo/3D旋转导航栏.html">Click Me！</a></p>
+<p>示例一个简单的3D旋转导航栏效果：<a href="http://zhaoshibo.net/mydemo/demo/3D旋转导航栏.html">Click Me！</a></p>
 <p>本文知识面比较浅，单纯的记录了各属性如何使用，还有很多细节需要动手实践才能发现。比如<code>transform</code>多属性时，旋转和位移等属性的书写顺序也会影响结果，不过根据这个顺序也可以做出其他的变换。不多说，多实践才可行。</p>
 
       
