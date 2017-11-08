@@ -46,8 +46,8 @@ tags: [Github Pages, Hexo]
 
 首先下载所需软件并安装。
 
-* <a href="//nodejs.org" target="_blank">Node.js</a>
-* <a href="//git-scm.com" target="_blank">Git</a>
+* <a href="https://nodejs.org" target="_blank">Node.js</a>
+* <a href="https://git-scm.com" target="_blank">Git</a>
 
 <h2 id="3">3. 配置和使用Github</h2>
 
@@ -120,9 +120,9 @@ Github会通过这些信息来做权限处理。
 
 以上所有步骤可能遇到的错误：
 
-<a href="//help.github.com/articles/generating-ssh-keys" target="_blank">GitHub Help - Generating SSH Keys</a>
+<a href="https://help.github.com/articles/generating-ssh-keys" target="_blank">GitHub Help - Generating SSH Keys</a>
 
-<a href="//help.github.com/articles/error-permission-denied-publickey" target="_blank">GitHub Help - Error Permission denied (publickey)</a>
+<a href="https://help.github.com/articles/error-permission-denied-publickey" target="_blank">GitHub Help - Error Permission denied (publickey)</a>
 
 <h2 id="4">4. 使用Github Pages</h2>
 
@@ -585,7 +585,7 @@ aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜�
 
 <h3 id="7.3">7.3 评论</h3>
 
-这里使用的是<a href="//duoshuo.com/" target="_blank">多说</a>的评论，登陆后在*后台管理*找到*工具*可以看到一些代码，在代码中找到**short_name:"XXX"**。然后打开主题文件下的`_config.yml`，替换以下代码即可。
+这里使用的是多说的评论，登陆后在*后台管理*找到*工具*可以看到一些代码，在代码中找到**short_name:"XXX"**。然后打开主题文件下的`_config.yml`，替换以下代码即可。
 
 ```
 duoshuo: true
@@ -684,10 +684,10 @@ Disallow: /
 
 <h2 id="8">8. 参考资料</h2>
 
-1. <a href="//cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>
-2. <a href="//segmentfault.com/a/1190000002538363" target="_blank">Hexo静态博客使用指南</a>
-3. <a href="//forsweet.github.io/hexo/%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/" target="_blank">用Hexo 3 搭建github blog</a>
-4. <a href="//blog.lmintlcx.com/post/blog-with-hexo.html" target="_blank">使用Hexo搭建博客 </a>
-5. <a href="//segmentfault.com/a/1190000002398039" target="_blank">更换博客系统——从jekyll到hexo</a>
-6. <a href="//ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">hexo你的博客</a>
-7. <a href="//segmentfault.com/a/1190000002632530" target="_blank">hexo常用命令笔记</a>
+1. <a href="http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>
+2. <a href="https://segmentfault.com/a/1190000002538363" target="_blank">Hexo静态博客使用指南</a>
+3. <a href="https://forsweet.github.io/hexo/%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/" target="_blank">用Hexo 3 搭建github blog</a>
+4. <a href="https://blog.lmintlcx.com/post/blog-with-hexo.html" target="_blank">使用Hexo搭建博客 </a>
+5. <a href="https://segmentfault.com/a/1190000002398039" target="_blank">更换博客系统——从jekyll到hexo</a>
+6. <a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank">hexo你的博客</a>
+7. <a href="https://segmentfault.com/a/1190000002632530" target="_blank">hexo常用命令笔记</a>

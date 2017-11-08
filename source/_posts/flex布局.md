@@ -240,7 +240,7 @@ order属性定义项目的排列顺序。数值越小，排列越靠前，默认
 
 ## 4. 兼容性
 
-<iframe width="100%" height="380" src="//caniuse.com/flexbox/embed"></iframe>
+<iframe width="100%" height="380" src="https://caniuse.com/flexbox/embed"></iframe>
 
 * iOS和Android4.4以上可以使用最新的flex布局
 * Android4.4以下兼容旧版flexbox布局
