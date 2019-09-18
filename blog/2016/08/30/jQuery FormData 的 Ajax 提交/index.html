@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>jQuery FormData 的 Ajax 提交 | 奔跑的Q丶</title>
@@ -22,12 +22,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="jQuery FormData 的 Ajax 提交"/>
+  <meta property="og:title" content="jQuery FormData 的 Ajax 提交">
 
-  <meta property="og:site_name" content="奔跑的Q丶"/>
+  <meta property="og:site_name" content="奔跑的Q丶">
 
   
-  <meta property="og:image" content="/favicon.ico"/>
+  <meta property="og:image" content="/favicon.ico">
   
 
   <link href="/favicon.ico" rel="icon">
@@ -70,7 +70,7 @@
       
         <li><a href="/archives">归档</a></li>
       
-        <li><a href="/mydemo">Demo</a></li>
+        <li><a href="https://cnzsb.github.io/mydemo">Demo</a></li>
       
     </ul>
   </nav>
@@ -105,8 +105,9 @@
         <p>前些天恰好遇到用 jQuery 提交一个上传的文件一直出错，这里记录一下原因。</p>
 <p>我们的项目本身是使用了 vue 的，但是历史原因同时也保留了 jQuery ，然后项目中用 Promise 重新封装了 jQuery 的 Ajax 方法。之前有一个共用的 upload 的上传组件，里面使用了原生 XHR ，没有遇到上传文件的问题，但是我在使用 jQuery 的 Ajax 时却怎么都办法上传，检查发现是 <code>content-type</code> 导致的问题。</p>
 <a id="more"></a>
+
 <p>仔细查看 jQuery 的 API 文档才发现原来它默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code> ，这显然不是 <code>FormData</code> 的类型。同时 <code>processData</code> 为了配合默认的 <code>contentType</code> 类型，也会把需要发送的 <code>data</code> 对象转为一个查询字符串。因此在发送一个 <code>FormData</code> 类型的数据时，应该这么写：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    type: <span class="string">'post'</span>,</div><div class="line">    url: <span class="string">'/api/upload'</span>,</div><div class="line">    contentType: <span class="literal">false</span>,</div><div class="line">    processData: <span class="literal">false</span>,</div><div class="line">    data: FormData,</div><div class="line">    success: handleResponse</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">'post'</span>,</span><br><span class="line">    url: <span class="string">'/api/upload'</span>,</span><br><span class="line">    contentType: <span class="literal">false</span>,</span><br><span class="line">    processData: <span class="literal">false</span>,</span><br><span class="line">    data: FormData,</span><br><span class="line">    success: handleResponse</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -141,7 +142,7 @@
     Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
     </br>
     
-    &copy; 2017 赵世博
+    &copy; 2019 赵世博
     
     
     </br> <a href="https://www.miitbeian.gov.cn/" target="_blank">豫ICP备17044531号-1</a>

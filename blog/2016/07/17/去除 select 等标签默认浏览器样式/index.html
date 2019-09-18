@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>去除 select 等标签默认浏览器样式 | 奔跑的Q丶</title>
+
+  
+  <meta name="author" content="赵世博">
+  
+
+  
+  <meta name="description" content="主题凑合用，样式即将改版...">
+  
+
+  
+  
+  <meta name="keywords" content="Tips,CSS">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="去除 select 等标签默认浏览器样式">
+
+  <meta property="og:site_name" content="奔跑的Q丶">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">
+          <img src="/avatar.png" alt="avatar">
+          奔跑的Q丶
+      </a>
+    </h1>
+    <p class="site-description">主题凑合用，样式即将改版...</p>
+    <div class="site-navigation contact-me">
+        <ul>
+          
+            <li><a class="icon-github" href="https://github.com/cnzsb" target="_blank"></a></li>
+          
+            <li><a class="icon-weibo" href="https://weibo.com/u/2821242461" target="_blank"></a></li>
+          
+            <li><a class="icon-mail" href="mailto:cnzsb@foxmail.com" target="_blank"></a></li>
+          
+            <li><a class="icon-rss" href="/atom.xml" target="_blank"></a></li>
+          
+        </ul>
+    </div>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="https://cnzsb.github.io/mydemo">Demo</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>去除 select 等标签默认浏览器样式</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/07/17/去除 select 等标签默认浏览器样式/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-07-17T08:11:47.000Z">
+          2016-07-17
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>去除select等标签默认浏览器样式的方式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">select</span> &#123;</span><br><span class="line">	<span class="attribute">-webkit-appearance</span>: none;  <span class="comment">/* chrome */</span></span><br><span class="line">	   <span class="attribute">-moz-appearance</span>: none;  <span class="comment">/* firefox */</span></span><br><span class="line">	        <span class="attribute">appearance</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE */</span></span><br><span class="line"><span class="selector-tag">select</span><span class="selector-pseudo">::-ms-expand</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Tips/">Tips</a><a href="/tags/CSS/">CSS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 赵世博
+    
+    
+    </br> <a href="https://www.miitbeian.gov.cn/" target="_blank">豫ICP备17044531号-1</a>
+    
+  </p>
+</footer>
+
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-71274501-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>关于 CSS3 的 3D 属性 | 奔跑的Q丶</title>
+
+  
+  <meta name="author" content="赵世博">
+  
+
+  
+  <meta name="description" content="主题凑合用，样式即将改版...">
+  
+
+  
+  
+  <meta name="keywords" content="CSS3">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="关于 CSS3 的 3D 属性">
+
+  <meta property="og:site_name" content="奔跑的Q丶">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">
+          <img src="/avatar.png" alt="avatar">
+          奔跑的Q丶
+      </a>
+    </h1>
+    <p class="site-description">主题凑合用，样式即将改版...</p>
+    <div class="site-navigation contact-me">
+        <ul>
+          
+            <li><a class="icon-github" href="https://github.com/cnzsb" target="_blank"></a></li>
+          
+            <li><a class="icon-weibo" href="https://weibo.com/u/2821242461" target="_blank"></a></li>
+          
+            <li><a class="icon-mail" href="mailto:cnzsb@foxmail.com" target="_blank"></a></li>
+          
+            <li><a class="icon-rss" href="/atom.xml" target="_blank"></a></li>
+          
+        </ul>
+    </div>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="https://cnzsb.github.io/mydemo">Demo</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>关于 CSS3 的 3D 属性</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2016/01/31/关于 CSS3 的 3D 属性/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-01-31T10:05:19.000Z">
+          2016-01-31
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>关于CSS3的3D变换，属于一接触就能让人倍感兴趣的属性。参考了一些网上的资料，做一些总结，这里只讨论遇到的可使用的属性。</p>
+<a id="more"></a>
+
+<h3 id="rotate旋转"><a href="#rotate旋转" class="headerlink" title="rotate旋转"></a>rotate旋转</h3><p>在此之前，我们首先建立一个3D的概念，在电脑上，我们看得到也最好理解的便是XY轴。屏幕自左向右为X轴，则沿着X轴的上下旋转即为<code>rotateX</code>；屏幕自上向下为Y轴，则沿着Y轴左右旋转即为<code>rotateY</code>；以屏幕为水平面，眼睛看向电脑的现实水平方向则为Z轴（可以想象为一条线从屏幕中水平穿出来），则沿着Z轴的旋转为<code>rotateZ</code>。有了这些概念再来看一个在平时2D的CSS3中从未使用过的<code>translateZ</code>属性。</p>
+<img src="/blog/2016/01/31/关于%20CSS3%20的%203D%20属性/rotate.jpg" class="rotate旋转演示">
+
+<h3 id="translateZ位移"><a href="#translateZ位移" class="headerlink" title="translateZ位移"></a>translateZ位移</h3><p>理解了旋转的话，那么位移这个属性实在是简单多了。既然Z轴可以理解为从显示器发射出来的那条线，那么沿着这条线往外位移，也就是向靠近眼睛方向的移动为translateZ(正数)，反之参数为负数，也就是远离你的眼睛。</p>
+<img src="/blog/2016/01/31/关于%20CSS3%20的%203D%20属性/translateZ.jpg" class="translateZ位移演示">
+
+<h3 id="perspective透视"><a href="#perspective透视" class="headerlink" title="perspective透视"></a>perspective透视</h3><p><code>perspective</code>指的是透视，在3D设置中起着幕布布景的含义。这个属性应用于父元素也就是舞台元素上，设置的参数意味着你的眼睛距离屏幕图像的距离，如<code>perspective： 200px</code>，则意味着你再距离屏幕200像素的距离观察图像。</p>
+<p>假设父元素中设置<code>perspective： 200px</code>，此时在子元素中设置<code>tranzlateZ</code>的值越小，则越深入屏幕内部，相当于现实中物体远离眼睛，看到的物体也越小，相反，值越接近200px，则物体看起来越大。如果超过这个值那就相当于到了我们的脑后了，则什么也就看不到了。关于旋转，也等同于现实中远近距离下观察到的角度。</p>
+<p>提到把“我们个人”作为观察者，就不得不提关于观察点的设置——<code>perspective-origin</code>，即我们眼睛所看到的中心点。这个值默认为图像的中心点，如果设置<code>perspective-origin： 25% 50%</code>；则意味着在图像中心点上方一半距离的位置。</p>
+<h3 id="preserve-3d"><a href="#preserve-3d" class="headerlink" title="preserve-3d"></a>preserve-3d</h3><p>在子元素上设置<code>transform-style: preserve-3d</code>就是为它们配置3D效果，另一个参数<code>flat</code>暂时没有遇到，不做讨论。这个属性一般设置在3D变换元素的父元素上即舞台元素上。该效果设置后，图像旋转位移等的表现形式为相对于你在现实世界中的表现类似于看镜子。</p>
+<h3 id="backface-visibility"><a href="#backface-visibility" class="headerlink" title="backface-visibility"></a>backface-visibility</h3><p>默认情况当多个图像重叠时，我们会透视看到后面的图像，与现实表现不符。因此设置<code>backface-visibility： hidden</code>，则可以让其与现实表现一致，即被遮挡的部分我们看不到。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>大致情况下的HTML结构为：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>父元素（舞台元素）（增加一定的视距 perspective）</span><br><span class="line"><span class="bullet">	- </span>3D容器(声明 transform-style: preserve-3d)</span><br><span class="line"><span class="bullet">		- </span>图片等元素（需要3D效果的元素）</span><br><span class="line"><span class="bullet">		- </span>图片等元素</span><br><span class="line"><span class="bullet">		- </span>若干...</span><br></pre></td></tr></table></figure>
+
+<p>示例一个简单的3D旋转导航栏效果：<a href="http://zhaoshibo.net/mydemo/demo/3D旋转导航栏.html">Click Me！</a></p>
+<p>本文知识面比较浅，单纯的记录了各属性如何使用，还有很多细节需要动手实践才能发现。比如<code>transform</code>多属性时，旋转和位移等属性的书写顺序也会影响结果，不过根据这个顺序也可以做出其他的变换。不多说，多实践才可行。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/CSS3/">CSS3</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 赵世博
+    
+    
+    </br> <a href="https://www.miitbeian.gov.cn/" target="_blank">豫ICP备17044531号-1</a>
+    
+  </p>
+</footer>
+
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-71274501-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+  </div>
+</div>
+</body>
+</html>

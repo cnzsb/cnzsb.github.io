@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>添加多个 SSH 秘钥 | 奔跑的Q丶</title>
@@ -22,12 +22,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="添加多个 SSH 秘钥"/>
+  <meta property="og:title" content="添加多个 SSH 秘钥">
 
-  <meta property="og:site_name" content="奔跑的Q丶"/>
+  <meta property="og:site_name" content="奔跑的Q丶">
 
   
-  <meta property="og:image" content="/favicon.ico"/>
+  <meta property="og:image" content="/favicon.ico">
   
 
   <link href="/favicon.ico" rel="icon">
@@ -70,7 +70,7 @@
       
         <li><a href="/archives">归档</a></li>
       
-        <li><a href="/mydemo">Demo</a></li>
+        <li><a href="https://cnzsb.github.io/mydemo">Demo</a></li>
       
     </ul>
   </nav>
@@ -104,12 +104,15 @@
       
         <p>本月堆积了好几篇文章没写了，趁着最后几十分钟，为了完成年初计划马虎更新一篇记录性的文章吧。由于本月刚换了新的公司，新公司的代码托管在 GitLab 上，因此有了管理 2 个 SSH 秘钥的需求，查阅资料后发现并不难，记录与分享一下。</p>
 <p>首先生成 SSH 的指令不陌生：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+
 <p>默认会存放在个人文档根目录下的 <code>.ssh</code> 下，并以 <code>id_rsa</code> 的文件名生成秘钥对。<a id="more"></a>方便起见我没有修改已经存在的这两个配置文件。接下来的操作自然是再生成一份配置文件，但是注意选择保存的时候要改为其他名字防止覆盖已有文件，比如以 <code>id_rsa_other</code> 新命名。</p>
 <p>接下来需要利用 <code>ssh-add</code> 相关命令添加对应的标识。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh-add ~/.ssh/id_rsa_other</div><div class="line">ssh-add -L  <span class="comment"># 查看已生成的列表，用来确认是否添加成功</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_other</span><br><span class="line">ssh-add -L  <span class="comment"># 查看已生成的列表，用来确认是否添加成功</span></span><br></pre></td></tr></table></figure>
+
 <p>最后还需要在 <code>.ssh</code> 文件夹下创建一份 <code>config</code> 配置文件，文件内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># github.com</span></div><div class="line">Host github.com</div><div class="line">        HostName github.com</div><div class="line">        User git</div><div class="line">        IdentityFile ~/.ssh/id_rsa</div><div class="line"><span class="comment"># gitlab.other.com</span></div><div class="line">Host gitlab.other.com</div><div class="line">        HostName gitlab.other.com</div><div class="line">        User git</div><div class="line">        IdentityFile ~/.ssh/id_rsa_other</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># github.com</span></span><br><span class="line">Host github.com</span><br><span class="line">        HostName github.com</span><br><span class="line">        User git</span><br><span class="line">        IdentityFile ~/.ssh/id_rsa</span><br><span class="line"><span class="comment"># gitlab.other.com</span></span><br><span class="line">Host gitlab.other.com</span><br><span class="line">        HostName gitlab.other.com</span><br><span class="line">        User git</span><br><span class="line">        IdentityFile ~/.ssh/id_rsa_other</span><br></pre></td></tr></table></figure>
+
 <p>最最后，如果需要测试的话可以执行 <code>ssh -T &quot;git@HOST&quot;</code> 进行检验。但是一般公司内的服务器是不会给个人开通权限也就没办法利用这个指令测试了，不过可以尝试 <code>clone</code> 一个仓库来检测是否成功。</p>
 <p>具体在开发时还需要记得在相应的仓库中重新配置 <code>git config</code> 对应的用户名及邮箱哦。</p>
 
@@ -147,7 +150,7 @@
     Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
     </br>
     
-    &copy; 2017 赵世博
+    &copy; 2019 赵世博
     
     
     </br> <a href="https://www.miitbeian.gov.cn/" target="_blank">豫ICP备17044531号-1</a>

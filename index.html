@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>奔跑的Q丶</title>
@@ -21,10 +21,10 @@
 
   
 
-  <meta property="og:site_name" content="奔跑的Q丶"/>
+  <meta property="og:site_name" content="奔跑的Q丶">
 
   
-  <meta property="og:image" content="/favicon.ico"/>
+  <meta property="og:image" content="/favicon.ico">
   
 
   <link href="/favicon.ico" rel="icon">
@@ -67,7 +67,7 @@
       
         <li><a href="/archives">归档</a></li>
       
-        <li><a href="/mydemo">Demo</a></li>
+        <li><a href="https://cnzsb.github.io/mydemo">Demo</a></li>
       
     </ul>
   </nav>
@@ -80,13 +80,13 @@
 
   
     
-    <h3 class="article-title"><a href="/blog/2017/10/12/Echars的使用/"><span>Echarts 的使用</span></a></h3>
+    <h3 class="article-title"><a href="/blog/2017/10/12/ECharts 的使用/"><span>ECharts 的使用</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/blog/2017/10/12/Echars的使用/" rel="bookmark">
+      <a href="/blog/2017/10/12/ECharts 的使用/" rel="bookmark">
         <time class="entry-date published" datetime="2017-10-12T09:10:52.000Z">
           2017-10-12
         </time>
@@ -100,8 +100,9 @@
   <div class="article-content">
     <div class="entry">
       
-        <p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/10/12/Echarts%E7%9A%84%E4%BD%BF%E7%94%A8/echarts.jpeg" alt="echarts-demo"></p>
-<p>本文介绍一下 Echarts 的基本配置项，我的项目是在 Vue 中搭配 <a href="https://github.com/Justineo/vue-echarts" target="_blank" rel="external">vue-echarts</a> 来使用的。</p>
+        <img src="/blog/2017/10/12/ECharts%20的使用/echarts.jpeg" class="echarts-demo">
+
+<p>本文介绍一下 Echarts 的基本配置项，我的项目是在 Vue 中搭配 <a href="https://github.com/Justineo/vue-echarts" target="_blank" rel="noopener">vue-echarts</a> 来使用的。</p>
       
     </div>
 
@@ -153,8 +154,8 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>公司的设计图稿等全部存在 Gitlab 上的某个仓库中，恰好某次迭代需要使用到其中的图稿，因为历史图稿使这个仓库异常大，而我只需要其中很小的一部分，就不想 <code>clone</code> 整个仓库而只想下载需要的文件夹。但是在使用 Git 时如果只想下载其中部分的文件夹是一件很复杂的事情，尝试了各种指令后发现无论如何都要先 <code>fetch</code> 整个项目，而下载其中的一个文件却是一件简单的事情，那不如就动手写个爬虫吧。于是就有了这个项目 <a href="https://github.com/cnzsb/gitlab-fileDownloader" target="_blank" rel="external">gitlab-fileDownload</a>：</p>
-<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/08/28/Node%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-Gitlab%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/gitlab-fileDownloader.gif" alt="demo-gitlab-fileDownload"></p>
+        <p>公司的设计图稿等全部存在 Gitlab 上的某个仓库中，恰好某次迭代需要使用到其中的图稿，因为历史图稿使这个仓库异常大，而我只需要其中很小的一部分，就不想 <code>clone</code> 整个仓库而只想下载需要的文件夹。但是在使用 Git 时如果只想下载其中部分的文件夹是一件很复杂的事情，尝试了各种指令后发现无论如何都要先 <code>fetch</code> 整个项目，而下载其中的一个文件却是一件简单的事情，那不如就动手写个爬虫吧。于是就有了这个项目 <a href="https://github.com/cnzsb/gitlab-fileDownloader" target="_blank" rel="noopener">gitlab-fileDownload</a>：</p>
+<img src="/blog/2017/08/28/Node%20爬虫实践%20-%20Gitlab%20文件下载/gitlab-fileDownloader.gif" class="demo-gitlab-fileDownload">
       
     </div>
 
@@ -207,7 +208,8 @@
     <div class="entry">
       
         <p>隐藏滚动条方法：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">    <span class="comment">/* only 'overflow-x: hidden' for firefox */</span></div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line"></div><div class="line">    .target &#123;</div><div class="line">        <span class="selector-tag">overflow-y</span>: <span class="selector-tag">scroll</span>;</div><div class="line">        <span class="comment">/* ie */</span></div><div class="line">        <span class="selector-tag">-ms-overflow-style</span>: <span class="selector-tag">none</span>;</div><div class="line">        </div><div class="line">        <span class="comment">/* chrome */</span></div><div class="line">        &amp;<span class="selector-pseudo">::-webkit-scrollbar</span> &#123;</div><div class="line">          <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">/* firefox (unreliable) */</span></div><div class="line">        @-<span class="keyword">moz</span>-<span class="keyword">document</span> url-prefix() &#123;</div><div class="line">          &amp; &#123;</div><div class="line">            <span class="attribute">margin-right</span>: -<span class="number">16px</span>;</div><div class="line">            <span class="attribute">padding-right</span>: <span class="number">16px</span>;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="comment">/* only 'overflow-x: hidden' for firefox */</span></span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line"></span><br><span class="line">    .target &#123;</span><br><span class="line">        <span class="selector-tag">overflow-y</span>: <span class="selector-tag">scroll</span>;</span><br><span class="line">        <span class="comment">/* ie */</span></span><br><span class="line">        <span class="selector-tag">-ms-overflow-style</span>: <span class="selector-tag">none</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* chrome */</span></span><br><span class="line">        &amp;<span class="selector-pseudo">::-webkit-scrollbar</span> &#123;</span><br><span class="line">          <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* firefox (unreliable) */</span></span><br><span class="line">        @-<span class="keyword">moz</span>-<span class="keyword">document</span> url-prefix() &#123;</span><br><span class="line">          &amp; &#123;</span><br><span class="line">            <span class="attribute">margin-right</span>: -<span class="number">16px</span>;</span><br><span class="line">            <span class="attribute">padding-right</span>: <span class="number">16px</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -261,7 +263,8 @@
     <div class="entry">
       
         <p>现在有一种类似树的数据结构，但是不存在共同的根节点 root，每一个节点的结构为 <code>{key: &#39;one&#39;, value: &#39;1&#39;, children: [...]}</code>，都包含 <code>key</code> 和 <code>value</code>，如果存在 <code>children</code> 则内部会存在 <code>n</code> 个和此结构相同的节点，现模拟数据如下图：</p>
-<p><img src="http://7xlivs.com1.z0.glb.clouddn.com/2017/05/09/%E5%B9%BF%E5%BA%A6%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/data.png" alt="原始数据结构"></p>
+<img src="/blog/2017/05/09/JS%20中的广度与深度优先遍历/data.png" class="原始数据结构">
+
 <p>已知一个 <code>value</code> 如 <code>3-2-1</code>，需要取出该路径上的所有 <code>key</code>，即期望得到 <code>[&#39;three&#39;, &#39;three-two&#39;, &#39;three-two-one&#39;]</code>。</p>
       
     </div>
@@ -353,7 +356,7 @@
   <div class="article-top-meta">
     <span class="posted-on">
       <a href="/blog/2017/05/04/踩坑对象解构赋值/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-05-04T01:51:06.000Z">
+        <time class="entry-date published" datetime="2017-05-04T03:01:49.000Z">
           2017-05-04
         </time>
       </a>
@@ -471,7 +474,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>换了新公司后，技术栈使用的是 react。虽然一路从 vue 1 到 vue 2，但是我还是对 react 有好感的，当初学习 vue 1 文档少的可怜的时候也是借鉴了不少 react 的文章才得以理解，因此在接下来的文章中会小部分的对比下 react 和 vue 的不同。本次的文章主要是关于初次接触 react，并开发出一个具有 CRUD 功能页面的过程。提前了解本项目的详情请点击 <a href="https://github.com/cnzsb/react-antd-crud" target="_blank" rel="external">GitHub 地址</a>和<a href="//zhaoshibo.net/react-antd-crud/">线上预览地址</a>。</p>
+        <p>换了新公司后，技术栈使用的是 react。虽然一路从 vue 1 到 vue 2，但是我还是对 react 有好感的，当初学习 vue 1 文档少的可怜的时候也是借鉴了不少 react 的文章才得以理解，因此在接下来的文章中会小部分的对比下 react 和 vue 的不同。本次的文章主要是关于初次接触 react，并开发出一个具有 CRUD 功能页面的过程。提前了解本项目的详情请点击 <a href="https://github.com/cnzsb/react-antd-crud" target="_blank" rel="noopener">GitHub 地址</a>和<a href="//zhaoshibo.net/react-antd-crud/">线上预览地址</a>。</p>
       
     </div>
 
@@ -525,7 +528,8 @@
       
         <p>本月堆积了好几篇文章没写了，趁着最后几十分钟，为了完成年初计划马虎更新一篇记录性的文章吧。由于本月刚换了新的公司，新公司的代码托管在 GitLab 上，因此有了管理 2 个 SSH 秘钥的需求，查阅资料后发现并不难，记录与分享一下。</p>
 <p>首先生成 SSH 的指令不陌生：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+
 <p>默认会存放在个人文档根目录下的 <code>.ssh</code> 下，并以 <code>id_rsa</code> 的文件名生成秘钥对。
       
     </div>
@@ -558,13 +562,13 @@
 
   
     
-    <h3 class="article-title"><a href="/blog/2017/02/06/Plus —— JS 面试题/"><span>Plus —— JS 面试题</span></a></h3>
+    <h3 class="article-title"><a href="/blog/2017/02/06/Plus - JS 面试题/"><span>Plus - JS 面试题</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/blog/2017/02/06/Plus —— JS 面试题/" rel="bookmark">
+      <a href="/blog/2017/02/06/Plus - JS 面试题/" rel="bookmark">
         <time class="entry-date published" datetime="2017-02-06T08:16:59.000Z">
           2017-02-06
         </time>
@@ -580,7 +584,7 @@
       
         <blockquote>
 <p>设计一个 plus 方法，达到以下测试结果。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>)</div><div class="line">describe(<span class="string">'闭包应用'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  it(<span class="string">'plus(0) === 0'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    assert.equal(<span class="number">0</span>, plus(<span class="number">0</span>).toString())</div><div class="line">  &#125;)</div><div class="line">  it(<span class="string">'plus(1)(1)(2)(3)(5) === 12'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    assert.equal(<span class="number">12</span>, plus(<span class="number">1</span>)(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">5</span>).toString())</div><div class="line">  &#125;)</div><div class="line">  it(<span class="string">'plus(1)(4)(2)(3) === 10'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    assert.equal(<span class="number">10</span>,plus(<span class="number">1</span>)(<span class="number">4</span>)(<span class="number">2</span>)(<span class="number">3</span>).toString())</div><div class="line">  &#125;)</div><div class="line">  it(<span class="string">'方法引用'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> plus2 = plus(<span class="number">1</span>)(<span class="number">1</span>)</div><div class="line">    assert.equal(<span class="number">12</span>, plus2(<span class="number">1</span>)(<span class="number">4</span>)(<span class="number">2</span>)(<span class="number">3</span>).toString())</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">const</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>)</span><br><span class="line">describe(<span class="string">'闭包应用'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  it(<span class="string">'plus(0) === 0'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    assert.equal(<span class="number">0</span>, plus(<span class="number">0</span>).toString())</span><br><span class="line">  &#125;)</span><br><span class="line">  it(<span class="string">'plus(1)(1)(2)(3)(5) === 12'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    assert.equal(<span class="number">12</span>, plus(<span class="number">1</span>)(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">5</span>).toString())</span><br><span class="line">  &#125;)</span><br><span class="line">  it(<span class="string">'plus(1)(4)(2)(3) === 10'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    assert.equal(<span class="number">10</span>,plus(<span class="number">1</span>)(<span class="number">4</span>)(<span class="number">2</span>)(<span class="number">3</span>).toString())</span><br><span class="line">  &#125;)</span><br><span class="line">  it(<span class="string">'方法引用'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> plus2 = plus(<span class="number">1</span>)(<span class="number">1</span>)</span><br><span class="line">    assert.equal(<span class="number">12</span>, plus2(<span class="number">1</span>)(<span class="number">4</span>)(<span class="number">2</span>)(<span class="number">3</span>).toString())</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </blockquote>
       
     </div>
@@ -624,7 +628,7 @@
     Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
     </br>
     
-    &copy; 2017 赵世博
+    &copy; 2019 赵世博
     
     
     </br> <a href="https://www.miitbeian.gov.cn/" target="_blank">豫ICP备17044531号-1</a>

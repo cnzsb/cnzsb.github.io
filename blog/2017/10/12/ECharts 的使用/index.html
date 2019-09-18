@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>ECharts 的使用 | 奔跑的Q丶</title>
+
+  
+  <meta name="author" content="赵世博">
+  
+
+  
+  <meta name="description" content="主题凑合用，样式即将改版...">
+  
+
+  
+  
+  <meta name="keywords" content="Echarts,Vue">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="ECharts 的使用">
+
+  <meta property="og:site_name" content="奔跑的Q丶">
+
+  
+  <meta property="og:image" content="/favicon.ico">
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="奔跑的Q丶" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">
+          <img src="/avatar.png" alt="avatar">
+          奔跑的Q丶
+      </a>
+    </h1>
+    <p class="site-description">主题凑合用，样式即将改版...</p>
+    <div class="site-navigation contact-me">
+        <ul>
+          
+            <li><a class="icon-github" href="https://github.com/cnzsb" target="_blank"></a></li>
+          
+            <li><a class="icon-weibo" href="https://weibo.com/u/2821242461" target="_blank"></a></li>
+          
+            <li><a class="icon-mail" href="mailto:cnzsb@foxmail.com" target="_blank"></a></li>
+          
+            <li><a class="icon-rss" href="/atom.xml" target="_blank"></a></li>
+          
+        </ul>
+    </div>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="https://cnzsb.github.io/mydemo">Demo</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>ECharts 的使用</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/2017/10/12/ECharts 的使用/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-10-12T09:10:52.000Z">
+          2017-10-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <img src="/blog/2017/10/12/ECharts%20的使用/echarts.jpeg" class="echarts-demo">
+
+<p>本文介绍一下 Echarts 的基本配置项，我的项目是在 Vue 中搭配 <a href="https://github.com/Justineo/vue-echarts" target="_blank" rel="noopener">vue-echarts</a> 来使用的。</p>
+<a id="more"></a>
+
+<h2 id="引入-Echarts"><a href="#引入-Echarts" class="headerlink" title="引入 Echarts"></a>引入 Echarts</h2><p>为了缩减 Echarts 的体积，这里使用了按需引入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Chart <span class="keyword">from</span> <span class="string">'vue-echarts/components/ECharts.vue'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'echarts/lib/chart/bar'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'echarts/lib/chart/pie'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'echarts/lib/component/legend'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'echarts/lib/component/tooltip'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'echarts/lib/component/grid'</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Vue 中注册 components 后使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">chart</span> <span class="attr">class</span>=<span class="string">"chart"</span> <span class="attr">:options</span>=<span class="string">"options"</span> <span class="attr">auto-resize</span>&gt;</span><span class="tag">&lt;/<span class="name">chart</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>Echarts 中的配置项基本都提供了相似的 api，例如设置 <code>title</code>；<code>show</code> 表示是否显示；<code>text</code> 表示内容；<code>textStyle</code> 表示内容的样式，而 <code>textStyle</code> 下会有一些常用的 <code>css</code> 对象，如 <code>color</code>、<code>fontSize</code>、<code>width</code> 等。另外还有一些常用的 api，比如在希望格式化某个地方的数据时应该想到 <code>formatter</code>；默认的格式一般在 <code>normal</code> 中设置，而当获得焦点时的样式在 <code>emphasis</code> 中设置。接下来是我所用到的几个配置：</p>
+<ul>
+<li>color 自定义颜色</li>
+<li>tooltip 提示框<ul>
+<li>trigger 确认弹出时机，<code>item</code> 饼图，<code>axis</code> 柱状图等</li>
+<li>formatter 格式化数据</li>
+</ul>
+</li>
+<li>legend 图例说明<ul>
+<li>x 水平定位</li>
+<li>y 垂直定位</li>
+<li>data 图例标签，其中的 <code>name</code> 对应 <code>series</code> 中 <code>data</code> 的 <code>name</code></li>
+<li>formatter</li>
+</ul>
+</li>
+<li>grid 直角坐标系网格，在使用柱状图等时用来调整视图的位置<ul>
+<li>containLabel 设置 <code>true</code> 解决标签自适应宽高的问题</li>
+</ul>
+</li>
+<li>xAxis 直角坐标系 x 轴，在使用以下属性时，可展开设置内部 <code>show</code> 和 相关 <code>style</code> 或者 <code>formatter</code> 等<ul>
+<li>type 轴类型，<code>category</code> 表示类目轴，<code>value</code> 表示数值轴</li>
+<li>axisLine 轴线</li>
+<li>axisTick 轴线刻度</li>
+<li>axisLabel 类目标签</li>
+<li>min 最小值</li>
+<li>max 最大值</li>
+<li>splitLine 分割线</li>
+</ul>
+</li>
+<li>yAxis 直角坐标系 y 轴，同上</li>
+<li>series 系列列表，主要属性<ul>
+<li>type 类型，<code>pie</code> 饼图，<code>bar</code> 柱状图</li>
+<li>itemStyle 图形样式</li>
+<li>label 图例旁边的说明文字<ul>
+<li>normal 默认格式<ul>
+<li>position 位置，<code>right</code>、<code>outside</code> 等</li>
+<li>color</li>
+<li>formatter</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>labelLine 饼图属性，图例与说明文字之间的视觉引导线<ul>
+<li>normal<ul>
+<li>length 第一段引导线长度</li>
+<li>length2 第二段引导线长度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>data 数据，可以使用一下属性来标识，也可以使用单一的数组（此时 name 为数组索引）<ul>
+<li>name 数据项名称，即为关键的 <code>key</code>，其他与数据联动的地方均依赖此项</li>
+<li>value 数据值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>文中提到的属性可满足绝大多数图表的配置了，首次接触 Echarts 的时候可以只关心这几个配置项就足够了。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Echarts/">Echarts</a><a href="/tags/Vue/">Vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 赵世博
+    
+    
+    </br> <a href="https://www.miitbeian.gov.cn/" target="_blank">豫ICP备17044531号-1</a>
+    
+  </p>
+</footer>
+
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-71274501-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+  </div>
+</div>
+</body>
+</html>
