@@ -1,4 +1,4 @@
-title: 'LazyMan —— JS 面试题'
+title: 'LazyMan - JS 面试题'
 date: 2017-01-24 17:27:43
 tags: [JavaScript, 面试题]
 

@@ -1,10 +1,10 @@
-title: 'Echarts 的使用'
+title: 'ECharts 的使用'
 date: 2017-10-12 17:10:52
 tags: [Echarts, Vue]
 
 ---
 
-![echarts-demo](http://7xlivs.com1.z0.glb.clouddn.com/2017/10/12/Echarts%E7%9A%84%E4%BD%BF%E7%94%A8/echarts.jpeg)
+![echarts-demo](./ECharts%20的使用/echarts.jpeg)
 
 本文介绍一下 Echarts 的基本配置项，我的项目是在 Vue 中搭配 [vue-echarts](https://github.com/Justineo/vue-echarts) 来使用的。
 

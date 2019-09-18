@@ -1,4 +1,4 @@
-title: 'CSS3 text-shadow在IE下的解决'
+title: 'IE9 及以下的文字阴影'
 date: 2016-1-12 18:09:07 
 tags: [Tips, CSS3]
 

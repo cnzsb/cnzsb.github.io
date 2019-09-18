@@ -1,4 +1,4 @@
-title: 'jQuery插件写法'
+title: 'jQuery 插件写法'
 date: 2016-7-17 20:45:39
 tags: [jQuery]
 

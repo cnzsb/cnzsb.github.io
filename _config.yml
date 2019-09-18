@@ -36,7 +36,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -65,11 +65,12 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: Hacker
+theme: hacker
 
 plugins: #插件，例如生成 RSS 和站点地图的
   hexo-generator-feed
   hexo-generator-sitemap
+  hexo-asset
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html

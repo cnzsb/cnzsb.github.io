@@ -1,4 +1,4 @@
-title: '关于CSS3的3D属性'
+title: '关于 CSS3 的 3D 属性'
 date: 2016-1-31 18:05:19
 tags: [CSS3]
 
@@ -12,13 +12,13 @@ tags: [CSS3]
 
 在此之前，我们首先建立一个3D的概念，在电脑上，我们看得到也最好理解的便是XY轴。屏幕自左向右为X轴，则沿着X轴的上下旋转即为`rotateX`；屏幕自上向下为Y轴，则沿着Y轴左右旋转即为`rotateY`；以屏幕为水平面，眼睛看向电脑的现实水平方向则为Z轴（可以想象为一条线从屏幕中水平穿出来），则沿着Z轴的旋转为`rotateZ`。有了这些概念再来看一个在平时2D的CSS3中从未使用过的`translateZ`属性。
 
-![rotate旋转演示](http://7xlivs.com1.z0.glb.clouddn.com/2016%2F01%2F%E5%85%B3%E4%BA%8ECSS3%E7%9A%843D%E5%B1%9E%E6%80%A7%2Frotate.jpg)
+![rotate旋转演示](./关于%20CSS3%20的%203D%20属性/rotate.jpg)
 
 ### translateZ位移
 
 理解了旋转的话，那么位移这个属性实在是简单多了。既然Z轴可以理解为从显示器发射出来的那条线，那么沿着这条线往外位移，也就是向靠近眼睛方向的移动为translateZ(正数)，反之参数为负数，也就是远离你的眼睛。
 
-![translateZ位移演示](http://7xlivs.com1.z0.glb.clouddn.com/2016%2F01%2F%E5%85%B3%E4%BA%8ECSS3%E7%9A%843D%E5%B1%9E%E6%80%A7%2FtranslateZ.jpg)
+![translateZ位移演示](./关于%20CSS3%20的%203D%20属性/translateZ.jpg)
 
 ### perspective透视
 

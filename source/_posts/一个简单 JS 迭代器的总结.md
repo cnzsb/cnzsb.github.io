@@ -1,4 +1,4 @@
-title: '一个简单JS迭代器的总结'
+title: '一个简单 JS 迭代器的总结'
 date: 2015-12-18 11:29:34
 tags: JavaScript
 

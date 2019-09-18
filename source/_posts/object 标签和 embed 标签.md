@@ -1,4 +1,4 @@
-title: 'object标签和embed标签'
+title: 'object 标签和 embed 标签'
 date: 2015-9-25 15:21:51
 tags: [Tips, HTML]
 

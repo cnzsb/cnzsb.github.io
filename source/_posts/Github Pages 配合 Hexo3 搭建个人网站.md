@@ -1,4 +1,4 @@
-title: 'Github Pages配合Hexo3搭建个人网站'
+title: 'Github Pages 配合 Hexo3 搭建个人网站'
 date: 2015-8-31 14:06:37
 tags: [Github Pages, Hexo]
 
@@ -81,7 +81,7 @@ Enter same passphrase again:
 
 之后看到以下图案就成功啦。
 
-![](http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github.jpg)
+![](./Github%20Pages%20配合%20Hexo3%20搭建个人网站/SSH-key-for-github.jpg)
 
 <h3 id="3.2">3.2 添加SSH keys到Github</h3>
 
@@ -98,7 +98,7 @@ $ ssh -T git@github.com
 
 会得到如下反馈：
 
-![](http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/SSH-key-for-github-test.jpg)
+![](./Github%20Pages%20配合%20Hexo3%20搭建个人网站/SSH-key-for-github-test.jpg)
 
 输入yes后弹出如下代码即代表成功。
 
@@ -242,7 +242,7 @@ $ hexo deploy
 
 这里使用<a href="https://www.dnspod.cn/" target="_blank">DNSPod</a>来解析。注册登录后，添加域名并如下设置。
 
-![](http://7xlivs.com1.z0.glb.clouddn.com/2015/08/31/build-Github-Pages-with-Hexo3/DNSPod-settings.jpg)
+![](./Github%20Pages%20配合%20Hexo3%20搭建个人网站/DNSPod-settings.jpg)
 
 其中A的两条记录指向的IP地址是Github Pages提供的IP，如有改动，在<a href="" target="">Github Pages</a>查看最新IP。其中www指定的记录是个人的Github上的Repository。
 

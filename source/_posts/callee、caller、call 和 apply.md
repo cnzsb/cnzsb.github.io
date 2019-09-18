@@ -1,4 +1,4 @@
-title: 'callee、caller、call和apply'
+title: 'callee、caller、call 和 apply'
 date: 2015-10-16 18:27:01
 tags: JavaScript
 

@@ -6,7 +6,7 @@ tags: [Node, Crawler]
 
 公司的设计图稿等全部存在 Gitlab 上的某个仓库中，恰好某次迭代需要使用到其中的图稿，因为历史图稿使这个仓库异常大，而我只需要其中很小的一部分，就不想 `clone` 整个仓库而只想下载需要的文件夹。但是在使用 Git 时如果只想下载其中部分的文件夹是一件很复杂的事情，尝试了各种指令后发现无论如何都要先 `fetch` 整个项目，而下载其中的一个文件却是一件简单的事情，那不如就动手写个爬虫吧。于是就有了这个项目 [gitlab-fileDownload](https://github.com/cnzsb/gitlab-fileDownloader)：
 
-![demo-gitlab-fileDownload](http://7xlivs.com1.z0.glb.clouddn.com/2017/08/28/Node%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-Gitlab%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/gitlab-fileDownloader.gif)
+![demo-gitlab-fileDownload](./Node%20爬虫实践%20-%20Gitlab%20文件下载/gitlab-fileDownloader.gif)
 
 <!-- more -->
 
@@ -46,7 +46,7 @@ const $http = axios.create({
 
 首先要处理的就是登录：
 
-![gitlab-login](http://7xlivs.com1.z0.glb.clouddn.com/2017/08/28/Node%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-Gitlab%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/gitlab-login.jpg)
+![gitlab-login](./Node%20爬虫实践%20-%20Gitlab%20文件下载/gitlab-login.jpg)
 
 ```javascript
 try {
@@ -95,7 +95,7 @@ try {
 
 在登录后就需要解析目标页面的数据了，因为可能会遇到文件夹的情况，因此在开始的配置项中增加了 `deep` 决定是否深度解析文件夹的能力。
 
-![gitlab-target-url](http://7xlivs.com1.z0.glb.clouddn.com/2017/08/28/Node%E7%88%AC%E8%99%AB%E5%AE%9E%E8%B7%B5-Gitlab%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/gitlab-target-url.jpg)
+![gitlab-target-url](./Node%20爬虫实践%20-%20Gitlab%20文件下载/gitlab-target-url.jpg)
 
 根据页面的结构存储对应资源的名称、下载路径及所在目录地址，根据 `deep` 决定是否递归：
 
